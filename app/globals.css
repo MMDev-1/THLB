@@ -310,3 +310,100 @@ body {
   outline: 2px solid var(--ring);
   outline-offset: 2px;
 }
+
+/* ============================================================
+   Announcement Bar
+   ============================================================ */
+
+.announcement-bar-spacer {
+  height: 40px; /* matches the bar height — prevents CLS */
+}
+
+.announcement-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-fixed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  color: #ffffff;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  transition: background-color var(--duration-normal) var(--ease-default);
+}
+
+.announcement-bar__message {
+  flex: 1;
+  text-align: center;
+  transition: opacity 300ms var(--ease-default);
+}
+
+.announcement-bar__message--fading {
+  opacity: 0;
+}
+
+.announcement-bar__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.announcement-bar__link:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.announcement-bar__nav {
+  display: none; /* hidden on mobile */
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-default);
+  flex-shrink: 0;
+}
+
+.announcement-bar__nav:hover {
+  color: #ffffff;
+}
+
+.announcement-bar__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-default);
+  flex-shrink: 0;
+  position: absolute;
+  right: var(--space-2);
+}
+
+.announcement-bar__close:hover {
+  color: #ffffff;
+}
+
+/* Show chevrons on desktop */
+@media (min-width: 768px) {
+  .announcement-bar__nav {
+    display: flex;
+  }
+
+  .announcement-bar__close {
+    right: var(--space-4);
+  }
+}
