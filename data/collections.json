@@ -1,0 +1,100 @@
+[
+  {
+    "id": "id_1593",
+    "handle": "adult-hoodies",
+    "title": "Adult Hoodies",
+    "description": "Our full range of oversized wearable blanket hoodies for adults. Available in sizes XS to XXL.",
+    "image": {
+      "src": "/images/collections/adult-hoodies.webp",
+      "alt": "Adult Hoodies",
+      "width": 1200,
+      "height": 600
+    },
+    "productIds": [
+      "id_1049",
+      "id_1086",
+      "id_1117",
+      "id_1154",
+      "id_1197",
+      "id_1228",
+      "id_1245",
+      "id_1282"
+    ]
+  },
+  {
+    "id": "id_1594",
+    "handle": "kids",
+    "title": "Kids Collection",
+    "description": "Cozy wearable blankets and slippers sized for children ages 4 to 12.",
+    "image": {
+      "src": "/images/collections/kids.webp",
+      "alt": "Kids Collection",
+      "width": 1200,
+      "height": 600
+    },
+    "productIds": [
+      "id_1313",
+      "id_1339",
+      "id_1360",
+      "id_1381",
+      "id_1407",
+      "id_1458",
+      "id_1569"
+    ]
+  },
+  {
+    "id": "id_1595",
+    "handle": "slippers",
+    "title": "Slippers",
+    "description": "Plush Sherpa slippers to keep your feet as warm as the rest of you.",
+    "image": {
+      "src": "/images/collections/slippers.webp",
+      "alt": "Slippers",
+      "width": 1200,
+      "height": 600
+    },
+    "productIds": [
+      "id_1428",
+      "id_1445",
+      "id_1458",
+      "id_1475"
+    ]
+  },
+  {
+    "id": "id_1596",
+    "handle": "bundles",
+    "title": "Bundles & Sets",
+    "description": "Save when you bundle. Matching sets for couples, families, and gifting.",
+    "image": {
+      "src": "/images/collections/bundles.webp",
+      "alt": "Bundles & Sets",
+      "width": 1200,
+      "height": 600
+    },
+    "productIds": [
+      "id_1506",
+      "id_1531",
+      "id_1548",
+      "id_1569"
+    ]
+  },
+  {
+    "id": "id_1597",
+    "handle": "accessories",
+    "title": "Accessories",
+    "description": "Blankets, pillows, socks, and more — all in our signature Sherpa fleece.",
+    "image": {
+      "src": "/images/collections/accessories.webp",
+      "alt": "Accessories",
+      "width": 1200,
+      "height": 600
+    },
+    "productIds": [
+      "id_1574",
+      "id_1579",
+      "id_1585",
+      "id_1590",
+      "id_1592"
+    ]
+  }
+]
