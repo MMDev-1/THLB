@@ -680,3 +680,276 @@ body {
 .header-spacer {
   height: var(--header-h);
 }
+
+/* ============================================================
+   Mega Menu — Trigger overrides
+   ============================================================ */
+
+/* Trigger button resets — inherit nav-link styles */
+.header__nav-link--trigger {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Active underline when panel is open */
+.header__nav-link--active::after {
+  transform: scaleX(1);
+}
+
+/* Force solid background when mega-menu is open (overrides transparent) */
+.header--mega-open {
+  background: var(--surface-raised) !important;
+  color: var(--foreground) !important;
+}
+
+.header--mega-open .header__nav-link {
+  color: var(--foreground);
+}
+
+.header--mega-open .header__icon-btn {
+  color: var(--foreground);
+}
+
+.header--mega-open .header__logo {
+  color: var(--foreground);
+}
+
+/* ============================================================
+   Mega Menu — Panel
+   ============================================================ */
+
+.mega-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--surface-raised);
+  border-top: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+
+  /* Animation — fade + slide down, ≤ 200ms */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition:
+    opacity 180ms var(--ease-out),
+    transform 180ms var(--ease-out),
+    visibility 0ms 180ms;
+}
+
+.mega-menu--open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition:
+    opacity 180ms var(--ease-out),
+    transform 180ms var(--ease-out),
+    visibility 0ms 0ms;
+}
+
+/* Inner container — constrained width, flex layout */
+.mega-menu__inner {
+  display: flex;
+  gap: var(--space-10);
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-8);
+}
+
+/* ---- Link columns area ---- */
+.mega-menu__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.mega-menu__columns {
+  display: flex;
+  gap: var(--space-10);
+}
+
+.mega-menu__column {
+  flex: 1;
+  min-width: 0;
+}
+
+.mega-menu__column-title {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-widest);
+  color: var(--muted);
+  margin: 0 0 var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border);
+}
+
+.mega-menu__column-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.mega-menu__link {
+  display: block;
+  padding: var(--space-1-5) 0;
+  color: var(--foreground);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  transition: color var(--duration-fast) var(--ease-default);
+}
+
+.mega-menu__link:hover {
+  color: var(--primary);
+}
+
+.mega-menu__link:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* "View all" link */
+.mega-menu__view-all {
+  display: inline-block;
+  margin-top: var(--space-6);
+  padding: var(--space-2) 0;
+  color: var(--primary);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  transition: color var(--duration-fast) var(--ease-default);
+}
+
+.mega-menu__view-all:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ---- Promo tiles area ---- */
+.mega-menu__promos {
+  display: flex;
+  gap: var(--space-5);
+  flex-shrink: 0;
+}
+
+.mega-menu__promo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 200px;
+  text-decoration: none;
+  color: var(--foreground);
+  transition: transform var(--duration-fast) var(--ease-default);
+}
+
+.mega-menu__promo:hover {
+  transform: translateY(-2px);
+}
+
+.mega-menu__promo:hover .mega-menu__promo-image {
+  box-shadow: var(--shadow-md);
+}
+
+/* Promo image placeholder — no real images yet */
+.mega-menu__promo-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: var(--surface-sunken);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: box-shadow var(--duration-fast) var(--ease-default);
+}
+
+/* Promo badge */
+.mega-menu__promo-badge {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  padding: var(--space-1) var(--space-2-5);
+  background: var(--primary);
+  color: var(--primary-foreground);
+  font-size: 10px;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-widest);
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  line-height: 1;
+}
+
+/* Promo title */
+.mega-menu__promo-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+}
+
+/* ============================================================
+   Mega Menu — Backdrop overlay
+   ============================================================ */
+
+.mega-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-sticky) - 1);
+  background: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  transition: background 200ms var(--ease-default);
+}
+
+.mega-menu-backdrop--visible {
+  background: rgba(0, 0, 0, 0.3);
+  pointer-events: auto;
+}
+
+/* ============================================================
+   Mega Menu — Responsive rules
+   ============================================================ */
+
+/* Hide mega menu entirely below 1024px (mobile drawer handles it) */
+@media (max-width: 1023px) {
+  .mega-menu {
+    display: none !important;
+  }
+
+  .mega-menu-backdrop {
+    display: none !important;
+  }
+}
+
+/* 1024–1279px: show only 1 promo, tighten spacing */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .mega-menu__inner {
+    padding: var(--space-6) var(--space-6);
+    gap: var(--space-6);
+  }
+
+  .mega-menu__columns {
+    gap: var(--space-6);
+  }
+
+  .mega-menu__promo:nth-child(n + 2) {
+    display: none;
+  }
+
+  .mega-menu__promo {
+    width: 170px;
+  }
+}
+
+/* 1280px+: full layout */
+@media (min-width: 1280px) {
+  .mega-menu__inner {
+    padding: var(--space-10) var(--space-8);
+  }
+}

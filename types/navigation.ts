@@ -18,11 +18,24 @@ export interface MegaMenuColumn {
   links: NavLink[];
 }
 
+export interface MegaMenuPromo {
+  /** Placeholder path — real images will replace this later */
+  image: string;
+  title: string;
+  href: string;
+  badge?: string;
+}
+
+export interface MegaMenuData {
+  columns: MegaMenuColumn[];
+  promos?: MegaMenuPromo[];
+}
+
 export interface NavItem {
   label: string;
   href: string;
   /** If present, this nav item opens a mega-menu dropdown */
-  megaMenu?: MegaMenuColumn[];
+  megaMenu?: MegaMenuData;
   /** Simple sub-links (used for mobile nav when no megaMenu) */
   children?: NavLink[];
 }

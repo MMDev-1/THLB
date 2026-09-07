@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { IconMenu, IconSearch, IconShoppingBag, IconUser } from '@/components/icons';
 import { Logo } from '@/components/icons/Logo';
+import { MegaMenu } from '@/components/layout/MegaMenu';
 import type { NavItem } from '@/types';
 
 /* ------------------------------------------------------------------ */
@@ -24,6 +25,8 @@ interface HeaderProps {
 const HEADER_H = 88;
 const HEADER_H_COMPACT = 64;
 const SCROLL_THRESHOLD = 80;
+const HOVER_INTENT_MS = 150;
+const HOVER_CLOSE_MS = 150;
 
 /* ------------------------------------------------------------------ */
 /*  Component                                                          */
@@ -31,10 +34,22 @@ const SCROLL_THRESHOLD = 80;
 
 export function Header({ navItems, variant = 'solid' }: HeaderProps) {
   const [isCompact, setIsCompact] = useState(false);
-  const [cartCount] = useState(0); // will be wired to cart store later
+  const [cartCount] = useState(0);
   const [badgeBump, setBadgeBump] = useState(false);
+  const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
+  const [keyboardActivated, setKeyboardActivated] = useState(false);
+
   const sentinelRef = useRef<HTMLDivElement>(null);
   const prevCartCountRef = useRef(0);
+  const hoverIntentRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const openMenuIndexRef = useRef<number | null>(null);
+  const triggerRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  /* Keep ref in sync so stable callbacks can read current state */
+  useEffect(() => {
+    openMenuIndexRef.current = openMenuIndex;
+  }, [openMenuIndex]);
 
   /* ---- Scroll-based compact mode via IntersectionObserver ---- */
   useEffect(() => {
@@ -43,7 +58,6 @@ export function Header({ navItems, variant = 'solid' }: HeaderProps) {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // When the sentinel scrolls out of view, header becomes compact
         setIsCompact(!entry.isIntersecting);
       },
       { threshold: 0, rootMargin: `-${SCROLL_THRESHOLD}px 0px 0px 0px` },
@@ -67,20 +81,142 @@ export function Header({ navItems, variant = 'solid' }: HeaderProps) {
     prevCartCountRef.current = cartCount;
   }, [cartCount]);
 
+  /* ---- Close mega menu on Escape ---- */
+  useEffect(() => {
+    if (openMenuIndex === null) return;
+
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        const idx = openMenuIndexRef.current;
+        setOpenMenuIndex(null);
+        setKeyboardActivated(false);
+        if (idx !== null) triggerRefs.current[idx]?.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleEsc);
+    return () => document.removeEventListener('keydown', handleEsc);
+  }, [openMenuIndex]);
+
+  /* ---- Close when focus leaves the header entirely ---- */
+  useEffect(() => {
+    if (openMenuIndex === null) return;
+
+    const handleFocusOut = (e: FocusEvent) => {
+      const header = (e.currentTarget as Document).querySelector('.header');
+      if (header && !header.contains(e.relatedTarget as Node)) {
+        setOpenMenuIndex(null);
+        setKeyboardActivated(false);
+      }
+    };
+
+    document.addEventListener('focusout', handleFocusOut);
+    return () => document.removeEventListener('focusout', handleFocusOut);
+  }, [openMenuIndex]);
+
+  /* ---- Cleanup hover timers ---- */
+  useEffect(() => {
+    return () => {
+      if (hoverIntentRef.current) clearTimeout(hoverIntentRef.current);
+      if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    };
+  }, []);
+
+  /* ---- Hover intent: open with delay, switch instantly ---- */
+  const handleNavItemMouseEnter = useCallback(
+    (index: number) => {
+      if (!navItems[index]?.megaMenu) {
+        // Hovering a plain link while a menu is open — start close
+        if (openMenuIndexRef.current !== null) {
+          if (hoverIntentRef.current) clearTimeout(hoverIntentRef.current);
+          closeTimerRef.current = setTimeout(() => {
+            setOpenMenuIndex(null);
+            setKeyboardActivated(false);
+          }, HOVER_CLOSE_MS);
+        }
+        return;
+      }
+
+      if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+
+      if (openMenuIndexRef.current !== null) {
+        // Another panel already open — switch immediately
+        if (hoverIntentRef.current) clearTimeout(hoverIntentRef.current);
+        setOpenMenuIndex(index);
+        setKeyboardActivated(false);
+      } else {
+        // Nothing open — apply intent delay
+        hoverIntentRef.current = setTimeout(() => {
+          setOpenMenuIndex(index);
+          setKeyboardActivated(false);
+        }, HOVER_INTENT_MS);
+      }
+    },
+    [navItems],
+  );
+
+  const handleNavItemMouseLeave = useCallback(() => {
+    if (hoverIntentRef.current) clearTimeout(hoverIntentRef.current);
+    closeTimerRef.current = setTimeout(() => {
+      setOpenMenuIndex(null);
+      setKeyboardActivated(false);
+    }, HOVER_CLOSE_MS);
+  }, []);
+
+  const handlePanelMouseEnter = useCallback(() => {
+    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+  }, []);
+
+  const handlePanelMouseLeave = useCallback(() => {
+    closeTimerRef.current = setTimeout(() => {
+      setOpenMenuIndex(null);
+      setKeyboardActivated(false);
+    }, HOVER_CLOSE_MS);
+  }, []);
+
+  /* ---- Keyboard toggle for trigger buttons ---- */
+  const handleTriggerClick = useCallback(
+    (index: number) => {
+      if (hoverIntentRef.current) clearTimeout(hoverIntentRef.current);
+      if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+
+      if (openMenuIndexRef.current === index) {
+        setOpenMenuIndex(null);
+        setKeyboardActivated(false);
+      } else {
+        setOpenMenuIndex(index);
+        setKeyboardActivated(true);
+      }
+    },
+    [],
+  );
+
+  const handleTriggerKeyDown = useCallback(
+    (e: React.KeyboardEvent, index: number) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleTriggerClick(index);
+      }
+    },
+    [handleTriggerClick],
+  );
+
+  /* ---- Mobile menu ---- */
+  const handleMobileMenuOpen = useCallback(() => {
+    window.dispatchEvent(new CustomEvent('toggle-mobile-nav'));
+  }, []);
+
   /* ---- CSS class construction ---- */
   const headerClasses = [
     'header',
     isCompact ? 'header--compact' : '',
     variant === 'transparent' && !isCompact ? 'header--transparent' : '',
+    openMenuIndex !== null && navItems[openMenuIndex]?.megaMenu
+      ? 'header--mega-open'
+      : '',
   ]
     .filter(Boolean)
     .join(' ');
-
-  const handleMobileMenuOpen = useCallback(() => {
-    // Will be wired to mobile drawer in a later sub-task
-    // Dispatching a custom event so the drawer can listen
-    window.dispatchEvent(new CustomEvent('toggle-mobile-nav'));
-  }, []);
 
   return (
     <>
@@ -119,11 +255,41 @@ export function Header({ navItems, variant = 'solid' }: HeaderProps) {
             {/* Desktop nav links */}
             <nav className="header__nav" aria-label="Main navigation">
               <ul className="header__nav-list">
-                {navItems.map((item) => (
-                  <li key={item.label} className="header__nav-item">
-                    <Link href={item.href} className="header__nav-link">
-                      {item.label}
-                    </Link>
+                {navItems.map((item, index) => (
+                  <li
+                    key={item.label}
+                    className="header__nav-item"
+                    onMouseEnter={() =>
+                      handleNavItemMouseEnter(index)
+                    }
+                    onMouseLeave={handleNavItemMouseLeave}
+                  >
+                    {item.megaMenu ? (
+                      <button
+                        ref={(el) => {
+                          triggerRefs.current[index] = el;
+                        }}
+                        className={`header__nav-link header__nav-link--trigger ${
+                          openMenuIndex === index
+                            ? 'header__nav-link--active'
+                            : ''
+                        }`}
+                        aria-expanded={openMenuIndex === index}
+                        aria-controls={`mega-menu-${index}`}
+                        onClick={() => handleTriggerClick(index)}
+                        onKeyDown={(e) => handleTriggerKeyDown(e, index)}
+                        type="button"
+                      >
+                        {item.label}
+                      </button>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className="header__nav-link"
+                      >
+                        {item.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -132,7 +298,11 @@ export function Header({ navItems, variant = 'solid' }: HeaderProps) {
 
           {/* ---- Center zone — logo ---- */}
           <div className="header__center">
-            <Link href="/" className="header__logo-link" aria-label="The Hoodie LB — Home">
+            <Link
+              href="/"
+              className="header__logo-link"
+              aria-label="The Hoodie LB — Home"
+            >
               <Logo className="header__logo" />
             </Link>
           </div>
@@ -171,7 +341,40 @@ export function Header({ navItems, variant = 'solid' }: HeaderProps) {
             </button>
           </div>
         </div>
+
+        {/* ---- Mega Menu Panels ---- */}
+        {navItems.map((item, index) =>
+          item.megaMenu ? (
+            <MegaMenu
+              key={item.label}
+              id={`mega-menu-${index}`}
+              data={item.megaMenu}
+              isOpen={openMenuIndex === index}
+              viewAllHref={item.href}
+              viewAllLabel={item.label}
+              onMouseEnter={handlePanelMouseEnter}
+              onMouseLeave={handlePanelMouseLeave}
+              focusOnOpen={
+                keyboardActivated && openMenuIndex === index
+              }
+            />
+          ) : null,
+        )}
       </header>
+
+      {/* ---- Page backdrop when mega-menu is open ---- */}
+      <div
+        className={`mega-menu-backdrop ${
+          openMenuIndex !== null && navItems[openMenuIndex]?.megaMenu
+            ? 'mega-menu-backdrop--visible'
+            : ''
+        }`}
+        onClick={() => {
+          setOpenMenuIndex(null);
+          setKeyboardActivated(false);
+        }}
+        aria-hidden="true"
+      />
     </>
   );
 }

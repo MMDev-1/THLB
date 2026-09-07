@@ -20,67 +20,49 @@
     {
       "label": "Shop",
       "href": "/collections",
-      "megaMenu": [
-        {
-          "title": "Hoodies",
-          "links": [
-            {
-              "label": "All Adult Hoodies",
-              "href": "/collections/adult-hoodies"
-            },
-            {
-              "label": "Classic Hoodie",
-              "href": "/products/classic-hoodie"
-            },
-            {
-              "label": "Zip-Up Hoodie",
-              "href": "/products/zip-up-hoodie"
-            },
-            {
-              "label": "Lightweight Hoodie",
-              "href": "/products/lightweight-hoodie"
-            },
-            {
-              "label": "Oversized Hoodie",
-              "href": "/products/oversized-hoodie"
-            }
-          ]
-        },
-        {
-          "title": "Kids",
-          "links": [
-            {
-              "label": "All Kids",
-              "href": "/collections/kids"
-            },
-            {
-              "label": "Kids Classic",
-              "href": "/products/kids-classic-hoodie"
-            },
-            {
-              "label": "Kids Animal",
-              "href": "/products/kids-animal-hoodie"
-            }
-          ]
-        },
-        {
-          "title": "Slippers & More",
-          "links": [
-            {
-              "label": "All Slippers",
-              "href": "/collections/slippers"
-            },
-            {
-              "label": "Accessories",
-              "href": "/collections/accessories"
-            },
-            {
-              "label": "Bundles & Sets",
-              "href": "/collections/bundles"
-            }
-          ]
-        }
-      ]
+      "megaMenu": {
+        "columns": [
+          {
+            "title": "Hoodies",
+            "links": [
+              { "label": "All Adult Hoodies", "href": "/collections/adult-hoodies" },
+              { "label": "Classic Hoodie", "href": "/products/classic-hoodie" },
+              { "label": "Zip-Up Hoodie", "href": "/products/zip-up-hoodie" },
+              { "label": "Lightweight Hoodie", "href": "/products/lightweight-hoodie" },
+              { "label": "Oversized Hoodie", "href": "/products/oversized-hoodie" }
+            ]
+          },
+          {
+            "title": "Kids",
+            "links": [
+              { "label": "All Kids", "href": "/collections/kids" },
+              { "label": "Kids Classic", "href": "/products/kids-classic-hoodie" },
+              { "label": "Kids Animal", "href": "/products/kids-animal-hoodie" }
+            ]
+          },
+          {
+            "title": "Slippers & More",
+            "links": [
+              { "label": "All Slippers", "href": "/collections/slippers" },
+              { "label": "Accessories", "href": "/collections/accessories" },
+              { "label": "Bundles & Sets", "href": "/collections/bundles" }
+            ]
+          }
+        ],
+        "promos": [
+          {
+            "image": "/images/promo-new-arrivals.jpg",
+            "title": "New Arrivals",
+            "href": "/collections/new",
+            "badge": "NEW"
+          },
+          {
+            "image": "/images/promo-best-sellers.jpg",
+            "title": "Best Sellers",
+            "href": "/collections/best-sellers"
+          }
+        ]
+      }
     },
     {
       "label": "Bundles",
@@ -88,7 +70,35 @@
     },
     {
       "label": "Kids",
-      "href": "/collections/kids"
+      "href": "/collections/kids",
+      "megaMenu": {
+        "columns": [
+          {
+            "title": "By Age",
+            "links": [
+              { "label": "Toddlers (2-4)", "href": "/collections/kids-toddlers" },
+              { "label": "Kids (5-9)", "href": "/collections/kids-young" },
+              { "label": "Tweens (10-14)", "href": "/collections/kids-tweens" }
+            ]
+          },
+          {
+            "title": "By Style",
+            "links": [
+              { "label": "Classic Hoodies", "href": "/collections/kids-classic" },
+              { "label": "Animal Hoodies", "href": "/collections/kids-animal" },
+              { "label": "Character Hoodies", "href": "/collections/kids-character" }
+            ]
+          }
+        ],
+        "promos": [
+          {
+            "image": "/images/promo-kids.jpg",
+            "title": "Kids Collection",
+            "href": "/collections/kids",
+            "badge": "COZY"
+          }
+        ]
+      }
     },
     {
       "label": "Our Story",
@@ -103,76 +113,31 @@
     {
       "title": "Shop",
       "links": [
-        {
-          "label": "Adult Hoodies",
-          "href": "/collections/adult-hoodies"
-        },
-        {
-          "label": "Kids Collection",
-          "href": "/collections/kids"
-        },
-        {
-          "label": "Slippers",
-          "href": "/collections/slippers"
-        },
-        {
-          "label": "Bundles",
-          "href": "/collections/bundles"
-        },
-        {
-          "label": "Accessories",
-          "href": "/collections/accessories"
-        },
-        {
-          "label": "Gift Cards",
-          "href": "/products/gift-card"
-        }
+        { "label": "Adult Hoodies", "href": "/collections/adult-hoodies" },
+        { "label": "Kids Collection", "href": "/collections/kids" },
+        { "label": "Slippers", "href": "/collections/slippers" },
+        { "label": "Bundles", "href": "/collections/bundles" },
+        { "label": "Accessories", "href": "/collections/accessories" },
+        { "label": "Gift Cards", "href": "/products/gift-card" }
       ]
     },
     {
       "title": "Help",
       "links": [
-        {
-          "label": "Shipping & Delivery",
-          "href": "/pages/shipping"
-        },
-        {
-          "label": "Returns & Exchanges",
-          "href": "/pages/returns"
-        },
-        {
-          "label": "Size Guide",
-          "href": "/pages/size-guide"
-        },
-        {
-          "label": "FAQ",
-          "href": "/pages/faq"
-        },
-        {
-          "label": "Contact Us",
-          "href": "/pages/contact"
-        }
+        { "label": "Shipping & Delivery", "href": "/pages/shipping" },
+        { "label": "Returns & Exchanges", "href": "/pages/returns" },
+        { "label": "Size Guide", "href": "/pages/size-guide" },
+        { "label": "FAQ", "href": "/pages/faq" },
+        { "label": "Contact Us", "href": "/pages/contact" }
       ]
     },
     {
       "title": "Company",
       "links": [
-        {
-          "label": "Our Story",
-          "href": "/pages/about"
-        },
-        {
-          "label": "Blog",
-          "href": "/blog"
-        },
-        {
-          "label": "Privacy Policy",
-          "href": "/pages/privacy"
-        },
-        {
-          "label": "Terms of Service",
-          "href": "/pages/terms"
-        }
+        { "label": "Our Story", "href": "/pages/about" },
+        { "label": "Blog", "href": "/blog" },
+        { "label": "Privacy Policy", "href": "/pages/privacy" },
+        { "label": "Terms of Service", "href": "/pages/terms" }
       ]
     }
   ]

@@ -6,20 +6,22 @@
  * changes are required.
  */
 
-export {
-  type CollectionFilters,
-  type CollectionQuery,
-  getCollection,
-  getCollections,
-  type PaginatedProducts,
-  type SortKey,
-} from './collections';
 export { getAnnouncements, getNavigation } from './navigation';
-export {
-  getBlogPost,
-  getBlogPosts,
-  getPage,
-  getPages,
-} from './pages';
-export { getProduct, getProducts, searchProducts } from './products';
-export { getReviews, type PaginatedReviews } from './reviews';
+
+/* ---- Future modules (uncomment as they are built) ---- */
+// export {
+//   type CollectionFilters,
+//   type CollectionQuery,
+//   getCollection,
+//   getCollections,
+//   type PaginatedProducts,
+//   type SortKey,
+// } from './collections';
+// export {
+//   getBlogPost,
+//   getBlogPosts,
+//   getPage,
+//   getPages,
+// } from './pages';
+// export { getProduct, getProducts, searchProducts } from './products';
+// export { getReviews, type PaginatedReviews } from './reviews';
