@@ -5,6 +5,7 @@ import localFont from 'next/font/local';
 
 import { AnnouncementBar } from '@/components/layout/AnnouncementBar';
 import { Header } from '@/components/layout/Header';
+import { MobileNav } from '@/components/layout/MobileNav';
 import { getAnnouncements } from '@/lib/api/navigation';
 import { getNavigation } from '@/lib/api/navigation';
 
@@ -39,6 +40,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
       <body className="min-h-full flex flex-col">
         <AnnouncementBar announcements={announcements} />
         <Header navItems={navigation.main} />
+        <MobileNav navItems={navigation.main} />
         <main id="main-content" className="flex-1">
           {children}
         </main>
