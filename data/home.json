@@ -24,5 +24,74 @@
     ],
     "align": "left",
     "overlayOpacity": 0.45
+  },
+
+  "categoryTiles": {
+    "heading": "Shop by Category",
+    "tiles": [
+      {
+        "image": "/images/categories/category-1.jpg",
+        "alt": "Hoodies collection",
+        "label": "Hoodies",
+        "href": "/collections/hoodies"
+      },
+      {
+        "image": "/images/categories/category-2.jpg",
+        "alt": "Blankets collection",
+        "label": "Blankets",
+        "href": "/collections/blankets"
+      },
+      {
+        "image": "/images/categories/category-3.jpg",
+        "alt": "Kids collection",
+        "label": "Kids",
+        "href": "/collections/kids"
+      },
+      {
+        "image": "/images/categories/category-4.jpg",
+        "alt": "Accessories collection",
+        "label": "Accessories",
+        "href": "/collections/accessories"
+      }
+    ]
+  },
+
+  "valueProps": {
+    "items": [
+      {
+        "icon": "Truck",
+        "title": "Free Delivery",
+        "copy": "On all orders across Lebanon"
+      },
+      {
+        "icon": "ShieldCheck",
+        "title": "Quality Guarantee",
+        "copy": "Premium fabrics built to last"
+      },
+      {
+        "icon": "RefreshCcw",
+        "title": "Easy Returns",
+        "copy": "30-day hassle-free returns"
+      },
+      {
+        "icon": "Headphones",
+        "title": "24/7 Support",
+        "copy": "We're here whenever you need us"
+      }
+    ]
+  },
+
+  "splitBanner": {
+    "image": "/images/banners/split-banner.jpg",
+    "alt": "Person lounging in a hoodie blanket",
+    "imageSide": "left",
+    "eyebrow": "Our Promise",
+    "heading": "Made for Comfort",
+    "body": "Every piece is crafted from ultra-soft sherpa fleece, designed to keep you warm without the bulk. Whether you're working from home or winding down, The Hoodie LB has you covered — literally.",
+    "cta": {
+      "label": "Learn More",
+      "href": "/pages/about",
+      "variant": "primary"
+    }
   }
 }

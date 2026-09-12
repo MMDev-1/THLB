@@ -1,5 +1,15 @@
 export type { Collection } from './collection';
-export type { CTA, HeroMedia, HeroSection, HomePageData } from './home';
+export type {
+  CategoryTile,
+  CategoryTilesSection,
+  CTA,
+  HeroMedia,
+  HeroSection,
+  HomePageData,
+  SplitBannerSection,
+  ValuePropItem,
+  ValuePropsSection,
+} from './home';
 export type { Announcement, MegaMenuColumn, MegaMenuData, MegaMenuPromo, Navigation, NavItem, NavLink } from './navigation';
 export type { Address, Order, OrderLineItem, OrderStatus } from './order';
 export type { BlogPost, Page } from './page';

@@ -43,9 +43,58 @@ export interface HeroSection {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Category Tiles                                                     */
+/* ------------------------------------------------------------------ */
+
+export interface CategoryTile {
+  /** Image source — placeholder path until real photos arrive */
+  image: string;
+  alt: string;
+  label: string;
+  href: string;
+}
+
+export interface CategoryTilesSection {
+  heading: string;
+  tiles: CategoryTile[];
+}
+
+/* ------------------------------------------------------------------ */
+/*  Value Props                                                        */
+/* ------------------------------------------------------------------ */
+
+export interface ValuePropItem {
+  /** lucide-react icon name (PascalCase, e.g. "Truck") */
+  icon: string;
+  title: string;
+  copy: string;
+}
+
+export interface ValuePropsSection {
+  items: ValuePropItem[];
+}
+
+/* ------------------------------------------------------------------ */
+/*  Split Banner                                                       */
+/* ------------------------------------------------------------------ */
+
+export interface SplitBannerSection {
+  image: string;
+  alt: string;
+  imageSide: 'left' | 'right';
+  eyebrow?: string;
+  heading: string;
+  body: string;
+  cta: CTA;
+}
+
+/* ------------------------------------------------------------------ */
 /*  Home page data (grows as we add sections)                          */
 /* ------------------------------------------------------------------ */
 
 export interface HomePageData {
   hero: HeroSection;
+  categoryTiles: CategoryTilesSection;
+  valueProps: ValuePropsSection;
+  splitBanner: SplitBannerSection;
 }
