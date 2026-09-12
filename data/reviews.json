@@ -1,0 +1,1512 @@
+[
+  {
+    "id": "id_1598",
+    "productId": "id_1049",
+    "author": "Rana G.",
+    "rating": 4,
+    "title": "Very comfortable",
+    "body": "Good quality for the price. The colour is exactly as shown in the photos.",
+    "createdAt": "2025-10-01T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1599",
+    "productId": "id_1049",
+    "author": "Rami H.",
+    "rating": 4,
+    "title": "Would recommend",
+    "body": "Love how oversized it is. Great for lounging around the house.",
+    "createdAt": "2025-12-09T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1600",
+    "productId": "id_1049",
+    "author": "Karim A.",
+    "rating": 5,
+    "title": "Can't live without it",
+    "body": "Perfect for working from home. I basically live in this now.",
+    "createdAt": "2025-11-18T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1601",
+    "productId": "id_1049",
+    "author": "Rami H.",
+    "rating": 5,
+    "title": "Best purchase ever",
+    "body": "Bought one for myself and then immediately ordered three more as gifts. Everyone loves them.",
+    "createdAt": "2026-02-20T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1602",
+    "productId": "id_1086",
+    "author": "Rana G.",
+    "rating": 5,
+    "title": "So cozy and warm",
+    "body": "Bought one for myself and then immediately ordered three more as gifts. Everyone loves them.",
+    "createdAt": "2025-12-11T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1603",
+    "productId": "id_1086",
+    "author": "Fadi J.",
+    "rating": 5,
+    "title": "Best purchase ever",
+    "body": "Bought one for myself and then immediately ordered three more as gifts. Everyone loves them.",
+    "createdAt": "2025-09-09T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1604",
+    "productId": "id_1086",
+    "author": "Hala S.",
+    "rating": 5,
+    "title": "Can't live without it",
+    "body": "Perfect for working from home. I basically live in this now.",
+    "createdAt": "2026-01-10T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1605",
+    "productId": "id_1086",
+    "author": "Lina T.",
+    "rating": 5,
+    "title": "So cozy and warm",
+    "body": "I wear this every single day. The fleece lining is incredibly soft and it keeps me warm even on the coldest days.",
+    "createdAt": "2026-02-19T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1606",
+    "productId": "id_1086",
+    "author": "Jad F.",
+    "rating": 4,
+    "title": "Really great quality",
+    "body": "Comfortable and warm. Only giving 4 stars because shipping took a bit longer than expected.",
+    "createdAt": "2025-11-01T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1607",
+    "productId": "id_1086",
+    "author": "Rana G.",
+    "rating": 5,
+    "title": "Perfect gift",
+    "body": "I wear this every single day. The fleece lining is incredibly soft and it keeps me warm even on the coldest days.",
+    "createdAt": "2025-12-12T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1608",
+    "productId": "id_1086",
+    "author": "Karim A.",
+    "rating": 5,
+    "title": "Best purchase ever",
+    "body": "The quality is outstanding. After multiple washes it still looks and feels brand new.",
+    "createdAt": "2025-10-08T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1609",
+    "productId": "id_1086",
+    "author": "Omar B.",
+    "rating": 5,
+    "title": "Best purchase ever",
+    "body": "Bought one for myself and then immediately ordered three more as gifts. Everyone loves them.",
+    "createdAt": "2025-09-17T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1610",
+    "productId": "id_1117",
+    "author": "Rana G.",
+    "rating": 5,
+    "title": "Can't live without it",
+    "body": "My kids fight over who gets to wear mine. Had to order them their own!",
+    "createdAt": "2025-09-22T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1611",
+    "productId": "id_1117",
+    "author": "Omar B.",
+    "rating": 5,
+    "title": "So cozy and warm",
+    "body": "My kids fight over who gets to wear mine. Had to order them their own!",
+    "createdAt": "2025-10-08T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1612",
+    "productId": "id_1117",
+    "author": "Jad F.",
+    "rating": 5,
+    "title": "Perfect gift",
+    "body": "Perfect for working from home. I basically live in this now.",
+    "createdAt": "2025-10-31T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1613",
+    "productId": "id_1117",
+    "author": "Nadia L.",
+    "rating": 4,
+    "title": "Great value",
+    "body": "Good quality for the price. The colour is exactly as shown in the photos.",
+    "createdAt": "2026-02-21T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1614",
+    "productId": "id_1117",
+    "author": "Tala R.",
+    "rating": 4,
+    "title": "Really great quality",
+    "body": "Good quality for the price. The colour is exactly as shown in the photos.",
+    "createdAt": "2026-01-08T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1615",
+    "productId": "id_1117",
+    "author": "Rami H.",
+    "rating": 4,
+    "title": "Great value",
+    "body": "Love how oversized it is. Great for lounging around the house.",
+    "createdAt": "2025-11-23T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1616",
+    "productId": "id_1117",
+    "author": "Dina W.",
+    "rating": 4,
+    "title": "Great value",
+    "body": "Really nice hoodie. The material is soft and the sizing is spot on. Would buy again.",
+    "createdAt": "2026-01-02T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1617",
+    "productId": "id_1117",
+    "author": "Hala S.",
+    "rating": 5,
+    "title": "So cozy and warm",
+    "body": "I wear this every single day. The fleece lining is incredibly soft and it keeps me warm even on the coldest days.",
+    "createdAt": "2025-12-29T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1618",
+    "productId": "id_1154",
+    "author": "Nadia L.",
+    "rating": 5,
+    "title": "Can't live without it",
+    "body": "I wear this every single day. The fleece lining is incredibly soft and it keeps me warm even on the coldest days.",
+    "createdAt": "2025-11-18T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1619",
+    "productId": "id_1154",
+    "author": "Nadia L.",
+    "rating": 3,
+    "title": "Nice material",
+    "body": "Decent quality. The colour was slightly different from the photo but still nice.",
+    "createdAt": "2026-01-09T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1620",
+    "productId": "id_1154",
+    "author": "Nadia L.",
+    "rating": 4,
+    "title": "Love the colours",
+    "body": "Really nice hoodie. The material is soft and the sizing is spot on. Would buy again.",
+    "createdAt": "2026-02-12T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1621",
+    "productId": "id_1154",
+    "author": "Nadia L.",
+    "rating": 5,
+    "title": "Absolutely love it!",
+    "body": "My kids fight over who gets to wear mine. Had to order them their own!",
+    "createdAt": "2025-09-17T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1622",
+    "productId": "id_1154",
+    "author": "Tala R.",
+    "rating": 5,
+    "title": "Absolutely love it!",
+    "body": "The quality is outstanding. After multiple washes it still looks and feels brand new.",
+    "createdAt": "2026-01-08T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1623",
+    "productId": "id_1154",
+    "author": "Lina T.",
+    "rating": 4,
+    "title": "Would recommend",
+    "body": "Love how oversized it is. Great for lounging around the house.",
+    "createdAt": "2025-09-14T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1624",
+    "productId": "id_1154",
+    "author": "Sara M.",
+    "rating": 4,
+    "title": "Great value",
+    "body": "Comfortable and warm. Only giving 4 stars because shipping took a bit longer than expected.",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1625",
+    "productId": "id_1197",
+    "author": "Nadia L.",
+    "rating": 5,
+    "title": "Can't live without it",
+    "body": "I wear this every single day. The fleece lining is incredibly soft and it keeps me warm even on the coldest days.",
+    "createdAt": "2025-10-01T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1626",
+    "productId": "id_1197",
+    "author": "Maya D.",
+    "rating": 5,
+    "title": "Can't live without it",
+    "body": "I wear this every single day. The fleece lining is incredibly soft and it keeps me warm even on the coldest days.",
+    "createdAt": "2025-12-31T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1627",
+    "productId": "id_1197",
+    "author": "Hala S.",
+    "rating": 5,
+    "title": "Absolutely love it!",
+    "body": "My kids fight over who gets to wear mine. Had to order them their own!",
+    "createdAt": "2026-02-26T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1628",
+    "productId": "id_1197",
+    "author": "Karim A.",
+    "rating": 5,
+    "title": "Best purchase ever",
+    "body": "Bought one for myself and then immediately ordered three more as gifts. Everyone loves them.",
+    "createdAt": "2025-11-20T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1629",
+    "productId": "id_1197",
+    "author": "Rana G.",
+    "rating": 4,
+    "title": "Very comfortable",
+    "body": "Really nice hoodie. The material is soft and the sizing is spot on. Would buy again.",
+    "createdAt": "2026-02-10T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1630",
+    "productId": "id_1197",
+    "author": "Nadia L.",
+    "rating": 4,
+    "title": "Really great quality",
+    "body": "Comfortable and warm. Only giving 4 stars because shipping took a bit longer than expected.",
+    "createdAt": "2025-12-03T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1631",
+    "productId": "id_1228",
+    "author": "Omar B.",
+    "rating": 5,
+    "title": "Best purchase ever",
+    "body": "My kids fight over who gets to wear mine. Had to order them their own!",
+    "createdAt": "2025-11-16T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1632",
+    "productId": "id_1228",
+    "author": "Karim A.",
+    "rating": 4,
+    "title": "Very comfortable",
+    "body": "Love how oversized it is. Great for lounging around the house.",
+    "createdAt": "2025-09-30T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1633",
+    "productId": "id_1228",
+    "author": "Ahmad K.",
+    "rating": 5,
+    "title": "Absolutely love it!",
+    "body": "Bought one for myself and then immediately ordered three more as gifts. Everyone loves them.",
+    "createdAt": "2026-02-06T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1634",
+    "productId": "id_1228",
+    "author": "Rana G.",
+    "rating": 5,
+    "title": "Absolutely love it!",
+    "body": "Bought one for myself and then immediately ordered three more as gifts. Everyone loves them.",
+    "createdAt": "2025-10-27T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1635",
+    "productId": "id_1228",
+    "author": "Sara M.",
+    "rating": 5,
+    "title": "Absolutely love it!",
+    "body": "The quality is outstanding. After multiple washes it still looks and feels brand new.",
+    "createdAt": "2026-01-30T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1636",
+    "productId": "id_1245",
+    "author": "Fadi J.",
+    "rating": 3,
+    "title": "Nice material",
+    "body": "Decent quality. The colour was slightly different from the photo but still nice.",
+    "createdAt": "2026-01-12T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1637",
+    "productId": "id_1245",
+    "author": "Karim A.",
+    "rating": 4,
+    "title": "Great value",
+    "body": "Good quality for the price. The colour is exactly as shown in the photos.",
+    "createdAt": "2026-01-02T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1638",
+    "productId": "id_1245",
+    "author": "Rana G.",
+    "rating": 4,
+    "title": "Love the colours",
+    "body": "Comfortable and warm. Only giving 4 stars because shipping took a bit longer than expected.",
+    "createdAt": "2025-11-22T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1639",
+    "productId": "id_1245",
+    "author": "Ziad N.",
+    "rating": 4,
+    "title": "Love the colours",
+    "body": "Good quality for the price. The colour is exactly as shown in the photos.",
+    "createdAt": "2026-01-22T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1640",
+    "productId": "id_1245",
+    "author": "Lina T.",
+    "rating": 3,
+    "title": "Decent, could be better",
+    "body": "Decent quality. The colour was slightly different from the photo but still nice.",
+    "createdAt": "2026-02-22T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1641",
+    "productId": "id_1245",
+    "author": "Omar B.",
+    "rating": 4,
+    "title": "Really great quality",
+    "body": "Love how oversized it is. Great for lounging around the house.",
+    "createdAt": "2025-12-16T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1642",
+    "productId": "id_1245",
+    "author": "Nadia L.",
+    "rating": 5,
+    "title": "So cozy and warm",
+    "body": "The quality is outstanding. After multiple washes it still looks and feels brand new.",
+    "createdAt": "2025-12-18T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1643",
+    "productId": "id_1245",
+    "author": "Tala R.",
+    "rating": 5,
+    "title": "Can't live without it",
+    "body": "My kids fight over who gets to wear mine. Had to order them their own!",
+    "createdAt": "2026-01-23T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1644",
+    "productId": "id_1282",
+    "author": "Lina T.",
+    "rating": 5,
+    "title": "Absolutely love it!",
+    "body": "I wear this every single day. The fleece lining is incredibly soft and it keeps me warm even on the coldest days.",
+    "createdAt": "2025-11-18T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1645",
+    "productId": "id_1282",
+    "author": "Rana G.",
+    "rating": 5,
+    "title": "So cozy and warm",
+    "body": "I wear this every single day. The fleece lining is incredibly soft and it keeps me warm even on the coldest days.",
+    "createdAt": "2025-09-08T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1646",
+    "productId": "id_1282",
+    "author": "Sara M.",
+    "rating": 5,
+    "title": "Can't live without it",
+    "body": "Perfect for working from home. I basically live in this now.",
+    "createdAt": "2025-12-01T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1647",
+    "productId": "id_1282",
+    "author": "Hala S.",
+    "rating": 5,
+    "title": "Perfect gift",
+    "body": "The quality is outstanding. After multiple washes it still looks and feels brand new.",
+    "createdAt": "2025-09-09T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1648",
+    "productId": "id_1282",
+    "author": "Lina T.",
+    "rating": 5,
+    "title": "Perfect gift",
+    "body": "Bought one for myself and then immediately ordered three more as gifts. Everyone loves them.",
+    "createdAt": "2025-10-06T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1649",
+    "productId": "id_1282",
+    "author": "Fadi J.",
+    "rating": 5,
+    "title": "Best purchase ever",
+    "body": "Perfect for working from home. I basically live in this now.",
+    "createdAt": "2026-02-14T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1650",
+    "productId": "id_1282",
+    "author": "Rami H.",
+    "rating": 5,
+    "title": "Absolutely love it!",
+    "body": "The quality is outstanding. After multiple washes it still looks and feels brand new.",
+    "createdAt": "2025-12-18T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1651",
+    "productId": "id_1313",
+    "author": "Karim A.",
+    "rating": 3,
+    "title": "Decent, could be better",
+    "body": "Decent quality. The colour was slightly different from the photo but still nice.",
+    "createdAt": "2025-09-09T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1652",
+    "productId": "id_1313",
+    "author": "Lina T.",
+    "rating": 3,
+    "title": "Good but runs large",
+    "body": "Decent quality. The colour was slightly different from the photo but still nice.",
+    "createdAt": "2025-10-02T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1653",
+    "productId": "id_1313",
+    "author": "Karim A.",
+    "rating": 3,
+    "title": "Good but runs large",
+    "body": "Nice hoodie overall. The material is good but it runs a size larger than expected.",
+    "createdAt": "2025-09-10T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1654",
+    "productId": "id_1313",
+    "author": "Hala S.",
+    "rating": 3,
+    "title": "Decent, could be better",
+    "body": "Nice hoodie overall. The material is good but it runs a size larger than expected.",
+    "createdAt": "2026-02-25T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1655",
+    "productId": "id_1313",
+    "author": "Tala R.",
+    "rating": 5,
+    "title": "Can't live without it",
+    "body": "Bought one for myself and then immediately ordered three more as gifts. Everyone loves them.",
+    "createdAt": "2026-01-02T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1656",
+    "productId": "id_1313",
+    "author": "Karim A.",
+    "rating": 4,
+    "title": "Love the colours",
+    "body": "Comfortable and warm. Only giving 4 stars because shipping took a bit longer than expected.",
+    "createdAt": "2026-02-10T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1657",
+    "productId": "id_1313",
+    "author": "Ziad N.",
+    "rating": 4,
+    "title": "Really great quality",
+    "body": "Really nice hoodie. The material is soft and the sizing is spot on. Would buy again.",
+    "createdAt": "2025-12-18T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1658",
+    "productId": "id_1313",
+    "author": "Omar B.",
+    "rating": 3,
+    "title": "Good but runs large",
+    "body": "Decent quality. The colour was slightly different from the photo but still nice.",
+    "createdAt": "2025-09-05T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1659",
+    "productId": "id_1339",
+    "author": "Karim A.",
+    "rating": 4,
+    "title": "Would recommend",
+    "body": "Good quality for the price. The colour is exactly as shown in the photos.",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1660",
+    "productId": "id_1339",
+    "author": "Rana G.",
+    "rating": 5,
+    "title": "Best purchase ever",
+    "body": "The quality is outstanding. After multiple washes it still looks and feels brand new.",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1661",
+    "productId": "id_1339",
+    "author": "Fadi J.",
+    "rating": 4,
+    "title": "Love the colours",
+    "body": "Really nice hoodie. The material is soft and the sizing is spot on. Would buy again.",
+    "createdAt": "2025-11-10T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1662",
+    "productId": "id_1339",
+    "author": "Sara M.",
+    "rating": 5,
+    "title": "Absolutely love it!",
+    "body": "Bought one for myself and then immediately ordered three more as gifts. Everyone loves them.",
+    "createdAt": "2025-12-24T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1663",
+    "productId": "id_1339",
+    "author": "Tala R.",
+    "rating": 3,
+    "title": "Decent, could be better",
+    "body": "Nice hoodie overall. The material is good but it runs a size larger than expected.",
+    "createdAt": "2025-10-27T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1664",
+    "productId": "id_1339",
+    "author": "Fadi J.",
+    "rating": 5,
+    "title": "Absolutely love it!",
+    "body": "I wear this every single day. The fleece lining is incredibly soft and it keeps me warm even on the coldest days.",
+    "createdAt": "2026-01-05T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1665",
+    "productId": "id_1360",
+    "author": "Sara M.",
+    "rating": 4,
+    "title": "Love the colours",
+    "body": "Really nice hoodie. The material is soft and the sizing is spot on. Would buy again.",
+    "createdAt": "2025-11-01T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1666",
+    "productId": "id_1360",
+    "author": "Karim A.",
+    "rating": 5,
+    "title": "So cozy and warm",
+    "body": "I wear this every single day. The fleece lining is incredibly soft and it keeps me warm even on the coldest days.",
+    "createdAt": "2026-01-20T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1667",
+    "productId": "id_1360",
+    "author": "Maya D.",
+    "rating": 5,
+    "title": "Best purchase ever",
+    "body": "The quality is outstanding. After multiple washes it still looks and feels brand new.",
+    "createdAt": "2025-11-08T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1668",
+    "productId": "id_1381",
+    "author": "Jad F.",
+    "rating": 5,
+    "title": "Perfect gift",
+    "body": "Bought one for myself and then immediately ordered three more as gifts. Everyone loves them.",
+    "createdAt": "2025-12-10T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1669",
+    "productId": "id_1381",
+    "author": "Ahmad K.",
+    "rating": 4,
+    "title": "Very comfortable",
+    "body": "Comfortable and warm. Only giving 4 stars because shipping took a bit longer than expected.",
+    "createdAt": "2026-01-02T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1670",
+    "productId": "id_1381",
+    "author": "Lina T.",
+    "rating": 4,
+    "title": "Would recommend",
+    "body": "Really nice hoodie. The material is soft and the sizing is spot on. Would buy again.",
+    "createdAt": "2025-12-31T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1671",
+    "productId": "id_1381",
+    "author": "Nadia L.",
+    "rating": 5,
+    "title": "Perfect gift",
+    "body": "I wear this every single day. The fleece lining is incredibly soft and it keeps me warm even on the coldest days.",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1672",
+    "productId": "id_1381",
+    "author": "Rami H.",
+    "rating": 4,
+    "title": "Would recommend",
+    "body": "Comfortable and warm. Only giving 4 stars because shipping took a bit longer than expected.",
+    "createdAt": "2025-11-18T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1673",
+    "productId": "id_1381",
+    "author": "Jad F.",
+    "rating": 4,
+    "title": "Great value",
+    "body": "Love how oversized it is. Great for lounging around the house.",
+    "createdAt": "2025-12-24T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1674",
+    "productId": "id_1381",
+    "author": "Hala S.",
+    "rating": 5,
+    "title": "Best purchase ever",
+    "body": "Bought one for myself and then immediately ordered three more as gifts. Everyone loves them.",
+    "createdAt": "2025-10-26T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1675",
+    "productId": "id_1407",
+    "author": "Rami H.",
+    "rating": 4,
+    "title": "Really great quality",
+    "body": "Love how oversized it is. Great for lounging around the house.",
+    "createdAt": "2025-12-24T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1676",
+    "productId": "id_1407",
+    "author": "Hala S.",
+    "rating": 5,
+    "title": "Absolutely love it!",
+    "body": "Perfect for working from home. I basically live in this now.",
+    "createdAt": "2026-01-14T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1677",
+    "productId": "id_1407",
+    "author": "Tala R.",
+    "rating": 4,
+    "title": "Very comfortable",
+    "body": "Really nice hoodie. The material is soft and the sizing is spot on. Would buy again.",
+    "createdAt": "2025-09-07T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1678",
+    "productId": "id_1407",
+    "author": "Lina T.",
+    "rating": 5,
+    "title": "Can't live without it",
+    "body": "My kids fight over who gets to wear mine. Had to order them their own!",
+    "createdAt": "2025-11-27T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1679",
+    "productId": "id_1407",
+    "author": "Ahmad K.",
+    "rating": 3,
+    "title": "Decent, could be better",
+    "body": "Nice hoodie overall. The material is good but it runs a size larger than expected.",
+    "createdAt": "2025-10-30T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1680",
+    "productId": "id_1407",
+    "author": "Tala R.",
+    "rating": 5,
+    "title": "Absolutely love it!",
+    "body": "Perfect for working from home. I basically live in this now.",
+    "createdAt": "2026-01-23T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1681",
+    "productId": "id_1407",
+    "author": "Nadia L.",
+    "rating": 5,
+    "title": "Absolutely love it!",
+    "body": "The quality is outstanding. After multiple washes it still looks and feels brand new.",
+    "createdAt": "2025-12-04T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1682",
+    "productId": "id_1407",
+    "author": "Jad F.",
+    "rating": 5,
+    "title": "Best purchase ever",
+    "body": "My kids fight over who gets to wear mine. Had to order them their own!",
+    "createdAt": "2026-02-26T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1683",
+    "productId": "id_1428",
+    "author": "Ziad N.",
+    "rating": 5,
+    "title": "Best purchase ever",
+    "body": "Perfect for working from home. I basically live in this now.",
+    "createdAt": "2026-02-23T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1684",
+    "productId": "id_1428",
+    "author": "Nadia L.",
+    "rating": 5,
+    "title": "Can't live without it",
+    "body": "The quality is outstanding. After multiple washes it still looks and feels brand new.",
+    "createdAt": "2025-11-08T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1685",
+    "productId": "id_1428",
+    "author": "Tala R.",
+    "rating": 4,
+    "title": "Really great quality",
+    "body": "Really nice hoodie. The material is soft and the sizing is spot on. Would buy again.",
+    "createdAt": "2025-11-01T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1686",
+    "productId": "id_1428",
+    "author": "Nadia L.",
+    "rating": 3,
+    "title": "Decent, could be better",
+    "body": "Nice hoodie overall. The material is good but it runs a size larger than expected.",
+    "createdAt": "2025-12-03T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1687",
+    "productId": "id_1445",
+    "author": "Fadi J.",
+    "rating": 3,
+    "title": "Nice material",
+    "body": "Decent quality. The colour was slightly different from the photo but still nice.",
+    "createdAt": "2025-09-23T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1688",
+    "productId": "id_1445",
+    "author": "Ziad N.",
+    "rating": 5,
+    "title": "Best purchase ever",
+    "body": "My kids fight over who gets to wear mine. Had to order them their own!",
+    "createdAt": "2026-01-31T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1689",
+    "productId": "id_1445",
+    "author": "Karim A.",
+    "rating": 5,
+    "title": "Perfect gift",
+    "body": "Perfect for working from home. I basically live in this now.",
+    "createdAt": "2026-02-28T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1690",
+    "productId": "id_1458",
+    "author": "Ziad N.",
+    "rating": 5,
+    "title": "Absolutely love it!",
+    "body": "Bought one for myself and then immediately ordered three more as gifts. Everyone loves them.",
+    "createdAt": "2025-09-27T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1691",
+    "productId": "id_1458",
+    "author": "Nadia L.",
+    "rating": 5,
+    "title": "Can't live without it",
+    "body": "My kids fight over who gets to wear mine. Had to order them their own!",
+    "createdAt": "2025-09-18T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1692",
+    "productId": "id_1458",
+    "author": "Jad F.",
+    "rating": 3,
+    "title": "Decent, could be better",
+    "body": "Nice hoodie overall. The material is good but it runs a size larger than expected.",
+    "createdAt": "2025-10-07T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1693",
+    "productId": "id_1458",
+    "author": "Ziad N.",
+    "rating": 4,
+    "title": "Would recommend",
+    "body": "Really nice hoodie. The material is soft and the sizing is spot on. Would buy again.",
+    "createdAt": "2026-02-01T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1694",
+    "productId": "id_1458",
+    "author": "Fadi J.",
+    "rating": 5,
+    "title": "So cozy and warm",
+    "body": "I wear this every single day. The fleece lining is incredibly soft and it keeps me warm even on the coldest days.",
+    "createdAt": "2025-09-15T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1695",
+    "productId": "id_1458",
+    "author": "Tala R.",
+    "rating": 4,
+    "title": "Really great quality",
+    "body": "Really nice hoodie. The material is soft and the sizing is spot on. Would buy again.",
+    "createdAt": "2025-10-18T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1696",
+    "productId": "id_1475",
+    "author": "Karim A.",
+    "rating": 5,
+    "title": "Perfect gift",
+    "body": "Perfect for working from home. I basically live in this now.",
+    "createdAt": "2025-10-29T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1697",
+    "productId": "id_1475",
+    "author": "Sara M.",
+    "rating": 4,
+    "title": "Love the colours",
+    "body": "Comfortable and warm. Only giving 4 stars because shipping took a bit longer than expected.",
+    "createdAt": "2025-12-20T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1698",
+    "productId": "id_1475",
+    "author": "Jad F.",
+    "rating": 4,
+    "title": "Would recommend",
+    "body": "Good quality for the price. The colour is exactly as shown in the photos.",
+    "createdAt": "2025-12-01T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1699",
+    "productId": "id_1475",
+    "author": "Ahmad K.",
+    "rating": 4,
+    "title": "Would recommend",
+    "body": "Good quality for the price. The colour is exactly as shown in the photos.",
+    "createdAt": "2026-03-01T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1700",
+    "productId": "id_1475",
+    "author": "Nadia L.",
+    "rating": 4,
+    "title": "Really great quality",
+    "body": "Comfortable and warm. Only giving 4 stars because shipping took a bit longer than expected.",
+    "createdAt": "2025-10-11T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1701",
+    "productId": "id_1475",
+    "author": "Karim A.",
+    "rating": 5,
+    "title": "Absolutely love it!",
+    "body": "Perfect for working from home. I basically live in this now.",
+    "createdAt": "2026-02-23T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1702",
+    "productId": "id_1506",
+    "author": "Maya D.",
+    "rating": 5,
+    "title": "Can't live without it",
+    "body": "I wear this every single day. The fleece lining is incredibly soft and it keeps me warm even on the coldest days.",
+    "createdAt": "2025-09-22T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1703",
+    "productId": "id_1506",
+    "author": "Ziad N.",
+    "rating": 4,
+    "title": "Would recommend",
+    "body": "Comfortable and warm. Only giving 4 stars because shipping took a bit longer than expected.",
+    "createdAt": "2025-11-13T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1704",
+    "productId": "id_1506",
+    "author": "Jad F.",
+    "rating": 5,
+    "title": "Absolutely love it!",
+    "body": "The quality is outstanding. After multiple washes it still looks and feels brand new.",
+    "createdAt": "2026-01-20T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1705",
+    "productId": "id_1506",
+    "author": "Hala S.",
+    "rating": 4,
+    "title": "Great value",
+    "body": "Love how oversized it is. Great for lounging around the house.",
+    "createdAt": "2025-09-10T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1706",
+    "productId": "id_1506",
+    "author": "Sara M.",
+    "rating": 4,
+    "title": "Really great quality",
+    "body": "Comfortable and warm. Only giving 4 stars because shipping took a bit longer than expected.",
+    "createdAt": "2025-12-13T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1707",
+    "productId": "id_1506",
+    "author": "Ahmad K.",
+    "rating": 4,
+    "title": "Very comfortable",
+    "body": "Comfortable and warm. Only giving 4 stars because shipping took a bit longer than expected.",
+    "createdAt": "2026-02-02T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1708",
+    "productId": "id_1506",
+    "author": "Dina W.",
+    "rating": 3,
+    "title": "Decent, could be better",
+    "body": "Nice hoodie overall. The material is good but it runs a size larger than expected.",
+    "createdAt": "2026-01-09T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1709",
+    "productId": "id_1531",
+    "author": "Rana G.",
+    "rating": 4,
+    "title": "Really great quality",
+    "body": "Comfortable and warm. Only giving 4 stars because shipping took a bit longer than expected.",
+    "createdAt": "2025-09-14T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1710",
+    "productId": "id_1531",
+    "author": "Lina T.",
+    "rating": 4,
+    "title": "Very comfortable",
+    "body": "Love how oversized it is. Great for lounging around the house.",
+    "createdAt": "2026-01-22T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1711",
+    "productId": "id_1531",
+    "author": "Fadi J.",
+    "rating": 4,
+    "title": "Really great quality",
+    "body": "Good quality for the price. The colour is exactly as shown in the photos.",
+    "createdAt": "2025-09-06T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1712",
+    "productId": "id_1531",
+    "author": "Maya D.",
+    "rating": 5,
+    "title": "Perfect gift",
+    "body": "The quality is outstanding. After multiple washes it still looks and feels brand new.",
+    "createdAt": "2025-10-01T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1713",
+    "productId": "id_1548",
+    "author": "Rami H.",
+    "rating": 5,
+    "title": "Absolutely love it!",
+    "body": "The quality is outstanding. After multiple washes it still looks and feels brand new.",
+    "createdAt": "2025-10-17T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1714",
+    "productId": "id_1548",
+    "author": "Maya D.",
+    "rating": 3,
+    "title": "Decent, could be better",
+    "body": "Nice hoodie overall. The material is good but it runs a size larger than expected.",
+    "createdAt": "2026-02-26T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1715",
+    "productId": "id_1548",
+    "author": "Sara M.",
+    "rating": 4,
+    "title": "Love the colours",
+    "body": "Really nice hoodie. The material is soft and the sizing is spot on. Would buy again.",
+    "createdAt": "2025-09-20T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1716",
+    "productId": "id_1569",
+    "author": "Hala S.",
+    "rating": 5,
+    "title": "Absolutely love it!",
+    "body": "The quality is outstanding. After multiple washes it still looks and feels brand new.",
+    "createdAt": "2025-11-13T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1717",
+    "productId": "id_1569",
+    "author": "Jad F.",
+    "rating": 3,
+    "title": "Decent, could be better",
+    "body": "Nice hoodie overall. The material is good but it runs a size larger than expected.",
+    "createdAt": "2025-11-18T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1718",
+    "productId": "id_1569",
+    "author": "Rami H.",
+    "rating": 4,
+    "title": "Really great quality",
+    "body": "Love how oversized it is. Great for lounging around the house.",
+    "createdAt": "2026-02-28T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1719",
+    "productId": "id_1569",
+    "author": "Jad F.",
+    "rating": 5,
+    "title": "Best purchase ever",
+    "body": "Bought one for myself and then immediately ordered three more as gifts. Everyone loves them.",
+    "createdAt": "2025-10-02T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1720",
+    "productId": "id_1569",
+    "author": "Rami H.",
+    "rating": 4,
+    "title": "Really great quality",
+    "body": "Comfortable and warm. Only giving 4 stars because shipping took a bit longer than expected.",
+    "createdAt": "2025-11-24T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1721",
+    "productId": "id_1574",
+    "author": "Dina W.",
+    "rating": 5,
+    "title": "Best purchase ever",
+    "body": "Perfect for working from home. I basically live in this now.",
+    "createdAt": "2025-11-26T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1722",
+    "productId": "id_1574",
+    "author": "Jad F.",
+    "rating": 4,
+    "title": "Really great quality",
+    "body": "Good quality for the price. The colour is exactly as shown in the photos.",
+    "createdAt": "2026-03-01T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1723",
+    "productId": "id_1574",
+    "author": "Ahmad K.",
+    "rating": 5,
+    "title": "Perfect gift",
+    "body": "The quality is outstanding. After multiple washes it still looks and feels brand new.",
+    "createdAt": "2025-11-02T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1724",
+    "productId": "id_1574",
+    "author": "Omar B.",
+    "rating": 4,
+    "title": "Very comfortable",
+    "body": "Really nice hoodie. The material is soft and the sizing is spot on. Would buy again.",
+    "createdAt": "2025-11-27T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1725",
+    "productId": "id_1574",
+    "author": "Karim A.",
+    "rating": 5,
+    "title": "Can't live without it",
+    "body": "Bought one for myself and then immediately ordered three more as gifts. Everyone loves them.",
+    "createdAt": "2025-11-24T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1726",
+    "productId": "id_1574",
+    "author": "Nadia L.",
+    "rating": 5,
+    "title": "So cozy and warm",
+    "body": "My kids fight over who gets to wear mine. Had to order them their own!",
+    "createdAt": "2025-12-08T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1727",
+    "productId": "id_1574",
+    "author": "Nadia L.",
+    "rating": 3,
+    "title": "Nice material",
+    "body": "Decent quality. The colour was slightly different from the photo but still nice.",
+    "createdAt": "2025-12-19T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1728",
+    "productId": "id_1579",
+    "author": "Sara M.",
+    "rating": 5,
+    "title": "So cozy and warm",
+    "body": "The quality is outstanding. After multiple washes it still looks and feels brand new.",
+    "createdAt": "2025-11-18T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1729",
+    "productId": "id_1579",
+    "author": "Jad F.",
+    "rating": 4,
+    "title": "Love the colours",
+    "body": "Comfortable and warm. Only giving 4 stars because shipping took a bit longer than expected.",
+    "createdAt": "2026-01-19T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1730",
+    "productId": "id_1579",
+    "author": "Dina W.",
+    "rating": 4,
+    "title": "Great value",
+    "body": "Good quality for the price. The colour is exactly as shown in the photos.",
+    "createdAt": "2026-01-16T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1731",
+    "productId": "id_1579",
+    "author": "Sara M.",
+    "rating": 5,
+    "title": "Best purchase ever",
+    "body": "My kids fight over who gets to wear mine. Had to order them their own!",
+    "createdAt": "2026-01-29T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1732",
+    "productId": "id_1579",
+    "author": "Nadia L.",
+    "rating": 5,
+    "title": "Perfect gift",
+    "body": "Perfect for working from home. I basically live in this now.",
+    "createdAt": "2025-12-11T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1733",
+    "productId": "id_1579",
+    "author": "Rana G.",
+    "rating": 5,
+    "title": "Perfect gift",
+    "body": "Bought one for myself and then immediately ordered three more as gifts. Everyone loves them.",
+    "createdAt": "2026-01-05T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1734",
+    "productId": "id_1579",
+    "author": "Omar B.",
+    "rating": 5,
+    "title": "So cozy and warm",
+    "body": "My kids fight over who gets to wear mine. Had to order them their own!",
+    "createdAt": "2025-12-01T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1735",
+    "productId": "id_1585",
+    "author": "Rana G.",
+    "rating": 5,
+    "title": "Best purchase ever",
+    "body": "I wear this every single day. The fleece lining is incredibly soft and it keeps me warm even on the coldest days.",
+    "createdAt": "2025-11-28T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1736",
+    "productId": "id_1585",
+    "author": "Hala S.",
+    "rating": 5,
+    "title": "Absolutely love it!",
+    "body": "My kids fight over who gets to wear mine. Had to order them their own!",
+    "createdAt": "2025-10-17T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1737",
+    "productId": "id_1585",
+    "author": "Dina W.",
+    "rating": 3,
+    "title": "Good but runs large",
+    "body": "Nice hoodie overall. The material is good but it runs a size larger than expected.",
+    "createdAt": "2026-02-04T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1738",
+    "productId": "id_1590",
+    "author": "Fadi J.",
+    "rating": 3,
+    "title": "Nice material",
+    "body": "Nice hoodie overall. The material is good but it runs a size larger than expected.",
+    "createdAt": "2025-10-13T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1739",
+    "productId": "id_1590",
+    "author": "Omar B.",
+    "rating": 4,
+    "title": "Really great quality",
+    "body": "Really nice hoodie. The material is soft and the sizing is spot on. Would buy again.",
+    "createdAt": "2025-12-23T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1740",
+    "productId": "id_1590",
+    "author": "Sara M.",
+    "rating": 3,
+    "title": "Good but runs large",
+    "body": "Decent quality. The colour was slightly different from the photo but still nice.",
+    "createdAt": "2025-10-14T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1741",
+    "productId": "id_1590",
+    "author": "Jad F.",
+    "rating": 5,
+    "title": "Can't live without it",
+    "body": "The quality is outstanding. After multiple washes it still looks and feels brand new.",
+    "createdAt": "2025-09-27T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1742",
+    "productId": "id_1590",
+    "author": "Fadi J.",
+    "rating": 4,
+    "title": "Really great quality",
+    "body": "Comfortable and warm. Only giving 4 stars because shipping took a bit longer than expected.",
+    "createdAt": "2026-02-15T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1743",
+    "productId": "id_1590",
+    "author": "Rana G.",
+    "rating": 3,
+    "title": "Decent, could be better",
+    "body": "Decent quality. The colour was slightly different from the photo but still nice.",
+    "createdAt": "2025-09-21T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1744",
+    "productId": "id_1592",
+    "author": "Ahmad K.",
+    "rating": 4,
+    "title": "Love the colours",
+    "body": "Comfortable and warm. Only giving 4 stars because shipping took a bit longer than expected.",
+    "createdAt": "2025-12-21T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1745",
+    "productId": "id_1592",
+    "author": "Rami H.",
+    "rating": 3,
+    "title": "Nice material",
+    "body": "Decent quality. The colour was slightly different from the photo but still nice.",
+    "createdAt": "2026-01-09T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1746",
+    "productId": "id_1592",
+    "author": "Sara M.",
+    "rating": 4,
+    "title": "Very comfortable",
+    "body": "Good quality for the price. The colour is exactly as shown in the photos.",
+    "createdAt": "2025-11-21T00:00:00.000Z",
+    "verified": false
+  },
+  {
+    "id": "id_1747",
+    "productId": "id_1592",
+    "author": "Karim A.",
+    "rating": 3,
+    "title": "Decent, could be better",
+    "body": "Nice hoodie overall. The material is good but it runs a size larger than expected.",
+    "createdAt": "2025-09-14T00:00:00.000Z",
+    "verified": true
+  },
+  {
+    "id": "id_1748",
+    "productId": "id_1592",
+    "author": "Hala S.",
+    "rating": 3,
+    "title": "Nice material",
+    "body": "Nice hoodie overall. The material is good but it runs a size larger than expected.",
+    "createdAt": "2025-12-29T00:00:00.000Z",
+    "verified": true
+  }
+]

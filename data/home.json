@@ -1,0 +1,28 @@
+{
+  "hero": {
+    "media": {
+      "type": "image",
+      "src": "/images/hero/hero-desktop.jpg",
+      "mobileSrc": "/images/hero/hero-mobile.jpg",
+      "poster": "",
+      "alt": "The Hoodie LB — Wearable blankets for ultimate comfort"
+    },
+    "eyebrow": "Now in Lebanon",
+    "headline": "Comfort You Can Wear",
+    "subcopy": "Wrap yourself in the softest wearable blankets — designed for lounging, bingeing, and everything in between.",
+    "ctas": [
+      {
+        "label": "Shop Now",
+        "href": "/collections/all",
+        "variant": "primary"
+      },
+      {
+        "label": "Our Story",
+        "href": "/pages/about",
+        "variant": "secondary"
+      }
+    ],
+    "align": "left",
+    "overlayOpacity": 0.45
+  }
+}

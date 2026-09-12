@@ -1,0 +1,60 @@
+[
+  {
+    "slug": "ultimate-guide-to-staying-cozy",
+    "title": "The Ultimate Guide to Staying Cozy This Winter",
+    "excerpt": "From layering tips to the perfect movie-night setup, here is everything you need for peak coziness.",
+    "content": "<p>Winter in Lebanon can get surprisingly cold, especially in the mountains. Here is our guide to maximum comfort...</p>",
+    "author": "The Hoodie LB Team",
+    "tags": [
+      "lifestyle",
+      "winter",
+      "tips"
+    ],
+    "publishedAt": "2026-08-15T10:00:00Z",
+    "image": {
+      "src": "/images/blog/ultimate-guide-to-staying-cozy.webp",
+      "alt": "The Ultimate Guide to Staying Cozy This Winter",
+      "width": 1200,
+      "height": 630
+    },
+    "updatedAt": "2026-08-15T10:00:00Z"
+  },
+  {
+    "slug": "how-to-wash-your-hoodie",
+    "title": "How to Care for Your Sherpa Fleece",
+    "excerpt": "Keep your hoodie looking and feeling like new with these simple care tips.",
+    "content": "<p>Your Hoodie LB is built to last, but proper care will keep the fleece soft for years...</p>",
+    "author": "The Hoodie LB Team",
+    "tags": [
+      "care",
+      "tips"
+    ],
+    "publishedAt": "2026-07-28T10:00:00Z",
+    "image": {
+      "src": "/images/blog/how-to-wash-your-hoodie.webp",
+      "alt": "How to Care for Your Sherpa Fleece",
+      "width": 1200,
+      "height": 630
+    },
+    "updatedAt": "2026-07-28T10:00:00Z"
+  },
+  {
+    "slug": "gift-guide-2026",
+    "title": "The 2026 Gift Guide: Cozy Edition",
+    "excerpt": "Looking for the perfect gift? We have got ideas for everyone on your list.",
+    "content": "<p>Whether you are shopping for your partner, your kids, or your hard-to-buy-for friend, cozy always wins...</p>",
+    "author": "The Hoodie LB Team",
+    "tags": [
+      "gift-guide",
+      "holiday"
+    ],
+    "publishedAt": "2026-07-10T10:00:00Z",
+    "image": {
+      "src": "/images/blog/gift-guide-2026.webp",
+      "alt": "The 2026 Gift Guide: Cozy Edition",
+      "width": 1200,
+      "height": 630
+    },
+    "updatedAt": "2026-07-10T10:00:00Z"
+  }
+]
