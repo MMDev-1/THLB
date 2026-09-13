@@ -36,19 +36,10 @@ export function MobileNav({ navItems }: MobileNavProps) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const prevFocusRef = useRef<HTMLElement | null>(null);
 
-  /* ---- Open / close helpers ---- */
-  const open = useCallback(() => {
-    prevFocusRef.current = document.activeElement as HTMLElement;
-    setIsOpen(true);
-  }, []);
-
+  /* ---- Close helper ---- */
   const close = useCallback(() => {
     setIsOpen(false);
     setExpandedIndex(null);
-    /* Restore focus to the element that opened the drawer */
-    requestAnimationFrame(() => {
-      prevFocusRef.current?.focus();
-    });
   }, []);
 
   /* ---- Listen for the toggle-mobile-nav custom event from Header ---- */
@@ -57,9 +48,6 @@ export function MobileNav({ navItems }: MobileNavProps) {
       setIsOpen((prev) => {
         if (prev) {
           setExpandedIndex(null);
-          requestAnimationFrame(() => {
-            prevFocusRef.current?.focus();
-          });
           return false;
         }
         prevFocusRef.current = document.activeElement as HTMLElement;
@@ -71,13 +59,26 @@ export function MobileNav({ navItems }: MobileNavProps) {
   }, []);
 
   /* ---- Close on route change ---- */
-  useEffect(() => {
+  /* Adjusted during render instead of in an effect (react.dev: "You Might Not Need an Effect") */
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
     if (isOpen) {
-      close();
+      setIsOpen(false);
+      setExpandedIndex(null);
     }
-    // Only react to pathname changes, not isOpen
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
+  }
+
+  /* ---- Restore focus to the element that opened the drawer once it closes ---- */
+  const wasOpenRef = useRef(false);
+  useEffect(() => {
+    if (wasOpenRef.current && !isOpen) {
+      requestAnimationFrame(() => {
+        prevFocusRef.current?.focus();
+      });
+    }
+    wasOpenRef.current = isOpen;
+  }, [isOpen]);
 
   /* ---- Body scroll lock ---- */
   useEffect(() => {
