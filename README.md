@@ -13,15 +13,17 @@ npm run dev        # → http://localhost:3000
 
 ## Scripts
 
-| Command                | Description                      |
-| ---------------------- | -------------------------------- |
-| `npm run dev`          | Start development server         |
-| `npm run build`        | Production build                 |
-| `npm start`            | Serve production build           |
-| `npm run lint`         | Run ESLint                       |
-| `npm run lint:fix`     | Run ESLint with auto-fix         |
-| `npm run format`       | Format all files with Prettier   |
-| `npm run format:check` | Check formatting without writing |
+| Command                   | Description                                       |
+| ------------------------- | ------------------------------------------------- |
+| `npm run dev`             | Start development server                          |
+| `npm run build`           | Production build                                  |
+| `npm start`               | Serve production build                            |
+| `npm run lint`            | Run ESLint                                        |
+| `npm run lint:fix`        | Run ESLint with auto-fix                          |
+| `npm run format`          | Format all files with Prettier                    |
+| `npm run format:check`    | Check formatting without writing                  |
+| `npm run storybook`       | Browse UI components at http://localhost:6006     |
+| `npm run build-storybook` | Build a static Storybook into `storybook-static/` |
 
 ## Folder Structure
 
