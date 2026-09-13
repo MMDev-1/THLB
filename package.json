@@ -10,7 +10,9 @@
     "lint:fix": "eslint --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -41,6 +43,7 @@
     "zod": "^4.6.4"
   },
   "devDependencies": {
+    "@storybook/nextjs-vite": "^10.6.0",
     "@storybook/react": "^10.6.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
@@ -55,6 +58,7 @@
     "prettier": "^3.9.6",
     "storybook": "^10.6.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vite": "^8.3.0"
   }
 }
