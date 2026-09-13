@@ -539,7 +539,7 @@ body:has(#main-content > .hero) .header:not(.header--compact) .header__logo {
 
 @media (min-width: 1024px) {
   .header__hamburger {
-    display: none;
+    display: none !important;
   }
 }
 
