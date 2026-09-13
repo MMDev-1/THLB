@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 
 import type { Announcement } from '@/types';
 
@@ -19,6 +19,29 @@ interface AnnouncementBarProps {
 
 const ROTATE_MS = 5_000;
 const STORAGE_KEY = 'announcement-bar-dismissed';
+
+/* ------------------------------------------------------------------ */
+/*  Dismissed state stored in sessionStorage                           */
+/* ------------------------------------------------------------------ */
+
+function subscribeToStorage(onChange: () => void) {
+  window.addEventListener('storage', onChange);
+  return () => window.removeEventListener('storage', onChange);
+}
+
+function getDismissedSnapshot() {
+  try {
+    return sessionStorage.getItem(STORAGE_KEY) === 'true';
+  } catch {
+    /* sessionStorage unavailable */
+    return false;
+  }
+}
+
+/* The server (and hydration) always renders the bar; the stored value applies after hydration */
+function getServerDismissedSnapshot() {
+  return false;
+}
 
 /* ------------------------------------------------------------------ */
 /*  Chevron icon (inline SVG to avoid extra dependencies)              */
@@ -53,7 +76,7 @@ function ChevronIcon({ direction }: { direction: 'left' | 'right' }) {
 
 export function AnnouncementBar({ announcements }: AnnouncementBarProps) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
+  const [isDismissed, setIsDismissed] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isFading, setIsFading] = useState(false);
 
@@ -61,15 +84,12 @@ export function AnnouncementBar({ announcements }: AnnouncementBarProps) {
   const fadeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   /* ---- Restore dismissed state after hydration ---- */
-  useEffect(() => {
-    try {
-      if (sessionStorage.getItem(STORAGE_KEY) === 'true') {
-        setIsVisible(false);
-      }
-    } catch {
-      /* sessionStorage unavailable */
-    }
-  }, []);
+  const wasDismissedEarlier = useSyncExternalStore(
+    subscribeToStorage,
+    getDismissedSnapshot,
+    getServerDismissedSnapshot,
+  );
+  const isVisible = !isDismissed && !wasDismissedEarlier;
 
   /* ---- Clean up fade timer on unmount ---- */
   useEffect(() => {
@@ -116,7 +136,7 @@ export function AnnouncementBar({ announcements }: AnnouncementBarProps) {
   }, [activeIndex, count, transitionTo]);
 
   const dismiss = useCallback(() => {
-    setIsVisible(false);
+    setIsDismissed(true);
     try {
       sessionStorage.setItem(STORAGE_KEY, 'true');
     } catch {
