@@ -53,17 +53,30 @@ function ChevronIcon({ direction }: { direction: 'left' | 'right' }) {
 
 export function AnnouncementBar({ announcements }: AnnouncementBarProps) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isVisible, setIsVisible] = useState(() => {
-    if (typeof window === 'undefined') return true;
-    try {
-      return sessionStorage.getItem(STORAGE_KEY) !== 'true';
-    } catch {
-      return true;
-    }
-  });
+  const [isVisible, setIsVisible] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
   const [isFading, setIsFading] = useState(false);
+
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const fadeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  /* ---- Restore dismissed state after hydration ---- */
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem(STORAGE_KEY) === 'true') {
+        setIsVisible(false);
+      }
+    } catch {
+      /* sessionStorage unavailable */
+    }
+  }, []);
+
+  /* ---- Clean up fade timer on unmount ---- */
+  useEffect(() => {
+    return () => {
+      if (fadeTimerRef.current) clearTimeout(fadeTimerRef.current);
+    };
+  }, []);
 
   const count = announcements.length;
 
@@ -71,7 +84,8 @@ export function AnnouncementBar({ announcements }: AnnouncementBarProps) {
   const transitionTo = useCallback(
     (nextIndex: number) => {
       setIsFading(true);
-      setTimeout(() => {
+      if (fadeTimerRef.current) clearTimeout(fadeTimerRef.current);
+      fadeTimerRef.current = setTimeout(() => {
         setActiveIndex(nextIndex);
         setIsFading(false);
       }, 300);

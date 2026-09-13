@@ -1,0 +1,1494 @@
+<title>The Hoodie LB — T2 & T3 Guide</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+  :root {
+    --bg: #FAF7F2;
+    --bg-card: #FFFFFF;
+    --bg-code: #F0EBE3;
+    --bg-accent-soft: #FDF5EF;
+    --text: #1A1A1A;
+    --text-secondary: #5D5D5D;
+    --text-tertiary: #888888;
+    --accent: #C75B2A;
+    --accent-hover: #D05023;
+    --accent-soft: rgba(199,91,42,0.10);
+    --sage: #7A8B6F;
+    --sage-soft: rgba(122,139,111,0.10);
+    --sand: #D4A574;
+    --sand-soft: rgba(212,165,116,0.15);
+    --border: #ECE0CF;
+    --border-strong: #D1D1D1;
+    --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --radius: 10px;
+    --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1A1A1A;
+      --bg-card: #262626;
+      --bg-code: #2A2A2A;
+      --bg-accent-soft: #2E1F15;
+      --text: #F0EBE3;
+      --text-secondary: #B0B0B0;
+      --text-tertiary: #888888;
+      --accent: #E5824D;
+      --accent-hover: #EEAB80;
+      --accent-soft: rgba(229,130,77,0.12);
+      --sage: #A9B59F;
+      --sage-soft: rgba(169,181,159,0.12);
+      --sand: #D4A574;
+      --sand-soft: rgba(212,165,116,0.10);
+      --border: #3D3D3D;
+      --border-strong: #4F4F4F;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.2), 0 1px 2px rgba(0,0,0,0.15);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1A1A1A;
+    --bg-card: #262626;
+    --bg-code: #2A2A2A;
+    --bg-accent-soft: #2E1F15;
+    --text: #F0EBE3;
+    --text-secondary: #B0B0B0;
+    --text-tertiary: #888888;
+    --accent: #E5824D;
+    --accent-hover: #EEAB80;
+    --accent-soft: rgba(229,130,77,0.12);
+    --sage: #A9B59F;
+    --sage-soft: rgba(169,181,159,0.12);
+    --sand: #D4A574;
+    --sand-soft: rgba(212,165,116,0.10);
+    --border: #3D3D3D;
+    --border-strong: #4F4F4F;
+    --shadow-card: 0 1px 3px rgba(0,0,0,0.2), 0 1px 2px rgba(0,0,0,0.15);
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.65;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+    line-height: 1.2;
+  }
+
+  /* --- Header --- */
+  .header {
+    margin-bottom: 56px;
+  }
+  .header-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 16px;
+    color: var(--text);
+  }
+  .header p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin: 0;
+    max-width: 580px;
+  }
+
+  /* --- TOC --- */
+  .toc {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-bottom: 48px;
+    box-shadow: var(--shadow-card);
+  }
+  .toc-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin: 0 0 14px;
+  }
+  .toc ol {
+    margin: 0;
+    padding-left: 20px;
+    list-style: decimal;
+  }
+  .toc li {
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+  .toc a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  /* --- Sections --- */
+  .section {
+    margin-bottom: 56px;
+  }
+  .section-number {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .section h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: var(--text);
+  }
+  .section-lead {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin: 0 0 24px;
+    max-width: 600px;
+  }
+  .section h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 28px 0 10px;
+    color: var(--text);
+  }
+  .section p {
+    font-size: 15px;
+    margin: 0 0 14px;
+  }
+
+  /* --- Code --- */
+  pre {
+    background: var(--bg-code);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.55;
+    margin: 14px 0 18px;
+    color: var(--text);
+  }
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    background: var(--bg-code);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--accent);
+  }
+  pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+  }
+
+  /* --- Callout --- */
+  .callout {
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    margin: 18px 0;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .callout-ember {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+  }
+  .callout-sage {
+    background: var(--sage-soft);
+    border-left: 3px solid var(--sage);
+  }
+  .callout-sand {
+    background: var(--sand-soft);
+    border-left: 3px solid var(--sand);
+  }
+  .callout strong {
+    font-weight: 600;
+  }
+
+  /* --- Diagram / visual boxes --- */
+  .diagram {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    margin: 20px 0 24px;
+    box-shadow: var(--shadow-card);
+    text-align: center;
+  }
+  .flow-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 8px 0;
+  }
+  .flow-box {
+    background: var(--bg-accent-soft);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .flow-box.ember { border-color: var(--accent); color: var(--accent); }
+  .flow-box.sage { border-color: var(--sage); color: var(--sage); background: var(--sage-soft); }
+  .flow-box.sand { border-color: var(--sand); color: var(--sand); background: var(--sand-soft); }
+  .flow-arrow {
+    color: var(--text-tertiary);
+    font-size: 18px;
+  }
+
+  /* --- File tree --- */
+  .file-tree {
+    background: var(--bg-code);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 22px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.7;
+    margin: 14px 0 18px;
+    overflow-x: auto;
+    color: var(--text);
+  }
+  .file-tree .dir { color: var(--accent); font-weight: 500; }
+  .file-tree .file { color: var(--text-secondary); }
+  .file-tree .comment { color: var(--text-tertiary); font-style: italic; }
+  .file-tree .new { color: var(--sage); font-weight: 500; }
+
+  /* --- Table --- */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 14px 0 18px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  th {
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    padding: 8px 12px;
+    border-bottom: 2px solid var(--border);
+  }
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  td code {
+    font-size: 12px;
+  }
+
+  /* --- Accordion --- */
+  details {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 10px 0;
+    overflow: hidden;
+  }
+  details + details { margin-top: -1px; border-top-left-radius: 0; border-top-right-radius: 0; }
+  details:has(+ details) { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+  summary {
+    padding: 14px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    background: var(--bg-card);
+    user-select: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  summary::before {
+    content: '\25B8';
+    font-size: 12px;
+    color: var(--accent);
+    transition: transform 0.15s;
+  }
+  details[open] summary::before { transform: rotate(90deg); }
+  summary::-webkit-details-marker { display: none; }
+  .details-body {
+    padding: 4px 18px 18px;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  .details-body p { margin: 0 0 10px; }
+  .details-body pre { font-size: 12.5px; }
+
+  /* --- Footer --- */
+  .footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text-tertiary);
+  }
+</style>
+
+<div class="header">
+  <div class="header-eyebrow">Learning Guide &mdash; Tasks 2 &amp; 3</div>
+  <h1>Header, Navigation &amp; Homepage</h1>
+  <p>This guide covers everything built in Task 2 (Header &amp; Navigation) and Task 3 (Homepage Sections). It explains what each component does, how the data flows, and the patterns you'll see repeated throughout the project.</p>
+</div>
+
+<nav class="toc">
+  <div class="toc-title">Contents</div>
+  <ol>
+    <li><a href="#recap">Quick Recap &mdash; Where We Left Off</a></li>
+    <li><a href="#data-layer">The Data Layer &mdash; JSON to Screen</a></li>
+    <li><a href="#updated-structure">Updated Project Structure</a></li>
+    <li><a href="#announcement-bar">Announcement Bar</a></li>
+    <li><a href="#header">Sticky Header &amp; Desktop Navigation</a></li>
+    <li><a href="#mega-menu">Mega Menu</a></li>
+    <li><a href="#mobile-nav">Mobile Navigation Drawer</a></li>
+    <li><a href="#hero">Hero Section</a></li>
+    <li><a href="#category-tiles">Category Tiles</a></li>
+    <li><a href="#value-props">Value Props Strip</a></li>
+    <li><a href="#split-banner">Split Banner</a></li>
+    <li><a href="#patterns">Key Patterns &amp; Techniques</a></li>
+    <li><a href="#git-workflow">Git Workflow &mdash; Updated</a></li>
+    <li><a href="#whats-next">What's Coming Next</a></li>
+  </ol>
+</nav>
+
+<!-- ============================================================ -->
+<div class="section" id="recap">
+  <div class="section-number">Section 01</div>
+  <h2>Quick Recap</h2>
+  <p class="section-lead">Task 1 built the foundation &mdash; the project scaffold, design tokens, and 17 UI components. Now we're assembling real pages.</p>
+
+  <p>In <strong>Task 1</strong> we set up Next.js, defined the design token system (colour scales, typography, spacing), and built all the reusable UI primitives (Button, Input, Modal, Drawer, etc.). Think of those as LEGO bricks.</p>
+
+  <p>In <strong>Task 2</strong> we used those bricks to build the site's header &mdash; the announcement bar, sticky header with navigation, mega menus, and mobile drawer. These live in <code>components/layout/</code>.</p>
+
+  <p>In <strong>Task 3</strong> we built the homepage sections &mdash; Hero banner, category tiles, value props, and split banner. These live in <code>components/sections/</code>.</p>
+
+  <div class="diagram">
+    <div class="flow-row">
+      <div class="flow-box sage">T1: UI Primitives</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box ember">T2: Header &amp; Nav</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box sand">T3: Homepage</div>
+    </div>
+  </div>
+
+  <div class="callout callout-ember">
+    <strong>Key difference from T1:</strong> In Task 1, components received props directly. Starting in T2/T3, we introduced a <strong>data layer</strong> &mdash; JSON files that hold content, TypeScript types that validate it, and API functions that serve it to components. This is how real e-commerce sites work.
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<div class="section" id="data-layer">
+  <div class="section-number">Section 02</div>
+  <h2>The Data Layer</h2>
+  <p class="section-lead">Instead of hardcoding text into components, we store all content in JSON files and let a pipeline deliver it. This makes future backend integration seamless.</p>
+
+  <h3>The four-step pipeline</h3>
+
+  <div class="diagram">
+    <div class="flow-row">
+      <div class="flow-box sand">JSON data</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box sage">TypeScript types</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box ember">API function</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box">Component</div>
+    </div>
+  </div>
+
+  <p>Let's walk through each step:</p>
+
+  <details>
+    <summary>Step 1: JSON Data &mdash; The content lives here</summary>
+    <div class="details-body">
+      <p>All page content is stored in JSON files inside the <code>data/</code> folder. For example, <code>data/home.json</code> contains every homepage section:</p>
+<pre>{
+  "hero": {
+    "media": { "type": "image", "src": "/images/hero/hero-desktop.jpg", ... },
+    "headline": "Wrap Yourself in Comfort",
+    "ctas": [{ "label": "Shop Now", "href": "/collections/all", "variant": "primary" }]
+  },
+  "categoryTiles": {
+    "heading": "Shop by Category",
+    "tiles": [
+      { "image": "/images/categories/category-1.jpg", "label": "Hoodies", ... }
+    ]
+  },
+  "valueProps": { ... },
+  "splitBanner": { ... }
+}</pre>
+      <p>Similarly, <code>data/navigation.json</code> holds the header navigation, announcement bar messages, and mega menu links.</p>
+      <p><strong>Why JSON?</strong> Right now we don't have a backend. JSON files act as a stand-in. When the Laravel API is ready, we'll swap <code>import rawHome from '@/data/home.json'</code> with <code>fetch('https://api.thehoodielb.com/home')</code> &mdash; the component code stays the same because it only cares about the shape of the data, not where it comes from.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Step 2: TypeScript Types &mdash; The shape contract</summary>
+    <div class="details-body">
+      <p>Each JSON file has a matching type definition in the <code>types/</code> folder. These types describe <em>exactly</em> what shape the data must have:</p>
+<pre>// types/home.ts
+
+export interface HeroSection {
+  media: HeroMedia;
+  eyebrow?: string;          // the "?" means optional
+  headline: string;           // required
+  subcopy?: string;
+  ctas: CTA[];                // an array of call-to-action buttons
+  align?: 'left' | 'center';  // only these two values allowed
+  overlayOpacity?: number;
+}
+
+export interface CategoryTile {
+  image: string;
+  alt: string;
+  label: string;
+  href: string;
+}</pre>
+      <p><strong>Why types?</strong> TypeScript will catch mistakes at build time. If someone adds a tile but forgets the <code>alt</code> property, the build fails with a clear error instead of crashing in the user's browser. Types are the contract between data and UI.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Step 3: API Functions &mdash; The middleman</summary>
+    <div class="details-body">
+      <p>API functions in <code>lib/api/</code> import the JSON, cast it to the correct type, and export an async function:</p>
+<pre>// lib/api/home.ts
+
+import rawHome from '@/data/home.json';
+import type { HomePageData } from '@/types';
+
+const home = rawHome as HomePageData;
+
+export async function getHomePage(): Promise&lt;HomePageData&gt; {
+  return home;
+}</pre>
+      <p>Notice it's <code>async</code> even though it just returns a local object. That's deliberate &mdash; when we switch to fetching from a real API, the function signature stays the same. Nothing that calls <code>getHomePage()</code> needs to change.</p>
+      <p>Similarly, <code>lib/api/navigation.ts</code> exports <code>getNavigation()</code> and <code>getAnnouncements()</code>.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Step 4: Server Component &mdash; Fetching and rendering</summary>
+    <div class="details-body">
+      <p>The page component calls the API function and passes the data to each section component:</p>
+<pre>// app/page.tsx (the homepage)
+
+import { Hero } from '@/components/sections/Hero';
+import { CategoryTiles } from '@/components/sections/CategoryTiles';
+import { ValueProps } from '@/components/sections/ValueProps';
+import { SplitBanner } from '@/components/sections/SplitBanner';
+import { getHomePage } from '@/lib/api/home';
+
+export default async function Home() {
+  const home = await getHomePage();
+
+  return (
+    &lt;&gt;
+      &lt;Hero data={home.hero} /&gt;
+      &lt;CategoryTiles data={home.categoryTiles} /&gt;
+      &lt;ValueProps data={home.valueProps} /&gt;
+      &lt;SplitBanner data={home.splitBanner} /&gt;
+    &lt;/&gt;
+  );
+}</pre>
+      <p>This is a <strong>Server Component</strong> (no <code>'use client'</code> at the top). It runs on the server, fetches data, and sends finished HTML to the browser &mdash; fast, SEO-friendly, zero JavaScript shipped for these sections.</p>
+    </div>
+  </details>
+
+  <div class="callout callout-sage">
+    <strong>The beauty of this pattern:</strong> Each section component is completely independent. <code>&lt;Hero&gt;</code> doesn't know or care about <code>&lt;CategoryTiles&gt;</code>. They each receive their data through a <code>data</code> prop and render it. This makes components reusable, testable, and easy to rearrange.
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<div class="section" id="updated-structure">
+  <div class="section-number">Section 03</div>
+  <h2>Updated Project Structure</h2>
+  <p class="section-lead">T2 and T3 added new folders and files. Here's the current map with new additions highlighted.</p>
+
+  <div class="file-tree">
+<span class="dir">thehoodielb/</span>
+├── <span class="dir">app/</span>
+│   ├── <span class="file">layout.tsx</span>          <span class="comment">&larr; Now renders Header, AnnouncementBar, MobileNav</span>
+│   ├── <span class="file">page.tsx</span>            <span class="comment">&larr; Now renders Hero, CategoryTiles, ValueProps, SplitBanner</span>
+│   └── <span class="file">globals.css</span>         <span class="comment">&larr; +800 lines of layout &amp; section CSS</span>
+│
+├── <span class="dir">components/</span>
+│   ├── <span class="dir">ui/</span>                 <span class="comment">&larr; T1 components (Button, Input, etc.)</span>
+│   ├── <span class="new">layout/</span>             <span class="comment">&larr; NEW &mdash; T2 header components</span>
+│   │   ├── <span class="new">AnnouncementBar.tsx</span>
+│   │   ├── <span class="new">Header.tsx</span>
+│   │   ├── <span class="new">MegaMenu.tsx</span>
+│   │   └── <span class="new">MobileNav.tsx</span>
+│   ├── <span class="new">sections/</span>           <span class="comment">&larr; NEW &mdash; T3 homepage sections</span>
+│   │   ├── <span class="new">Hero.tsx</span>
+│   │   ├── <span class="new">CategoryTiles.tsx</span>
+│   │   ├── <span class="new">ValueProps.tsx</span>
+│   │   └── <span class="new">SplitBanner.tsx</span>
+│   └── <span class="new">icons/</span>              <span class="comment">&larr; NEW &mdash; SVG icon components</span>
+│       ├── <span class="new">Logo.tsx</span>
+│       ├── <span class="new">index.ts</span>         <span class="comment">&larr; Barrel export for all icons</span>
+│       └── <span class="new">(IconMenu, IconSearch, IconUser, etc.)</span>
+│
+├── <span class="new">data/</span>                   <span class="comment">&larr; NEW &mdash; JSON content files</span>
+│   ├── <span class="new">home.json</span>           <span class="comment">&larr; Hero, category tiles, value props, split banner</span>
+│   ├── <span class="new">navigation.json</span>     <span class="comment">&larr; Announcements, nav items, mega menus</span>
+│   ├── <span class="new">products.json</span>       <span class="comment">&larr; Product data (scaffold)</span>
+│   ├── <span class="new">collections.json</span>    <span class="comment">&larr; Collection data (scaffold)</span>
+│   └── <span class="file">(+ pages, blog-posts, reviews)</span>
+│
+├── <span class="dir">lib/</span>
+│   ├── <span class="new">api/</span>                <span class="comment">&larr; NEW &mdash; data-fetching functions</span>
+│   │   ├── <span class="new">home.ts</span>          <span class="comment">&larr; getHomePage()</span>
+│   │   ├── <span class="new">navigation.ts</span>    <span class="comment">&larr; getNavigation(), getAnnouncements()</span>
+│   │   ├── <span class="new">delay.ts</span>         <span class="comment">&larr; Simulates network latency</span>
+│   │   └── <span class="file">(+ products, collections, pages, reviews)</span>
+│   └── <span class="file">utils.ts</span>
+│
+├── <span class="dir">types/</span>
+│   ├── <span class="new">home.ts</span>             <span class="comment">&larr; Hero, CategoryTiles, ValueProps, SplitBanner types</span>
+│   ├── <span class="new">navigation.ts</span>       <span class="comment">&larr; Announcement, NavItem, MegaMenu types</span>
+│   ├── <span class="file">tokens.ts</span>
+│   ├── <span class="new">index.ts</span>            <span class="comment">&larr; Barrel re-export of all types</span>
+│   └── <span class="file">(+ product, collection, page, review, order)</span>
+│
+├── <span class="new">public/images/</span>          <span class="comment">&larr; NEW &mdash; static images</span>
+│   ├── <span class="new">hero/</span>               <span class="comment">&larr; Hero background images</span>
+│   ├── <span class="new">categories/</span>         <span class="comment">&larr; Category tile images</span>
+│   └── <span class="new">banners/</span>            <span class="comment">&larr; Split banner images</span>
+│
+└── <span class="dir">lib/schemas/</span>            <span class="comment">&larr; Zod schemas for data validation</span>
+  </div>
+
+  <div class="callout callout-sand">
+    <strong>Folder organisation principle:</strong> <code>layout/</code> holds things that appear on every page (header, footer). <code>sections/</code> holds page-specific content blocks. <code>ui/</code> holds the tiny reusable primitives. This separation keeps the project navigable as it grows.
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<div class="section" id="announcement-bar">
+  <div class="section-number">Section 04</div>
+  <h2>Announcement Bar</h2>
+  <p class="section-lead">A rotating promo strip at the very top of the site &mdash; "Free Shipping Over $100," "New Arrivals Just Dropped," etc.</p>
+
+  <h3>What it does</h3>
+  <p>The announcement bar cycles through promotional messages automatically every 5 seconds. Users can manually click left/right arrows, and the whole bar can be dismissed (stored in <code>sessionStorage</code> so it stays hidden until the next browser session).</p>
+
+  <div class="diagram">
+    <div class="flow-row">
+      <div class="flow-box">[&lsaquo;]</div>
+      <div class="flow-box ember">Free Shipping on Orders Over $100</div>
+      <div class="flow-box">[&rsaquo;]</div>
+      <div class="flow-box sand">[&times;]</div>
+    </div>
+  </div>
+
+  <h3>Key concepts in this component</h3>
+
+  <details>
+    <summary>'use client' &mdash; Why this component needs it</summary>
+    <div class="details-body">
+      <p>The announcement bar has interactive features: auto-rotating messages, click handlers for prev/next, and a dismiss button. These all require JavaScript running in the browser, so the component starts with <code>'use client'</code>.</p>
+      <p>Remember: in Next.js App Router, components are <strong>Server Components</strong> by default (no JS shipped). The moment you need <code>useState</code>, <code>useEffect</code>, or click handlers, you must opt in with <code>'use client'</code>.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>State management with useState</summary>
+    <div class="details-body">
+      <p>The component manages three pieces of state:</p>
+<pre>const [activeIndex, setActiveIndex] = useState(0);     // which message is showing
+const [isVisible, setIsVisible] = useState(true);       // has user dismissed the bar?
+const [isPaused, setIsPaused] = useState(false);        // paused on hover?</pre>
+      <p>Each <code>useState</code> creates a value and a setter function. When the setter is called, React re-renders the component with the new value. That's how the message changes on screen without you touching the DOM manually.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>useEffect &amp; auto-rotation timer</summary>
+    <div class="details-body">
+      <p><code>useEffect</code> runs side effects &mdash; things that happen outside the normal render cycle. Here it sets up a timer:</p>
+<pre>useEffect(() => {
+  if (count &lt;= 1 || isPaused || !isVisible) return;
+
+  timerRef.current = setTimeout(() => {
+    transitionTo((activeIndex + 1) % count);
+  }, 5000);   // 5 seconds
+
+  return () => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+  };
+}, [activeIndex, count, isPaused, isVisible]);</pre>
+      <p>Every time <code>activeIndex</code> changes (a new message shows), the effect re-runs and sets a new 5-second timer. The <code>return</code> function is the <strong>cleanup</strong> &mdash; it clears the old timer to prevent overlapping timers. This pattern (set a timer, clean up the old one) is the standard React way to handle intervals.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Fade transition with CSS + state</summary>
+    <div class="details-body">
+      <p>Instead of instantly swapping messages, we fade between them. The <code>transitionTo</code> function does this in two steps:</p>
+<pre>const transitionTo = useCallback((nextIndex: number) => {
+  setIsFading(true);       // 1. start fading out (opacity goes to 0)
+  setTimeout(() => {
+    setActiveIndex(nextIndex);  // 2. swap the content while invisible
+    setIsFading(false);         // 3. fade back in (opacity goes to 1)
+  }, 300);                      // wait 300ms for the fade-out to finish
+}, []);</pre>
+      <p>The CSS handles the actual animation: <code>.announcement-bar__message--fading { opacity: 0; }</code> with a <code>transition: opacity 0.3s</code>. The JS just toggles the class.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>useCallback &mdash; Why wrap functions?</summary>
+    <div class="details-body">
+      <p>You'll see <code>useCallback</code> wrapping most handler functions in our components:</p>
+<pre>const goToNext = useCallback(() => {
+  transitionTo((activeIndex + 1) % count);
+}, [activeIndex, count, transitionTo]);</pre>
+      <p><strong>What it does:</strong> <code>useCallback</code> memorizes a function so React doesn't recreate it on every render. Without it, the function is a new object each render, which can cause child components to re-render unnecessarily.</p>
+      <p>The array at the end (<code>[activeIndex, count, transitionTo]</code>) lists the dependencies &mdash; the function only gets recreated when one of those values changes.</p>
+    </div>
+  </details>
+
+  <div class="callout callout-sage">
+    <strong>Accessibility note:</strong> The message area uses <code>aria-live="polite"</code> and <code>aria-atomic="true"</code>. This tells screen readers to announce the new message when it changes, but to wait until the user is idle (polite) rather than interrupting (assertive).
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<div class="section" id="header">
+  <div class="section-number">Section 05</div>
+  <h2>Sticky Header &amp; Desktop Navigation</h2>
+  <p class="section-lead">The main site header &mdash; logo, navigation links, icons for search/account/cart. It sticks to the top and compacts on scroll.</p>
+
+  <h3>How the header is structured</h3>
+
+  <div class="diagram">
+    <div class="flow-row">
+      <div class="flow-box">Left: Nav Links</div>
+      <div class="flow-box ember">Center: Logo</div>
+      <div class="flow-box sage">Right: Icons</div>
+    </div>
+  </div>
+
+  <p>On desktop, the left zone shows navigation links. On mobile, it shows a hamburger menu button. The logo is always centered, and the right zone has search, account, and cart icons.</p>
+
+  <h3>Key concepts</h3>
+
+  <details>
+    <summary>Sticky positioning &amp; compact mode</summary>
+    <div class="details-body">
+      <p>The header uses <code>position: sticky; top: 0;</code> in CSS, so it stays visible as you scroll. But we also make it smaller (compact) once you scroll past a threshold:</p>
+<pre>// Header.tsx uses IntersectionObserver, not scroll events
+
+const observer = new IntersectionObserver(
+  ([entry]) => {
+    setIsCompact(!entry.isIntersecting);
+  },
+  { threshold: 0, rootMargin: '-80px 0px 0px 0px' },
+);
+
+observer.observe(sentinel);</pre>
+      <p><strong>IntersectionObserver</strong> is more performant than listening to scroll events. We place an invisible "sentinel" <code>&lt;div&gt;</code> at the top of the page. When it scrolls out of view (past 80px), the observer fires and sets <code>isCompact = true</code>.</p>
+      <p>In compact mode, the header height shrinks from 88px to 64px, giving more screen space to content.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Transparent variant for the hero</summary>
+    <div class="details-body">
+      <p>The header supports a <code>variant</code> prop:</p>
+<pre>&lt;Header navItems={navigation.main} variant="transparent" /&gt;</pre>
+      <p>When <code>variant="transparent"</code>, the header starts with a transparent background so the hero image shows through. Once you scroll (compact mode activates), it becomes solid. This is handled by CSS classes:</p>
+<pre>.header--transparent {
+  background: transparent;
+  color: white;
+}</pre>
+      <p>The homepage uses <code>:has()</code> in CSS to detect whether the hero section is present:</p>
+<pre>/* Auto-detect: if page starts with .hero, make header transparent */
+main:has(&gt; .hero:first-child) ~ .header {
+  /* transparency styles */
+}</pre>
+      <p>The <code>:has()</code> selector is a relatively new CSS feature that lets you style a parent based on its children. Here it says: "if the <code>&lt;main&gt;</code> tag's first child is a <code>.hero</code>, then style the adjacent <code>.header</code> differently."</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Hover intent &mdash; delayed menu opening</summary>
+    <div class="details-body">
+      <p>If a mega menu opened <em>instantly</em> when your mouse touched a nav link, it would be annoying &mdash; you'd trigger menus constantly while moving your mouse across the header. The solution is <strong>hover intent</strong>:</p>
+<pre>const HOVER_INTENT_MS = 150;  // delay before opening
+const HOVER_CLOSE_MS = 150;   // delay before closing
+
+// First hover — open with delay
+hoverIntentRef.current = setTimeout(() => {
+  setOpenMenuIndex(index);
+}, HOVER_INTENT_MS);
+
+// Already open — switch instantly (no delay)
+if (openMenuIndexRef.current !== null) {
+  setOpenMenuIndex(index);  // instant switch
+}</pre>
+      <p>The first menu takes 150ms to open (proving you meant to hover, not just pass over). But once one menu is open, switching to another is instant &mdash; no delay, because you're clearly browsing menus.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Header &harr; MobileNav communication</summary>
+    <div class="details-body">
+      <p>The hamburger button is in the Header, but the drawer is a separate MobileNav component. They communicate via a <strong>custom DOM event</strong>:</p>
+<pre>// Header.tsx — sends the event
+const handleMobileMenuOpen = useCallback(() => {
+  window.dispatchEvent(new CustomEvent('toggle-mobile-nav'));
+}, []);
+
+// MobileNav.tsx — listens for the event
+useEffect(() => {
+  const handler = () => setIsOpen(prev => !prev);
+  window.addEventListener('toggle-mobile-nav', handler);
+  return () => window.removeEventListener('toggle-mobile-nav', handler);
+}, []);</pre>
+      <p><strong>Why not just lift state up?</strong> Both components are <code>'use client'</code> but they sit at different points in the component tree (they're siblings in <code>layout.tsx</code>). Lifting state to <code>layout.tsx</code> would force it to become a client component, losing the server-rendering benefit. The custom event keeps both components self-contained.</p>
+    </div>
+  </details>
+
+  <div class="callout callout-ember">
+    <strong>The skip-to-content link:</strong> The header includes <code>&lt;a href="#main-content" className="skip-to-content"&gt;Skip to content&lt;/a&gt;</code>. This is an accessibility feature &mdash; keyboard users can press Tab once and skip past all the navigation links straight to the main content. It's visually hidden until focused.
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<div class="section" id="mega-menu">
+  <div class="section-number">Section 06</div>
+  <h2>Mega Menu</h2>
+  <p class="section-lead">A full-width dropdown panel that shows link columns and promotional tiles when hovering a top-level nav item.</p>
+
+  <h3>Structure</h3>
+
+  <div class="diagram">
+    <div class="flow-row">
+      <div class="flow-box sage">Column 1: By Style</div>
+      <div class="flow-box sage">Column 2: By Occasion</div>
+      <div class="flow-box sand">Promo Tile</div>
+      <div class="flow-box sand">Promo Tile</div>
+    </div>
+  </div>
+
+  <p>Each mega menu has two zones: a <strong>columns</strong> area with grouped navigation links, and a <strong>promos</strong> area with image-driven promotional tiles. The data comes from <code>navigation.json</code>:</p>
+
+<pre>"megaMenu": {
+  "columns": [
+    {
+      "title": "By Style",
+      "links": [
+        { "label": "Classic Hoodies", "href": "/collections/classic" },
+        { "label": "Zip-Up Hoodies", "href": "/collections/zip-up" }
+      ]
+    }
+  ],
+  "promos": [
+    { "image": "/images/promos/new-arrivals.jpg", "title": "New Arrivals", "href": "...", "badge": "New" }
+  ]
+}</pre>
+
+  <h3>Key concepts</h3>
+
+  <details>
+    <summary>Keyboard focus management</summary>
+    <div class="details-body">
+      <p>When a menu opens via keyboard (Enter/Space on a trigger), focus must move into the panel so keyboard users can navigate the links. When they press Escape, focus returns to the trigger:</p>
+<pre>// Focus first link when opened via keyboard
+useEffect(() => {
+  if (isOpen && focusOnOpen && panelRef.current) {
+    requestAnimationFrame(() => {
+      const firstLink = panelRef.current?.querySelector('a');
+      firstLink?.focus();
+    });
+  }
+}, [isOpen, focusOnOpen]);
+
+// In Header.tsx — Escape returns focus to trigger
+if (e.key === 'Escape') {
+  setOpenMenuIndex(null);
+  triggerRefs.current[idx]?.focus();  // focus the button that opened it
+}</pre>
+      <p><code>requestAnimationFrame</code> waits one render cycle so the panel is visible before moving focus. Without it, the browser might try to focus an element that hasn't appeared yet.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>aria attributes for accessibility</summary>
+    <div class="details-body">
+      <p>The trigger button and panel are linked with ARIA attributes so screen readers understand the relationship:</p>
+<pre>// Trigger button
+&lt;button
+  aria-expanded={openMenuIndex === index}    // "Is this menu open?"
+  aria-controls={`mega-menu-${index}`}       // "It controls this panel"
+&gt;
+  {item.label}
+&lt;/button&gt;
+
+// Panel
+&lt;div
+  id={`mega-menu-${index}`}                  // matches aria-controls
+  role="region"                               // "This is a content region"
+  aria-label={`${viewAllLabel} menu`}         // "Called 'Hoodies menu'"
+&gt;</pre>
+      <p><code>aria-expanded</code> tells screen readers whether the associated panel is open. <code>aria-controls</code> says which element this button controls. The <code>id</code> on the panel matches. These attributes cost nothing visually but make the site usable for anyone using a screen reader.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>The backdrop overlay</summary>
+    <div class="details-body">
+      <p>When a mega menu is open, a semi-transparent dark overlay covers the page behind it. This creates visual focus on the menu and lets users click the backdrop to close:</p>
+<pre>&lt;div
+  className={`mega-menu-backdrop ${
+    openMenuIndex !== null ? 'mega-menu-backdrop--visible' : ''
+  }`}
+  onClick={() => setOpenMenuIndex(null)}
+  aria-hidden="true"
+/&gt;</pre>
+      <p>The backdrop is always in the DOM &mdash; it transitions from <code>opacity: 0; pointer-events: none</code> to <code>opacity: 1; pointer-events: auto</code> when the <code>--visible</code> class is added. This gives a smooth fade transition.</p>
+    </div>
+  </details>
+</div>
+
+<!-- ============================================================ -->
+<div class="section" id="mobile-nav">
+  <div class="section-number">Section 07</div>
+  <h2>Mobile Navigation Drawer</h2>
+  <p class="section-lead">A slide-in drawer from the left side of the screen, with accordion sub-menus, promo tiles, and social links.</p>
+
+  <h3>Structure</h3>
+  <p>The mobile nav is divided into four zones stacked vertically:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Zone</th><th>Contents</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Top bar</strong></td><td>Close button + search link</td></tr>
+        <tr><td><strong>Menu</strong></td><td>Nav items with accordion sub-menus</td></tr>
+        <tr><td><strong>Promos</strong></td><td>Horizontal scroll of promotional tiles</td></tr>
+        <tr><td><strong>Footer</strong></td><td>Account link, currency, social icons</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Key concepts</h3>
+
+  <details>
+    <summary>Focus trap &mdash; keeping keyboard users inside</summary>
+    <div class="details-body">
+      <p>When the drawer opens, a keyboard user pressing Tab should cycle through elements <em>inside</em> the drawer, not escape to the hidden page behind it. This is called a <strong>focus trap</strong>:</p>
+<pre>const handleKeyDown = (e: KeyboardEvent) => {
+  if (e.key === 'Escape') { close(); return; }
+  if (e.key !== 'Tab') return;
+
+  const focusable = drawer.querySelectorAll(
+    'a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])'
+  );
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+
+  // Tab on last element → wrap to first
+  if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
+  // Shift+Tab on first element → wrap to last
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  }
+};</pre>
+      <p>We find all focusable elements, then intercept Tab presses at the boundaries. When you Tab past the last element, focus jumps back to the first. Shift+Tab on the first jumps to the last. This creates an invisible loop.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Body scroll lock</summary>
+    <div class="details-body">
+      <p>When the drawer is open, the page behind it should not scroll:</p>
+<pre>useEffect(() => {
+  if (isOpen) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+  return () => { document.body.style.overflow = ''; };
+}, [isOpen]);</pre>
+      <p>Setting <code>overflow: hidden</code> on the body prevents scrolling. The cleanup function (return) resets it when the component unmounts, preventing a bug where the page stays locked if the component is removed while the drawer is open.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Accordion sub-menus</summary>
+    <div class="details-body">
+      <p>Nav items with mega menu data expand/collapse as accordions on mobile. Only one can be open at a time:</p>
+<pre>const [expandedIndex, setExpandedIndex] = useState&lt;number | null&gt;(null);
+
+const toggleAccordion = useCallback((index: number) => {
+  setExpandedIndex(prev => prev === index ? null : index);
+}, []);</pre>
+      <p>If you click the currently expanded item, it collapses (<code>null</code>). If you click a different item, it opens that one &mdash; which automatically closes the previous one because there's only one <code>expandedIndex</code> state.</p>
+      <p>The expand/collapse animation is handled in CSS with <code>max-height</code> and <code>overflow: hidden</code> transitions.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Close on route change</summary>
+    <div class="details-body">
+      <p>When a user taps a link inside the drawer, the page navigates. The drawer should close automatically:</p>
+<pre>const pathname = usePathname();
+
+useEffect(() => {
+  if (isOpen) close();
+}, [pathname]);</pre>
+      <p><code>usePathname()</code> is a Next.js hook that returns the current URL path. When it changes (navigation happened), the effect runs and closes the drawer. This saves the user from having to manually close it after clicking a link.</p>
+    </div>
+  </details>
+
+  <div class="callout callout-sand">
+    <strong>Focus restoration:</strong> When the drawer opens, we store <code>document.activeElement</code> (the hamburger button). When it closes, we call <code>prevFocusRef.current?.focus()</code> to return focus to that button. This is critical for keyboard users &mdash; they need to know where they are after the drawer closes.
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<div class="section" id="hero">
+  <div class="section-number">Section 08</div>
+  <h2>Hero Section</h2>
+  <p class="section-lead">The full-width banner at the top of the homepage &mdash; a background image or video, headline text, and call-to-action buttons.</p>
+
+  <h3>How it works</h3>
+  <p>The Hero is a <strong>Server Component</strong> (no <code>'use client'</code>) because it has no interactivity &mdash; no click handlers, no state. It just receives data and renders HTML. This means zero JavaScript is shipped to the browser for this component.</p>
+
+  <div class="diagram">
+    <div class="flow-row">
+      <div class="flow-box sage">Background Image/Video</div>
+      <span class="flow-arrow">+</span>
+      <div class="flow-box sand">Gradient Overlay</div>
+      <span class="flow-arrow">+</span>
+      <div class="flow-box ember">Text + CTAs</div>
+    </div>
+  </div>
+
+  <h3>Key concepts</h3>
+
+  <details>
+    <summary>Art direction with next/image</summary>
+    <div class="details-body">
+      <p>Different screens need different image crops. A wide landscape shot looks great on desktop but loses detail on a phone. <strong>Art direction</strong> means serving a different crop for each screen:</p>
+<pre>// Desktop image
+&lt;Image
+  src={media.src}
+  alt={media.alt}
+  fill
+  sizes="100vw"
+  preload
+  className="hero__img hero__img--desktop"
+/&gt;
+
+// Mobile image (if separate crop provided)
+{media.mobileSrc && (
+  &lt;Image
+    src={media.mobileSrc}
+    fill
+    sizes="100vw"
+    preload
+    className="hero__img hero__img--mobile"
+  /&gt;
+)}</pre>
+      <p>CSS then shows/hides the right version:</p>
+<pre>.hero__img--mobile  { display: block; }
+.hero__img--desktop { display: none; }
+
+@media (min-width: 768px) {
+  .hero__img--mobile  { display: none; }
+  .hero__img--desktop { display: block; }
+}</pre>
+    </div>
+  </details>
+
+  <details>
+    <summary>next/image fill mode &amp; the preload prop</summary>
+    <div class="details-body">
+      <p>The <code>fill</code> prop makes the image fill its parent container (the parent must have <code>position: relative</code>). This is how the hero background works &mdash; the image stretches to cover the full section.</p>
+      <p>The <code>sizes</code> prop tells the browser how wide the image will be at different viewports. <code>"100vw"</code> means "full viewport width" &mdash; the browser can then pick the right resolution from the srcset Next.js generates.</p>
+      <p><strong>Important Next.js 16 change:</strong> The old <code>priority</code> prop is deprecated. Use <code>preload</code> instead. This tells the browser to start downloading the image immediately (before the page finishes parsing), which is critical for the hero since it's the first thing users see.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>The gradient overlay</summary>
+    <div class="details-body">
+      <p>A semi-transparent gradient sits between the background image and the text, ensuring text is always readable regardless of the image:</p>
+<pre>&lt;div
+  className="hero__overlay"
+  style={{
+    '--hero-overlay-opacity': overlayOpacity,
+  } as React.CSSProperties}
+/&gt;</pre>
+      <p>The overlay opacity is configurable from the JSON data (default 0.45). The CSS uses it:</p>
+<pre>.hero__overlay {
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0, var(--hero-overlay-opacity)) 0%,
+    rgba(0,0,0, calc(var(--hero-overlay-opacity) * 0.3)) 100%
+  );
+}</pre>
+      <p>This technique &mdash; a CSS custom property set via inline <code>style</code> &mdash; is how you pass dynamic values from React to CSS without generating unique class names.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Negative margin trick</summary>
+    <div class="details-body">
+      <p>The hero needs to sit <em>behind</em> the sticky header, so the background image extends under it. This is achieved with negative margin:</p>
+<pre>.hero {
+  margin-top: calc(-1 * var(--header-h));
+  padding-top: var(--header-h);
+}</pre>
+      <p>This pulls the hero up by the header's height so they overlap. The padding pushes the <em>content</em> (text + buttons) back down so it doesn't hide under the header. The result: a full-bleed hero that flows under a transparent header.</p>
+    </div>
+  </details>
+
+  <div class="callout callout-ember">
+    <strong>Video support:</strong> The hero supports video backgrounds too. It renders a <code>&lt;video autoPlay muted loop playsInline&gt;</code> with a poster image fallback for reduced-motion preferences. The component uses sub-components (<code>HeroImage</code> and <code>HeroVideo</code>) to keep the code organised.
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<div class="section" id="category-tiles">
+  <div class="section-number">Section 09</div>
+  <h2>Category Tiles</h2>
+  <p class="section-lead">A grid of clickable image tiles &mdash; "Shop Hoodies," "Shop Blankets," etc. &mdash; that link to collection pages.</p>
+
+  <h3>Layout</h3>
+
+  <div class="diagram">
+    <div class="flow-row">
+      <div class="flow-box ember">2&times;2 grid (mobile)</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box sage">4-up row (desktop)</div>
+    </div>
+  </div>
+
+  <p>The tiles use CSS Grid to automatically adapt:</p>
+
+<pre>.category-tiles__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);   /* 2 columns on mobile */
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .category-tiles__grid {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns on desktop */
+    gap: 16px;
+  }
+}</pre>
+
+  <h3>Key concepts</h3>
+
+  <details>
+    <summary>Image hover zoom effect</summary>
+    <div class="details-body">
+      <p>Each tile has an image that gently zooms in on hover. The trick is to set <code>overflow: hidden</code> on the container so the zoomed image doesn't escape its tile:</p>
+<pre>.category-tiles__img-wrap {
+  overflow: hidden;   /* clips the zoomed image */
+}
+
+.category-tiles__img {
+  transition: transform 0.45s ease;
+}
+
+.category-tiles__tile:hover .category-tiles__img {
+  transform: scale(1.06);   /* 6% zoom */
+}</pre>
+      <p>The slow transition (0.45s) makes it feel smooth and intentional. The 6% zoom is subtle enough to feel premium, not gimmicky.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Label overlay with gradient</summary>
+    <div class="details-body">
+      <p>The category label sits at the bottom of each tile with a gradient behind it for readability:</p>
+<pre>.category-tiles__label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px 16px 14px;
+  background: linear-gradient(to top, rgba(0,0,0,0.55), transparent);
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}</pre>
+      <p>The gradient fades from a dark bottom (where the text sits) to transparent at the top, so the image shows through. This ensures text is always readable no matter what the image looks like underneath.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>The sizes attribute on next/image</summary>
+    <div class="details-body">
+      <p>Every <code>next/image</code> with <code>fill</code> needs a <code>sizes</code> prop:</p>
+<pre>&lt;Image
+  src={tile.image}
+  alt={tile.alt}
+  fill
+  sizes="(max-width: 639px) 50vw, 25vw"
+/&gt;</pre>
+      <p>This tells the browser: "On screens under 640px, this image is 50% of the viewport wide (2-column grid). On larger screens, it's 25% wide (4-column grid)." The browser then picks the most appropriately sized image from the srcset, saving bandwidth on small screens.</p>
+    </div>
+  </details>
+</div>
+
+<!-- ============================================================ -->
+<div class="section" id="value-props">
+  <div class="section-number">Section 10</div>
+  <h2>Value Props Strip</h2>
+  <p class="section-lead">A row of four icon + title + copy blocks &mdash; "Free Delivery," "Quality Guarantee," "Easy Returns," "24/7 Support."</p>
+
+  <h3>Layout</h3>
+
+  <div class="diagram">
+    <div class="flow-row">
+      <div class="flow-box">Horizontal scroll (mobile)</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box sage">4-up evenly spaced (desktop)</div>
+    </div>
+  </div>
+
+  <h3>Key concepts</h3>
+
+  <details>
+    <summary>lucide-react icons &amp; the icon map pattern</summary>
+    <div class="details-body">
+      <p><strong>lucide-react</strong> is a library of clean, consistent SVG icons. The JSON data stores the icon name as a string (e.g., <code>"Truck"</code>), and the component maps it to the actual icon component:</p>
+<pre>import { HelpCircle, Headphones, RefreshCcw, ShieldCheck, Truck } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
+
+const iconMap: Record&lt;string, LucideIcon&gt; = {
+  Truck,
+  ShieldCheck,
+  RefreshCcw,
+  Headphones,
+};
+
+function resolveIcon(name: string): LucideIcon {
+  return iconMap[name] ?? HelpCircle;   // fallback to "?" icon
+}</pre>
+      <p><strong>Why not <code>import * as icons</code>?</strong> Importing everything from lucide-react would bundle hundreds of icons into your app. Explicit named imports mean only the four icons we use get included in the final bundle. The icon map also provides a safe fallback &mdash; if a typo appears in the JSON, <code>HelpCircle</code> shows instead of crashing the page.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Horizontal scroll on mobile</summary>
+    <div class="details-body">
+      <p>On mobile, four items don't fit side by side. Instead of stacking them vertically (which takes too much space), we use horizontal scrolling:</p>
+<pre>.value-props__track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  min-width: max-content;      /* prevents items from shrinking */
+  -webkit-overflow-scrolling: touch;  /* smooth momentum on iOS */
+}
+
+.value-props__item {
+  min-width: 200px;            /* each item stays readable */
+  flex: 0 0 auto;
+}
+
+/* Hide scrollbar visually (still scrollable) */
+.value-props__track::-webkit-scrollbar { display: none; }
+.value-props__track { scrollbar-width: none; }</pre>
+      <p>On desktop, the layout switches to <code>flex: 1</code> per item and <code>overflow: visible</code>, so all four items spread evenly across the full width.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>The sunken background</summary>
+    <div class="details-body">
+      <p>The value props strip has a slightly darker background than the page to visually separate it:</p>
+<pre>.value-props {
+  background: var(--color-cream-100);  /* a shade darker than the page */
+  padding: 40px 0;
+}</pre>
+      <p>This "sunken" effect creates visual rhythm on the page without needing borders or dividers. It's a common pattern in e-commerce sites &mdash; alternating background shades between sections.</p>
+    </div>
+  </details>
+</div>
+
+<!-- ============================================================ -->
+<div class="section" id="split-banner">
+  <div class="section-number">Section 11</div>
+  <h2>Split Banner</h2>
+  <p class="section-lead">A 50/50 split of image + text content block. Used for brand messaging like "Our Promise &mdash; Made for Comfort."</p>
+
+  <h3>Layout</h3>
+
+  <div class="diagram">
+    <div class="flow-row">
+      <div class="flow-box sage">Image (50%)</div>
+      <div class="flow-box ember">Text + CTA (50%)</div>
+    </div>
+  </div>
+
+  <p>The <code>imageSide</code> property in JSON controls whether the image is on the left or right:</p>
+
+<pre>"splitBanner": {
+  "imageSide": "left",       // or "right"
+  "eyebrow": "Our Promise",
+  "heading": "Made for Comfort",
+  "body": "Every hoodie is crafted with ...",
+  "cta": { "label": "Learn More", "href": "/about", "variant": "primary" }
+}</pre>
+
+  <h3>Key concepts</h3>
+
+  <details>
+    <summary>Conditional CSS classes</summary>
+    <div class="details-body">
+      <p>The component builds its class name dynamically based on the <code>imageSide</code> prop:</p>
+<pre>const className = [
+  'split-banner',
+  data.imageSide === 'right' ? 'split-banner--image-right' : '',
+]
+  .filter(Boolean)
+  .join(' ');</pre>
+      <p>This is the <strong>filter(Boolean)</strong> pattern. It builds an array of class names, removes any empty strings (<code>filter(Boolean)</code> drops falsy values like <code>""</code>), then joins them with spaces. The result is either <code>"split-banner"</code> or <code>"split-banner split-banner--image-right"</code>.</p>
+      <p>In CSS, the modifier reverses the layout:</p>
+<pre>.split-banner--image-right {
+  flex-direction: row-reverse;    /* swap image and text sides */
+}</pre>
+    </div>
+  </details>
+
+  <details>
+    <summary>Responsive stacking</summary>
+    <div class="details-body">
+      <p>On mobile, the 50/50 layout stacks vertically (image on top, text below):</p>
+<pre>/* Mobile: stack vertically */
+.split-banner {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Desktop: side by side */
+@media (min-width: 768px) {
+  .split-banner {
+    flex-direction: row;
+  }
+  .split-banner__media,
+  .split-banner__content {
+    width: 50%;
+  }
+}</pre>
+      <p>The image uses <code>aspect-ratio: 4/3</code> on mobile for a natural height, and switches to <code>min-height: 400px</code> on desktop where it fills the height of the text content beside it.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>CTA variant styling</summary>
+    <div class="details-body">
+      <p>The call-to-action button uses a dynamic class based on the variant from JSON data:</p>
+<pre>&lt;Link
+  href={data.cta.href}
+  className={`split-banner__cta split-banner__cta--${data.cta.variant}`}
+&gt;
+  {data.cta.label}
+&lt;/Link&gt;</pre>
+      <p>This generates either <code>split-banner__cta--primary</code> (filled, solid colour) or <code>split-banner__cta--secondary</code> (outlined, transparent background). The variant comes from the JSON, so content editors can choose the button style without touching code.</p>
+    </div>
+  </details>
+</div>
+
+<!-- ============================================================ -->
+<div class="section" id="patterns">
+  <div class="section-number">Section 12</div>
+  <h2>Key Patterns &amp; Techniques</h2>
+  <p class="section-lead">Patterns you'll see repeated across the T2 and T3 codebase.</p>
+
+  <h3>BEM CSS naming</h3>
+  <p>All T2/T3 components use <strong>BEM</strong> (Block, Element, Modifier) naming for CSS classes instead of Tailwind utility classes:</p>
+
+<pre>Block:    .header
+Element:  .header__nav-link        (part of the header)
+Modifier: .header__nav-link--active (a variant of the element)
+
+Block:    .category-tiles
+Element:  .category-tiles__grid
+Element:  .category-tiles__label
+
+Block:    .split-banner
+Modifier: .split-banner--image-right</pre>
+
+  <div class="callout callout-sage">
+    <strong>Why BEM instead of Tailwind?</strong> For complex layout components (headers, mega menus), BEM keeps the HTML cleaner and makes the CSS easier to debug. Tailwind works great for UI primitives (buttons, inputs), but a mega menu with 30+ utility classes on every element becomes hard to read. BEM and Tailwind coexist in our project &mdash; pick the right tool for the job.
+  </div>
+
+  <h3>Server Components vs Client Components</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Component</th><th>Type</th><th>Why</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>Hero</code></td><td>Server</td><td>No interactivity &mdash; just renders data</td></tr>
+        <tr><td><code>CategoryTiles</code></td><td>Server</td><td>Static grid of linked images</td></tr>
+        <tr><td><code>ValueProps</code></td><td>Server</td><td>Static icon + text display</td></tr>
+        <tr><td><code>SplitBanner</code></td><td>Server</td><td>Static image + text layout</td></tr>
+        <tr><td><code>AnnouncementBar</code></td><td>Client</td><td>Timer, state, dismiss handler</td></tr>
+        <tr><td><code>Header</code></td><td>Client</td><td>Hover intent, scroll detection, menu state</td></tr>
+        <tr><td><code>MegaMenu</code></td><td>Client</td><td>Focus management, keyboard handlers</td></tr>
+        <tr><td><code>MobileNav</code></td><td>Client</td><td>Drawer state, focus trap, scroll lock</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The rule of thumb: if it moves, opens, closes, or responds to user input, it's a Client Component. If it just displays data, it's a Server Component.</p>
+
+  <h3>The barrel export pattern</h3>
+  <p>An <code>index.ts</code> file that re-exports everything from a folder, so imports stay clean:</p>
+
+<pre>// types/index.ts (the barrel)
+export type { CategoryTile, CategoryTilesSection, CTA, HeroSection, ... } from './home';
+export type { Announcement, NavItem, MegaMenuData, ... } from './navigation';
+export type { Product, Variant } from './product';
+
+// Using the barrel &mdash; one import, many types
+import type { HeroSection, NavItem, Announcement } from '@/types';</pre>
+
+  <div class="callout callout-ember">
+    <strong>Barrel file pitfall:</strong> If <em>any</em> file in the barrel has a broken import or missing dependency, <em>everything</em> that imports from the barrel fails &mdash; even unrelated types. This happened during our T3 build. The fix: make sure every file the barrel re-exports actually exists and compiles. When debugging barrel errors, check the file the error points to, not the barrel itself.
+  </div>
+
+  <h3>Inline SVG icons</h3>
+  <p>The <code>components/icons/</code> folder holds SVG icon components. Each icon is a React component wrapping an SVG:</p>
+
+<pre>// components/icons/IconSearch.tsx
+export function IconSearch(props: React.SVGProps&lt;SVGSVGElement&gt;) {
+  return (
+    &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" strokeWidth="2" {...props}&gt;
+      &lt;circle cx="11" cy="11" r="8" /&gt;
+      &lt;line x1="21" y1="21" x2="16.65" y2="16.65" /&gt;
+    &lt;/svg&gt;
+  );
+}</pre>
+
+  <p>Notice <code>stroke="currentColor"</code> &mdash; the icon inherits its colour from the parent's text colour. This means icons automatically match the header's colour scheme (dark on light header, white on transparent header) without any extra styling.</p>
+</div>
+
+<!-- ============================================================ -->
+<div class="section" id="git-workflow">
+  <div class="section-number">Section 13</div>
+  <h2>Git Workflow &mdash; Updated</h2>
+  <p class="section-lead">The branching and commit flow, now with T2 and T3 branches.</p>
+
+  <h3>Branch history</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Branch</th><th>What It Contains</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td><code>main</code></td><td>Stable, production-ready code</td><td>Active</td></tr>
+        <tr><td><code>T1-S1/bootstrap-nextjs-tooling</code></td><td>Project scaffold + tooling</td><td>Merged</td></tr>
+        <tr><td><code>T1-S2/design-tokens</code></td><td>Colour palette + design system</td><td>Merged</td></tr>
+        <tr><td><code>T1-S3/ui-component-library</code></td><td>17 UI components</td><td>Merged</td></tr>
+        <tr><td><code>T2-S1/announcement-sticky-header</code></td><td>Announcement bar + sticky header</td><td>Merged</td></tr>
+        <tr><td><code>T2-S2/mega-menu-mobile-nav</code></td><td>Mega menu + mobile drawer</td><td>Merged</td></tr>
+        <tr><td><code>T3-S1/hero-section</code></td><td>Hero section + data layer</td><td>Merged</td></tr>
+        <tr><td><code>T3-S2/category-valueprops-splitbanner</code></td><td>CategoryTiles + ValueProps + SplitBanner</td><td>Current</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>The workflow (using GitHub Desktop)</h3>
+  <div class="diagram">
+    <div class="flow-row">
+      <div class="flow-box">1. Create branch</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box sage">2. Commit changes</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box ember">3. Push to GitHub</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box sand">4. Merge to main</div>
+    </div>
+  </div>
+
+  <p><strong>Important order:</strong> Always create the branch FIRST, then commit, then push. Never commit directly to <code>main</code>.</p>
+
+  <h3>Commit message examples</h3>
+<pre>[T2-S1] Add AnnouncementBar with auto-rotate and dismiss
+[T2-S1] Add sticky Header with IntersectionObserver compact mode
+[T2-S2] Add MegaMenu with keyboard focus management
+[T2-S2] Add MobileNav drawer with focus trap
+[T3-S1] Add Hero section with image/video support
+[T3-S2] Add CategoryTiles, ValueProps, SplitBanner sections</pre>
+
+  <div class="callout callout-sand">
+    <strong>Merge direction:</strong> Always switch to <code>main</code> first, then merge the feature branch INTO main. Not the other way around. In GitHub Desktop: switch to main &rarr; Branch &rarr; Merge into current branch &rarr; select the feature branch.
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<div class="section" id="whats-next">
+  <div class="section-number">Section 14</div>
+  <h2>What's Coming Next</h2>
+  <p class="section-lead">T2 (Header &amp; Nav) and T3 (Homepage) are done. Here's what future tasks will build on this foundation.</p>
+
+  <p><strong>Product components</strong> &mdash; ProductCard, ProductGrid, product detail page. These will combine the UI primitives (Badge, Price, Rating, Button) with the data layer pattern (JSON &rarr; types &rarr; API &rarr; component) we established in T3.</p>
+
+  <p><strong>Collection pages</strong> &mdash; Browse pages with filtering, sorting, and pagination. The collection data is already scaffolded in <code>data/collections.json</code>.</p>
+
+  <p><strong>Cart &amp; checkout</strong> &mdash; CartDrawer (using the Drawer component from T1), quantity stepper, cart summary. This will introduce client-side state management.</p>
+
+  <p><strong>Footer</strong> &mdash; Site footer with link columns, social icons, and newsletter signup. The footer navigation data already exists in <code>navigation.json</code>.</p>
+
+  <p><strong>Backend connection</strong> &mdash; When the Laravel API is ready, we swap the JSON imports in <code>lib/api/</code> with <code>fetch()</code> calls. Because we designed the data layer with async functions that return typed data, the components won't need any changes.</p>
+
+  <div class="callout callout-ember">
+    <strong>The pattern holds:</strong> Every future page follows the same data-layer pipeline. Define the types, create the API function, build the component, compose the page. The hard work of establishing this pattern is done &mdash; now it's about applying it to new sections.
+  </div>
+</div>
+
+<footer class="footer">
+  The Hoodie LB &mdash; Project Learning Guide. Built during Tasks 2 &amp; 3.
+</footer>
