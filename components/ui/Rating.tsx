@@ -19,6 +19,9 @@ const SIZES = {
   lg: 'h-6 w-6',
 } as const;
 
+const STAR_PATH =
+  'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z';
+
 function Rating({
   value,
   max = 5,
@@ -29,6 +32,32 @@ function Rating({
 }: RatingProps) {
   const [hovered, setHovered] = React.useState<number | null>(null);
   const displayValue = hovered ?? value;
+
+  /* Read-only: plain stars for display (no disabled radio buttons for assistive tech) */
+  if (readOnly) {
+    const filledCount = Math.round(value);
+    return (
+      <div
+        className={cn('inline-flex items-center gap-0.5', className)}
+        role="img"
+        aria-label={`Rating: ${value} out of ${max} stars`}
+      >
+        {Array.from({ length: max }, (_, i) => (
+          <svg
+            key={i}
+            className={cn(SIZES[size], i < filledCount ? 'text-sand-400' : 'text-charcoal-200')}
+            viewBox="0 0 24 24"
+            fill={i < filledCount ? 'currentColor' : 'none'}
+            stroke="currentColor"
+            strokeWidth="1.5"
+            aria-hidden="true"
+          >
+            <path d={STAR_PATH} />
+          </svg>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div
