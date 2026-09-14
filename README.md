@@ -60,3 +60,4 @@ thehoodielb/
 - **Prettier** for consistent formatting
 - **Husky** + **lint-staged** run on every commit (pre-commit hook)
 - Lint failures block the commit
+- **GitHub Actions** runs lint, format check, data validation and both builds on every PR (`.github/workflows/ci.yml`)
