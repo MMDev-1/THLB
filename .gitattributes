@@ -1,5 +1,4 @@
-# Auto detect text files and perform LF normalization
-* text=auto
-
-# Git hooks run under sh, which breaks on CRLF line endings
-.husky/* text eol=lf
+# Auto detect text files; store and check them out with LF on every OS.
+# Prettier expects LF (endOfLine: "lf"), and Git hooks run under sh,
+# which breaks on CRLF line endings.
+* text=auto eol=lf

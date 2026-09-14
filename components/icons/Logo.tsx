@@ -14,14 +14,7 @@ export function Logo(props: SVGProps<SVGSVGElement>) {
       role="img"
       {...props}
     >
-      <text
-        x="0"
-        y="24"
-        fontFamily="inherit"
-        fontSize="22"
-        fontWeight="700"
-        letterSpacing="0.05em"
-      >
+      <text x="0" y="24" fontFamily="inherit" fontSize="22" fontWeight="700" letterSpacing="0.05em">
         THE HOODIE LB
       </text>
     </svg>

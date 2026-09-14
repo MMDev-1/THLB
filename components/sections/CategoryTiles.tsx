@@ -20,11 +20,7 @@ export function CategoryTiles({ data }: Props) {
 
       <div className="category-tiles__grid">
         {data.tiles.map((tile) => (
-          <Link
-            key={tile.href}
-            href={tile.href}
-            className="category-tiles__tile"
-          >
+          <Link key={tile.href} href={tile.href} className="category-tiles__tile">
             <div className="category-tiles__img-wrap">
               <Image
                 src={tile.image}

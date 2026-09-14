@@ -16,52 +16,35 @@ interface HeroProps {
 /* ------------------------------------------------------------------ */
 
 export function Hero({ data }: HeroProps) {
-  const {
-    media,
-    eyebrow,
-    headline,
-    subcopy,
-    ctas,
-    align = 'left',
-    overlayOpacity = 0.45,
-  } = data;
+  const { media, eyebrow, headline, subcopy, ctas, align = 'left', overlayOpacity = 0.45 } = data;
 
   const isVideo = media.type === 'video';
 
   return (
-    <section
-      className={`hero ${align === 'center' ? 'hero--center' : ''}`}
-      aria-label={headline}
-    >
+    <section className={`hero ${align === 'center' ? 'hero--center' : ''}`} aria-label={headline}>
       {/* ---- Background media ---- */}
       <div className="hero__media" aria-hidden="true">
-        {isVideo ? (
-          <HeroVideo media={media} />
-        ) : (
-          <HeroImage media={media} />
-        )}
+        {isVideo ? <HeroVideo media={media} /> : <HeroImage media={media} />}
       </div>
 
       {/* ---- Gradient overlay ---- */}
       <div
         className="hero__overlay"
-        style={{
-          '--hero-overlay-opacity': overlayOpacity,
-        } as React.CSSProperties}
+        style={
+          {
+            '--hero-overlay-opacity': overlayOpacity,
+          } as React.CSSProperties
+        }
       />
 
       {/* ---- Content ---- */}
       <div className="hero__content">
         <div className="hero__text">
-          {eyebrow && (
-            <p className="hero__eyebrow">{eyebrow}</p>
-          )}
+          {eyebrow && <p className="hero__eyebrow">{eyebrow}</p>}
 
           <h1 className="hero__headline">{headline}</h1>
 
-          {subcopy && (
-            <p className="hero__subcopy">{subcopy}</p>
-          )}
+          {subcopy && <p className="hero__subcopy">{subcopy}</p>}
 
           {ctas.length > 0 && (
             <div className="hero__ctas">

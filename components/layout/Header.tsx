@@ -175,21 +175,18 @@ export function Header({ navItems, variant = 'solid' }: HeaderProps) {
   }, []);
 
   /* ---- Keyboard toggle for trigger buttons ---- */
-  const handleTriggerClick = useCallback(
-    (index: number) => {
-      if (hoverIntentRef.current) clearTimeout(hoverIntentRef.current);
-      if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+  const handleTriggerClick = useCallback((index: number) => {
+    if (hoverIntentRef.current) clearTimeout(hoverIntentRef.current);
+    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
 
-      if (openMenuIndexRef.current === index) {
-        setOpenMenuIndex(null);
-        setKeyboardActivated(false);
-      } else {
-        setOpenMenuIndex(index);
-        setKeyboardActivated(true);
-      }
-    },
-    [],
-  );
+    if (openMenuIndexRef.current === index) {
+      setOpenMenuIndex(null);
+      setKeyboardActivated(false);
+    } else {
+      setOpenMenuIndex(index);
+      setKeyboardActivated(true);
+    }
+  }, []);
 
   const handleTriggerKeyDown = useCallback(
     (e: React.KeyboardEvent, index: number) => {
@@ -211,9 +208,7 @@ export function Header({ navItems, variant = 'solid' }: HeaderProps) {
     'header',
     isCompact ? 'header--compact' : '',
     variant === 'transparent' && !isCompact ? 'header--transparent' : '',
-    openMenuIndex !== null && navItems[openMenuIndex]?.megaMenu
-      ? 'header--mega-open'
-      : '',
+    openMenuIndex !== null && navItems[openMenuIndex]?.megaMenu ? 'header--mega-open' : '',
   ]
     .filter(Boolean)
     .join(' ');
@@ -222,11 +217,7 @@ export function Header({ navItems, variant = 'solid' }: HeaderProps) {
     <>
       {/* Sentinel element — sits at the very top of the page.
           When it scrolls past SCROLL_THRESHOLD, the header compacts. */}
-      <div
-        ref={sentinelRef}
-        className="header-sentinel"
-        aria-hidden="true"
-      />
+      <div ref={sentinelRef} className="header-sentinel" aria-hidden="true" />
 
       {/* Skip-to-content — first focusable element */}
       <a href="#main-content" className="skip-to-content">
@@ -235,9 +226,11 @@ export function Header({ navItems, variant = 'solid' }: HeaderProps) {
 
       <header
         className={headerClasses}
-        style={{
-          '--header-h': `${isCompact ? HEADER_H_COMPACT : HEADER_H}px`,
-        } as React.CSSProperties}
+        style={
+          {
+            '--header-h': `${isCompact ? HEADER_H_COMPACT : HEADER_H}px`,
+          } as React.CSSProperties
+        }
       >
         <div className="header__inner">
           {/* ---- Left zone ---- */}
@@ -259,9 +252,7 @@ export function Header({ navItems, variant = 'solid' }: HeaderProps) {
                   <li
                     key={item.label}
                     className="header__nav-item"
-                    onMouseEnter={() =>
-                      handleNavItemMouseEnter(index)
-                    }
+                    onMouseEnter={() => handleNavItemMouseEnter(index)}
                     onMouseLeave={handleNavItemMouseLeave}
                   >
                     {item.megaMenu ? (
@@ -270,9 +261,7 @@ export function Header({ navItems, variant = 'solid' }: HeaderProps) {
                           triggerRefs.current[index] = el;
                         }}
                         className={`header__nav-link header__nav-link--trigger ${
-                          openMenuIndex === index
-                            ? 'header__nav-link--active'
-                            : ''
+                          openMenuIndex === index ? 'header__nav-link--active' : ''
                         }`}
                         aria-expanded={openMenuIndex === index}
                         aria-controls={`mega-menu-${index}`}
@@ -283,10 +272,7 @@ export function Header({ navItems, variant = 'solid' }: HeaderProps) {
                         {item.label}
                       </button>
                     ) : (
-                      <Link
-                        href={item.href}
-                        className="header__nav-link"
-                      >
+                      <Link href={item.href} className="header__nav-link">
                         {item.label}
                       </Link>
                     )}
@@ -298,30 +284,18 @@ export function Header({ navItems, variant = 'solid' }: HeaderProps) {
 
           {/* ---- Center zone — logo ---- */}
           <div className="header__center">
-            <Link
-              href="/"
-              className="header__logo-link"
-              aria-label="The Hoodie LB — Home"
-            >
+            <Link href="/" className="header__logo-link" aria-label="The Hoodie LB — Home">
               <Logo className="header__logo" />
             </Link>
           </div>
 
           {/* ---- Right zone — icons ---- */}
           <div className="header__right">
-            <button
-              className="header__icon-btn"
-              aria-label="Search"
-              type="button"
-            >
+            <button className="header__icon-btn" aria-label="Search" type="button">
               <IconSearch width={20} height={20} />
             </button>
 
-            <Link
-              href="/account"
-              className="header__icon-btn"
-              aria-label="Account"
-            >
+            <Link href="/account" className="header__icon-btn" aria-label="Account">
               <IconUser width={20} height={20} />
             </Link>
 
@@ -354,9 +328,7 @@ export function Header({ navItems, variant = 'solid' }: HeaderProps) {
               viewAllLabel={item.label}
               onMouseEnter={handlePanelMouseEnter}
               onMouseLeave={handlePanelMouseLeave}
-              focusOnOpen={
-                keyboardActivated && openMenuIndex === index
-              }
+              focusOnOpen={keyboardActivated && openMenuIndex === index}
             />
           ) : null,
         )}

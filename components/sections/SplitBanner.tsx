@@ -14,10 +14,7 @@ interface Props {
 }
 
 export function SplitBanner({ data }: Props) {
-  const className = [
-    'split-banner',
-    data.imageSide === 'right' ? 'split-banner--image-right' : '',
-  ]
+  const className = ['split-banner', data.imageSide === 'right' ? 'split-banner--image-right' : '']
     .filter(Boolean)
     .join(' ');
 
@@ -36,9 +33,7 @@ export function SplitBanner({ data }: Props) {
 
       {/* Text half */}
       <div className="split-banner__content">
-        {data.eyebrow && (
-          <span className="split-banner__eyebrow">{data.eyebrow}</span>
-        )}
+        {data.eyebrow && <span className="split-banner__eyebrow">{data.eyebrow}</span>}
         <h2 className="split-banner__heading">{data.heading}</h2>
         <p className="split-banner__body">{data.body}</p>
         <Link

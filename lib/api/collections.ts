@@ -50,16 +50,12 @@ function lowestPrice(product: Product): number {
 function applyFilters(items: Product[], f: CollectionFilters): Product[] {
   return items.filter((p) => {
     if (f.colours?.length) {
-      const has = p.variants.some((v) =>
-        f.colours!.includes(v.colour.toLowerCase()),
-      );
+      const has = p.variants.some((v) => f.colours!.includes(v.colour.toLowerCase()));
       if (!has) return false;
     }
 
     if (f.sizes?.length) {
-      const has = p.variants.some((v) =>
-        f.sizes!.includes(v.size),
-      );
+      const has = p.variants.some((v) => f.sizes!.includes(v.size));
       if (!has) return false;
     }
 
@@ -84,8 +80,7 @@ function applySort(items: Product[], key: SortKey): Product[] {
       return sorted.sort((a, b) => lowestPrice(b) - lowestPrice(a));
     case 'newest':
       return sorted.sort(
-        (a, b) =>
-          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+        (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
       );
     default:
       return sorted;
@@ -116,9 +111,7 @@ export async function getCollection(
   if (!collection) return null;
 
   // Resolve products that belong to this collection
-  let items = products.filter((p) =>
-    collection.productIds.includes(p.id),
-  );
+  let items = products.filter((p) => collection.productIds.includes(p.id));
 
   // Apply filters
   if (query.filters) {

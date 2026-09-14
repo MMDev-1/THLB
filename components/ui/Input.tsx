@@ -15,9 +15,7 @@ function Input({ className, type = 'text', error, ...props }: InputProps) {
         'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1',
         'disabled:cursor-not-allowed disabled:opacity-50',
         'file:border-0 file:bg-transparent file:text-sm file:font-medium',
-        error
-          ? 'border-destructive focus:ring-destructive'
-          : 'border-border',
+        error ? 'border-destructive focus:ring-destructive' : 'border-border',
         className,
       )}
       aria-invalid={error || undefined}

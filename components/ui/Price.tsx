@@ -39,11 +39,7 @@ function Price({
   );
 
   if (amount === null) {
-    return (
-      <span className={cn('text-muted', SIZE_CLASSES[size], className)}>
-        —
-      </span>
-    );
+    return <span className={cn('text-muted', SIZE_CLASSES[size], className)}>—</span>;
   }
 
   const onSale = compareAt != null && compareAt > amount;
@@ -60,11 +56,7 @@ function Price({
         {fmt(amount)}
       </span>
 
-      {onSale && (
-        <span className="text-sm text-muted line-through">
-          {fmt(compareAt)}
-        </span>
-      )}
+      {onSale && <span className="text-sm text-muted line-through">{fmt(compareAt)}</span>}
     </span>
   );
 }

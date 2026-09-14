@@ -19,9 +19,7 @@ export async function getProducts(): Promise<Product[]> {
 }
 
 /** Return a single product by its URL handle, or `null` if not found. */
-export async function getProduct(
-  handle: string,
-): Promise<Product | null> {
+export async function getProduct(handle: string): Promise<Product | null> {
   await delay();
   return products.find((p) => p.handle === handle) ?? null;
 }
@@ -37,21 +35,12 @@ export async function getProduct(
 export async function searchProducts(query: string): Promise<Product[]> {
   await delay();
 
-  const terms = query
-    .toLowerCase()
-    .split(/\s+/)
-    .filter(Boolean);
+  const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
 
   if (terms.length === 0) return [];
 
   return products.filter((p) => {
-    const haystack = [
-      p.title,
-      p.description,
-      ...p.tags,
-    ]
-      .join(' ')
-      .toLowerCase();
+    const haystack = [p.title, p.description, ...p.tags].join(' ').toLowerCase();
 
     return terms.some((t) => haystack.includes(t));
   });

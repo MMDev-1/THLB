@@ -4,14 +4,8 @@
     "handle": "classic-hoodie",
     "title": "The Classic Hoodie",
     "description": "Our signature oversized wearable blanket hoodie. Ultra-soft Sherpa fleece lining keeps you warm all winter.",
-    "collections": [
-      "adult-hoodies"
-    ],
-    "tags": [
-      "bestseller",
-      "hoodie",
-      "oversized"
-    ],
+    "collections": ["adult-hoodies"],
+    "tags": ["bestseller", "hoodie", "oversized"],
     "variants": [
       {
         "id": "id_1001",
@@ -1756,13 +1750,8 @@
     "handle": "zip-up-hoodie",
     "title": "The Zip-Up Hoodie",
     "description": "Full-zip wearable blanket with deep kangaroo pocket. Easy on, easy off.",
-    "collections": [
-      "adult-hoodies"
-    ],
-    "tags": [
-      "hoodie",
-      "zip-up"
-    ],
+    "collections": ["adult-hoodies"],
+    "tags": ["hoodie", "zip-up"],
     "variants": [
       {
         "id": "id_1050",
@@ -3075,14 +3064,8 @@
     "handle": "lightweight-hoodie",
     "title": "The Lightweight Hoodie",
     "description": "A thinner, year-round version of our classic. Perfect for cool summer evenings.",
-    "collections": [
-      "adult-hoodies"
-    ],
-    "tags": [
-      "hoodie",
-      "lightweight",
-      "summer"
-    ],
+    "collections": ["adult-hoodies"],
+    "tags": ["hoodie", "lightweight", "summer"],
     "variants": [
       {
         "id": "id_1087",
@@ -4179,14 +4162,8 @@
     "handle": "fleece-lined-hoodie",
     "title": "The Fleece-Lined Hoodie",
     "description": "Double-layer fleece for the coldest days. Rated for sub-zero comfort.",
-    "collections": [
-      "adult-hoodies"
-    ],
-    "tags": [
-      "hoodie",
-      "winter",
-      "fleece"
-    ],
+    "collections": ["adult-hoodies"],
+    "tags": ["hoodie", "winter", "fleece"],
     "variants": [
       {
         "id": "id_1118",
@@ -5499,14 +5476,8 @@
     "handle": "oversized-hoodie",
     "title": "The Oversized Hoodie",
     "description": "Extra-long and extra-cozy. Falls past your knees for maximum blanket coverage.",
-    "collections": [
-      "adult-hoodies"
-    ],
-    "tags": [
-      "hoodie",
-      "oversized",
-      "cozy"
-    ],
+    "collections": ["adult-hoodies"],
+    "tags": ["hoodie", "oversized", "cozy"],
     "variants": [
       {
         "id": "id_1155",
@@ -7035,14 +7006,8 @@
     "handle": "hooded-poncho",
     "title": "The Hooded Poncho",
     "description": "Poncho-style wearable blanket with an oversized hood. Unique silhouette for lounging.",
-    "collections": [
-      "adult-hoodies"
-    ],
-    "tags": [
-      "poncho",
-      "hoodie",
-      "loungewear"
-    ],
+    "collections": ["adult-hoodies"],
+    "tags": ["poncho", "hoodie", "loungewear"],
     "variants": [
       {
         "id": "id_1198",
@@ -8139,14 +8104,8 @@
     "handle": "couples-hoodie",
     "title": "The Couples Hoodie",
     "description": "An oversized two-person hoodie for sharing warmth. Date night essential.",
-    "collections": [
-      "adult-hoodies"
-    ],
-    "tags": [
-      "couples",
-      "hoodie",
-      "gift"
-    ],
+    "collections": ["adult-hoodies"],
+    "tags": ["couples", "hoodie", "gift"],
     "variants": [
       {
         "id": "id_1229",
@@ -8739,14 +8698,8 @@
     "handle": "pocket-hoodie",
     "title": "The Giant-Pocket Hoodie",
     "description": "Features our biggest kangaroo pocket yet — fits a tablet, snacks, or your pet.",
-    "collections": [
-      "adult-hoodies"
-    ],
-    "tags": [
-      "hoodie",
-      "pocket",
-      "oversized"
-    ],
+    "collections": ["adult-hoodies"],
+    "tags": ["hoodie", "pocket", "oversized"],
     "variants": [
       {
         "id": "id_1246",
@@ -10059,14 +10012,8 @@
     "handle": "kids-classic-hoodie",
     "title": "Kids Classic Hoodie",
     "description": "The same cozy wearable blanket, sized for little ones. Sherpa fleece lining throughout.",
-    "collections": [
-      "kids"
-    ],
-    "tags": [
-      "kids",
-      "hoodie",
-      "cozy"
-    ],
+    "collections": ["kids"],
+    "tags": ["kids", "hoodie", "cozy"],
     "variants": [
       {
         "id": "id_1283",
@@ -11163,14 +11110,8 @@
     "handle": "kids-animal-hoodie",
     "title": "Kids Animal Hoodie",
     "description": "Wearable blanket with playful animal ears on the hood. Kids love it.",
-    "collections": [
-      "kids"
-    ],
-    "tags": [
-      "kids",
-      "hoodie",
-      "animal"
-    ],
+    "collections": ["kids"],
+    "tags": ["kids", "hoodie", "animal"],
     "variants": [
       {
         "id": "id_1314",
@@ -12087,14 +12028,8 @@
     "handle": "kids-glow-hoodie",
     "title": "Kids Glow Hoodie",
     "description": "Features glow-in-the-dark stitching on the front pocket. Fun for sleepovers.",
-    "collections": [
-      "kids"
-    ],
-    "tags": [
-      "kids",
-      "hoodie",
-      "glow"
-    ],
+    "collections": ["kids"],
+    "tags": ["kids", "hoodie", "glow"],
     "variants": [
       {
         "id": "id_1340",
@@ -12831,13 +12766,8 @@
     "handle": "kids-mini-poncho",
     "title": "Kids Mini Poncho",
     "description": "A poncho-style wearable blanket for the smallest members of the family.",
-    "collections": [
-      "kids"
-    ],
-    "tags": [
-      "kids",
-      "poncho"
-    ],
+    "collections": ["kids"],
+    "tags": ["kids", "poncho"],
     "variants": [
       {
         "id": "id_1361",
@@ -13574,14 +13504,8 @@
     "handle": "kids-zip-hoodie",
     "title": "Kids Zip-Up Hoodie",
     "description": "Easy zip-up design so kids can put it on themselves. No fuss, all cozy.",
-    "collections": [
-      "kids"
-    ],
-    "tags": [
-      "kids",
-      "hoodie",
-      "zip-up"
-    ],
+    "collections": ["kids"],
+    "tags": ["kids", "hoodie", "zip-up"],
     "variants": [
       {
         "id": "id_1382",
@@ -14498,14 +14422,8 @@
     "handle": "classic-slippers",
     "title": "The Classic Slippers",
     "description": "Plush Sherpa slippers that match your hoodie. Anti-slip sole for indoor and light outdoor wear.",
-    "collections": [
-      "slippers"
-    ],
-    "tags": [
-      "slippers",
-      "cozy",
-      "sherpa"
-    ],
+    "collections": ["slippers"],
+    "tags": ["slippers", "cozy", "sherpa"],
     "variants": [
       {
         "id": "id_1408",
@@ -15122,14 +15040,8 @@
     "handle": "heated-slippers",
     "title": "The Heated Slippers",
     "description": "USB-rechargeable heated insoles wrapped in Sherpa fleece. Warm feet guaranteed.",
-    "collections": [
-      "slippers"
-    ],
-    "tags": [
-      "slippers",
-      "heated",
-      "winter"
-    ],
+    "collections": ["slippers"],
+    "tags": ["slippers", "heated", "winter"],
     "variants": [
       {
         "id": "id_1429",
@@ -15722,15 +15634,8 @@
     "handle": "kids-slippers",
     "title": "Kids Slippers",
     "description": "Mini versions of our classic slippers with fun animal face details.",
-    "collections": [
-      "slippers",
-      "kids"
-    ],
-    "tags": [
-      "kids",
-      "slippers",
-      "cozy"
-    ],
+    "collections": ["slippers", "kids"],
+    "tags": ["kids", "slippers", "cozy"],
     "variants": [
       {
         "id": "id_1446",
@@ -16107,13 +16012,8 @@
     "handle": "slide-slippers",
     "title": "The Slide Slippers",
     "description": "Open-back Sherpa slides for quick trips around the house.",
-    "collections": [
-      "slippers"
-    ],
-    "tags": [
-      "slippers",
-      "slides"
-    ],
+    "collections": ["slippers"],
+    "tags": ["slippers", "slides"],
     "variants": [
       {
         "id": "id_1459",
@@ -16610,14 +16510,8 @@
     "handle": "hoodie-slipper-bundle",
     "title": "Hoodie + Slipper Bundle",
     "description": "Get the matching set: one classic hoodie and one pair of classic slippers at a bundled price.",
-    "collections": [
-      "bundles"
-    ],
-    "tags": [
-      "bundle",
-      "gift",
-      "value"
-    ],
+    "collections": ["bundles"],
+    "tags": ["bundle", "gift", "value"],
     "variants": [
       {
         "id": "id_1476",
@@ -17714,14 +17608,8 @@
     "handle": "family-bundle",
     "title": "The Family Bundle",
     "description": "Two adult hoodies and two kids hoodies. Outfit the whole family for movie night.",
-    "collections": [
-      "bundles"
-    ],
-    "tags": [
-      "bundle",
-      "family",
-      "gift"
-    ],
+    "collections": ["bundles"],
+    "tags": ["bundle", "family", "gift"],
     "variants": [
       {
         "id": "id_1507",
@@ -18602,14 +18490,8 @@
     "handle": "couples-bundle",
     "title": "The Couples Bundle",
     "description": "Two classic hoodies in complementary colours. Perfect for gifting or date nights.",
-    "collections": [
-      "bundles"
-    ],
-    "tags": [
-      "bundle",
-      "couples",
-      "gift"
-    ],
+    "collections": ["bundles"],
+    "tags": ["bundle", "couples", "gift"],
     "variants": [
       {
         "id": "id_1532",
@@ -19202,15 +19084,8 @@
     "handle": "kids-bundle",
     "title": "Kids Hoodie + Slipper Bundle",
     "description": "One kids hoodie and one pair of kids slippers. Everything they need for cozy time.",
-    "collections": [
-      "bundles",
-      "kids"
-    ],
-    "tags": [
-      "bundle",
-      "kids",
-      "value"
-    ],
+    "collections": ["bundles", "kids"],
+    "tags": ["bundle", "kids", "value"],
     "variants": [
       {
         "id": "id_1549",
@@ -19947,14 +19822,8 @@
     "handle": "sherpa-socks",
     "title": "Sherpa-Lined Socks",
     "description": "Thick knit socks with Sherpa lining. Pairs perfectly with our slippers or on their own.",
-    "collections": [
-      "accessories"
-    ],
-    "tags": [
-      "socks",
-      "accessories",
-      "cozy"
-    ],
+    "collections": ["accessories"],
+    "tags": ["socks", "accessories", "cozy"],
     "variants": [
       {
         "id": "id_1570",
@@ -20091,14 +19960,8 @@
     "handle": "hoodie-pillow",
     "title": "The Hoodie Pillow",
     "description": "A matching throw pillow in the same Sherpa fleece. For the couch, bed, or road trip.",
-    "collections": [
-      "accessories"
-    ],
-    "tags": [
-      "pillow",
-      "accessories",
-      "home"
-    ],
+    "collections": ["accessories"],
+    "tags": ["pillow", "accessories", "home"],
     "variants": [
       {
         "id": "id_1575",
@@ -20235,14 +20098,8 @@
     "handle": "sherpa-blanket",
     "title": "The Sherpa Blanket",
     "description": "Full-size Sherpa fleece throw blanket. Same ultra-soft material as our hoodies.",
-    "collections": [
-      "accessories"
-    ],
-    "tags": [
-      "blanket",
-      "accessories",
-      "home"
-    ],
+    "collections": ["accessories"],
+    "tags": ["blanket", "accessories", "home"],
     "variants": [
       {
         "id": "id_1580",
@@ -20439,14 +20296,8 @@
     "handle": "eye-mask",
     "title": "Sherpa Sleep Mask",
     "description": "Soft Sherpa-lined sleep mask that blocks out all light. Travel or home.",
-    "collections": [
-      "accessories"
-    ],
-    "tags": [
-      "sleep",
-      "accessories",
-      "travel"
-    ],
+    "collections": ["accessories"],
+    "tags": ["sleep", "accessories", "travel"],
     "variants": [
       {
         "id": "id_1586",
@@ -20583,13 +20434,8 @@
     "handle": "gift-card",
     "title": "The Hoodie LB Gift Card",
     "description": "Give the gift of coziness. Digital gift card delivered by email.",
-    "collections": [
-      "accessories"
-    ],
-    "tags": [
-      "gift-card",
-      "gift"
-    ],
+    "collections": ["accessories"],
+    "tags": ["gift-card", "gift"],
     "variants": [
       {
         "id": "id_1591",
