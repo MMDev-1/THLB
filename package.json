@@ -14,7 +14,8 @@
     "prepare": "husky",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "validate:data": "tsx scripts/validate-data.ts"
+    "validate:data": "tsx scripts/validate-data.ts",
+    "check:routes": "node scripts/check-routes.mjs"
   },
   "lint-staged": {
     "*.{ts,tsx}": [

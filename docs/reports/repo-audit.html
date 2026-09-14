@@ -1,0 +1,871 @@
+<title>Hoodie LB Repo Audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"
+/>
+<style>
+  /* Palette drawn from the project's own "Warm & Cozy" tokens (app/globals.css) */
+  :root {
+    --ground: #faf7f2;
+    --surface: #ffffff;
+    --sunken: #f4ede2;
+    --line: #ece0cf;
+    --line-strong: #dfcdb3;
+    --ink: #1a1a1a;
+    --ink-2: #4f4f4f;
+    --muted: #6d6d6d;
+    --ember: #c75b2a;
+    --ember-ink: #ac3c1e;
+    --ember-wash: #fdf5ef;
+    --ember-edge: #f4ccb1;
+    --sage-ink: #4e5d44;
+    --sage-wash: #f4f6f2;
+    --sage-edge: #ccd4c5;
+    --sand-ink: #9b6338;
+    --sand-wash: #fdf8f3;
+    --sand-edge: #f2dcc5;
+    --link: #ac3c1e;
+
+    --font-sans: 'Geist', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --font-mono:
+      'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+
+    --t-xs: 0.78rem;
+    --t-sm: 0.875rem;
+    --t-base: 1rem;
+    --t-lg: 1.25rem;
+    --t-xl: 1.75rem;
+    --t-2xl: 2.375rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+      --ground: #1b1815;
+      --surface: #24201c;
+      --sunken: #2c2722;
+      --line: #3a332c;
+      --line-strong: #4a4138;
+      --ink: #f4ede2;
+      --ink-2: #d2c7b8;
+      --muted: #a69d91;
+      --ember: #e5824d;
+      --ember-ink: #eeab80;
+      --ember-wash: #33201a;
+      --ember-edge: #5a2e20;
+      --sage-ink: #a9b59f;
+      --sage-wash: #1f241c;
+      --sage-edge: #3f4a37;
+      --sand-ink: #e8c49e;
+      --sand-wash: #2b2219;
+      --sand-edge: #5a4530;
+      --link: #eeab80;
+    }
+  }
+
+  :root[data-theme='dark'] {
+    --ground: #1b1815;
+    --surface: #24201c;
+    --sunken: #2c2722;
+    --line: #3a332c;
+    --line-strong: #4a4138;
+    --ink: #f4ede2;
+    --ink-2: #d2c7b8;
+    --muted: #a69d91;
+    --ember: #e5824d;
+    --ember-ink: #eeab80;
+    --ember-wash: #33201a;
+    --ember-edge: #5a2e20;
+    --sage-ink: #a9b59f;
+    --sage-wash: #1f241c;
+    --sage-edge: #3f4a37;
+    --sand-ink: #e8c49e;
+    --sand-wash: #2b2219;
+    --sand-edge: #5a4530;
+    --link: #eeab80;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: var(--t-base);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 58rem;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+    display: grid;
+    gap: 3rem;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+
+  code,
+  .mono {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+  }
+
+  code {
+    background: var(--sunken);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.05em 0.35em;
+    white-space: nowrap;
+  }
+
+  a {
+    color: var(--link);
+    text-underline-offset: 3px;
+  }
+  a:hover {
+    text-decoration-thickness: 2px;
+  }
+  a:focus-visible {
+    outline: 2px solid var(--ember);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--t-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  h1 {
+    font-size: var(--t-2xl);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.25rem;
+    font-family: var(--font-mono);
+    font-size: var(--t-sm);
+    color: var(--ink-2);
+  }
+
+  .meta span {
+    display: inline-flex;
+    gap: 0.4rem;
+  }
+  .meta b {
+    font-weight: 500;
+    color: var(--muted);
+  }
+
+  .verdict {
+    font-size: var(--t-lg);
+    line-height: 1.45;
+    max-width: 44rem;
+    color: var(--ink);
+  }
+
+  /* ---------- Sections ---------- */
+  section {
+    display: grid;
+    gap: 1.1rem;
+  }
+
+  .section-head {
+    display: grid;
+    gap: 0.3rem;
+  }
+
+  h2 {
+    font-size: var(--t-xl);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+  }
+
+  .section-head p {
+    color: var(--muted);
+    max-width: 42rem;
+  }
+
+  /* ---------- Status chips ---------- */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-mono);
+    font-size: var(--t-xs);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.18rem 0.5rem;
+    border-radius: 999px;
+    border: 1px solid;
+    white-space: nowrap;
+  }
+
+  .chip::before {
+    content: '';
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .chip.pass {
+    color: var(--sage-ink);
+    background: var(--sage-wash);
+    border-color: var(--sage-edge);
+  }
+  .chip.warn {
+    color: var(--sand-ink);
+    background: var(--sand-wash);
+    border-color: var(--sand-edge);
+  }
+  .chip.fail {
+    color: var(--ember-ink);
+    background: var(--ember-wash);
+    border-color: var(--ember-edge);
+  }
+  .chip.fail::before {
+    border-radius: 1px;
+    transform: rotate(45deg);
+  }
+  .chip.warn::before {
+    border-radius: 0;
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  }
+  .chip.neutral {
+    color: var(--ink-2);
+    background: var(--sunken);
+    border-color: var(--line-strong);
+  }
+  .chip.neutral::before {
+    background: transparent;
+    border: 1.5px solid currentColor;
+  }
+
+  /* ---------- Acceptance checks ---------- */
+  .checks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--surface);
+    overflow: hidden;
+  }
+
+  .check {
+    display: grid;
+    grid-template-rows: auto auto auto 1fr;
+    gap: 0.6rem;
+    padding: 1.25rem 1.25rem 1.35rem;
+    border-right: 1px solid var(--line);
+  }
+
+  .check:last-child {
+    border-right: 0;
+  }
+
+  .check .criterion {
+    font-weight: 500;
+    line-height: 1.35;
+  }
+
+  .figure {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: var(--t-xl);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .figure small {
+    font-size: var(--t-sm);
+    color: var(--muted);
+    letter-spacing: 0;
+    margin-left: 0.3rem;
+  }
+  .check .detail {
+    color: var(--ink-2);
+    font-size: var(--t-sm);
+  }
+
+  /* ---------- Owner actions ---------- */
+  .owner {
+    background: var(--ember-wash);
+    border: 1px solid var(--ember-edge);
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .owner h2 {
+    font-size: var(--t-lg);
+  }
+  .owner .section-head p {
+    color: var(--ink-2);
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    gap: 1.25rem 2rem;
+  }
+
+  .action {
+    display: grid;
+    gap: 0.5rem;
+    align-content: start;
+  }
+  .action h3 {
+    font-size: var(--t-base);
+    font-weight: 600;
+  }
+  .action p {
+    color: var(--ink-2);
+    font-size: var(--t-sm);
+  }
+
+  .path {
+    font-family: var(--font-mono);
+    font-size: var(--t-sm);
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--ember-edge);
+    border-radius: 6px;
+    padding: 0.5rem 0.7rem;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  /* ---------- Tables ---------- */
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--surface);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--t-sm);
+  }
+
+  th {
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: var(--t-xs);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--sunken);
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    color: var(--ink-2);
+  }
+
+  tr:last-child td {
+    border-bottom: 0;
+  }
+  td:first-child {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  td.status {
+    white-space: nowrap;
+  }
+  td.num {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  /* ---------- Still to do ---------- */
+  .followup {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.35rem 1rem;
+    align-items: baseline;
+    padding: 1rem 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .followup .body {
+    display: grid;
+    gap: 0.3rem;
+  }
+  .followup .title {
+    font-weight: 600;
+    font-size: var(--t-sm);
+    color: var(--ink);
+  }
+  .followup .what {
+    color: var(--ink-2);
+    font-size: var(--t-sm);
+  }
+  .followup .dep {
+    color: var(--muted);
+    font-size: var(--t-xs);
+    font-family: var(--font-mono);
+  }
+
+  /* ---------- Findings ---------- */
+  .findings {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .finding {
+    display: grid;
+    grid-template-columns: minmax(10rem, 14rem) minmax(0, 1fr);
+    gap: 0.5rem 1.5rem;
+    padding: 0.95rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .finding h3 {
+    font-size: var(--t-sm);
+    font-weight: 600;
+    line-height: 1.45;
+  }
+  .finding p {
+    font-size: var(--t-sm);
+    color: var(--ink-2);
+    max-width: 40rem;
+  }
+
+  footer {
+    font-size: var(--t-xs);
+    color: var(--muted);
+    font-family: var(--font-mono);
+    line-height: 1.7;
+    border-top: 1px solid var(--line);
+    padding-top: 1.25rem;
+  }
+
+  @media (max-width: 40rem) {
+    .page {
+      padding: 2rem 1rem 3rem;
+      gap: 2.5rem;
+    }
+    .check {
+      border-right: 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .check:last-child {
+      border-bottom: 0;
+    }
+    .finding {
+      grid-template-columns: 1fr;
+    }
+    .followup {
+      grid-template-columns: 1fr;
+    }
+    .followup .chip {
+      justify-self: start;
+    }
+  }
+</style>
+
+<main class="page">
+  <header>
+    <div class="eyebrow">Task T1-S1 · Bootstrap &amp; tooling · Setup audit</div>
+    <h1>Hoodie LB Repo Audit</h1>
+    <div class="meta">
+      <span><b>repo</b> <a href="https://github.com/MMDev-1/THLB">MMDev-1/THLB</a></span>
+      <span><b>main</b> 98ea500</span>
+      <span><b>updated</b> 14 Sep 2026</span>
+    </div>
+    <p class="verdict">
+      The code meets the T1-S1 spec: on <code>main</code> it passes lint, build, format check and
+      data validation, and every pull request is now checked automatically on GitHub. Two platform
+      settings were never switched on — Vercel previews and protection for <code>main</code> — and
+      both need the repo owner.
+    </p>
+  </header>
+
+  <section aria-labelledby="acceptance">
+    <div class="section-head">
+      <h2 id="acceptance">Acceptance checks</h2>
+      <p>
+        Measured on a fresh clone of <code>main</code> at <code>add0ebe</code>, on Windows with a
+        warm npm cache.
+      </p>
+    </div>
+    <div class="checks">
+      <div class="check">
+        <span class="chip warn">Just over</span>
+        <p class="criterion">
+          Fresh clone → <code>npm i &amp;&amp; npm run dev</code> in under 2 minutes
+        </p>
+        <p class="figure">127<small>s</small></p>
+        <p class="detail">
+          <span class="mono">npm i</span> 75 s (544 packages) + first page served 51 s. Storybook
+          added ~260 packages to the install.
+        </p>
+      </div>
+      <div class="check">
+        <span class="chip fail">Not set up</span>
+        <p class="criterion">PR opens → Vercel preview comment appears</p>
+        <p class="figure">0<small>deployments</small></p>
+        <p class="detail">
+          No Vercel status, check or comment on any PR, and no GitHub deployments or environments on
+          the repo.
+        </p>
+      </div>
+      <div class="check">
+        <span class="chip pass">Passes</span>
+        <p class="criterion">Lint fails the commit on error</p>
+        <p class="figure">blocked</p>
+        <p class="detail">
+          A staged <span class="mono">react-hooks/rules-of-hooks</span> error stopped the commit:
+          <span class="mono">husky - pre-commit script failed (code 1)</span>. Live since PR #6.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="owner" aria-labelledby="owner">
+    <div class="section-head">
+      <h2 id="owner">Needs the repo owner</h2>
+      <p>
+        THLB lives on the personal account <span class="mono">MMDev-1</span>. Collaborators can push
+        and merge, but only the account owner can let Vercel see the repo or change its branch rules
+        — so both steps have to happen from that account.
+      </p>
+    </div>
+    <div class="actions">
+      <div class="action">
+        <h3>Connect Vercel for PR previews</h3>
+        <div class="path">
+          vercel.com → sign in with GitHub as MMDev-1 → Add New → Project → Import THLB → Deploy
+        </div>
+        <p>
+          If THLB isn't listed, choose <span class="mono">Adjust GitHub App Permissions</span> and
+          allow it. From then on every PR, from any collaborator, gets a preview URL comment.
+        </p>
+      </div>
+      <div class="action">
+        <h3>Protect <code>main</code></h3>
+        <div class="path">
+          Settings → Branches → Add rule → main → Require a pull request before merging
+        </div>
+        <p>
+          GitHub currently reports <span class="mono">protected: false</span>, and one commit
+          already went straight to <code>main</code>. Requiring approvals too means someone other
+          than the author must approve each PR.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="spec">
+    <div class="section-head">
+      <h2 id="spec">T1-S1 requirements</h2>
+      <p>Each item from the task, checked against what is on <code>main</code> today.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Requirement</th>
+            <th>Status</th>
+            <th>Evidence</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Next.js app with TypeScript, Tailwind, App Router, ESLint</td>
+            <td class="status"><span class="chip pass">Done</span></td>
+            <td>
+              Next 16.3.4, React 19.2.8, TypeScript 5, Tailwind 4 via
+              <code>@tailwindcss/postcss</code>
+            </td>
+          </tr>
+          <tr>
+            <td>Prettier</td>
+            <td class="status"><span class="chip pass">Done</span></td>
+            <td>
+              <code>.prettierrc.json</code>, <code>format</code> and
+              <code>format:check</code> scripts. Every file formatted and stored with LF in #10;
+              <code>format:check</code> passes on a fresh Windows clone.
+            </td>
+          </tr>
+          <tr>
+            <td>eslint-config-next + import-order rules</td>
+            <td class="status"><span class="chip pass">Done</span></td>
+            <td>
+              Ordering enforced by <code>simple-import-sort</code>. The unused direct
+              <code>eslint-plugin-import</code> dependency was removed in #8.
+            </td>
+          </tr>
+          <tr>
+            <td>Husky + lint-staged pre-commit</td>
+            <td class="status"><span class="chip pass">Done</span></td>
+            <td>
+              Hook was missing until PR #6; since #13 it also validates <code>data/</code> when data
+              files change. GitHub Actions re-checks every PR (#11).
+            </td>
+          </tr>
+          <tr>
+            <td>Folder structure</td>
+            <td class="status"><span class="chip pass">Done</span></td>
+            <td>All 11 required folders present, plus <code>components/icons</code></td>
+          </tr>
+          <tr>
+            <td>Path aliases <code>@/…</code></td>
+            <td class="status"><span class="chip pass">Done</span></td>
+            <td><code>"@/*": ["./*"]</code> in tsconfig, used by 35 files</td>
+          </tr>
+          <tr>
+            <td>GitHub connected to Vercel, preview per PR</td>
+            <td class="status"><span class="chip fail">Missing</span></td>
+            <td>Never connected — see owner actions</td>
+          </tr>
+          <tr>
+            <td>README: setup, scripts, branching rule</td>
+            <td class="status"><span class="chip warn">Partly</span></td>
+            <td>
+              Clone URL and folder tree fixed in #9. Still says <code>main</code> is protected and
+              Vercel previews run — true once the owner acts.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="shipped">
+    <div class="section-head">
+      <h2 id="shipped">Merged on 14 September</h2>
+      <p>Fifteen pull requests, each on its own branch. All branches are kept as a record.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>PR</th>
+            <th>Branch</th>
+            <th>What changed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="num"><a href="https://github.com/MMDev-1/THLB/pull/1">#1</a></td>
+            <td class="mono">fix/readme-format-check</td>
+            <td>README scripts table realigned so Prettier accepts it</td>
+          </tr>
+          <tr>
+            <td class="num"><a href="https://github.com/MMDev-1/THLB/pull/2">#2</a></td>
+            <td class="mono">fix/add-zod-dependency</td>
+            <td>
+              Zod declared as a dependency — it was only installed by accident through an ESLint
+              plugin
+            </td>
+          </tr>
+          <tr>
+            <td class="num"><a href="https://github.com/MMDev-1/THLB/pull/3">#3</a></td>
+            <td class="mono">T1-S3/merge-ui-library</td>
+            <td>
+              The 18 UI components reached <code>main</code> for the first time; incompatible
+              Storybook 8 add-ons dropped
+            </td>
+          </tr>
+          <tr>
+            <td class="num"><a href="https://github.com/MMDev-1/THLB/pull/4">#4</a></td>
+            <td class="mono">T1-S3/storybook-setup</td>
+            <td>Storybook 10 config — <code>npm run storybook</code> works, 52 stories build</td>
+          </tr>
+          <tr>
+            <td class="num"><a href="https://github.com/MMDev-1/THLB/pull/5">#5</a></td>
+            <td class="mono">fix/lint-errors</td>
+            <td>
+              3 lint errors and 1 warning fixed in AnnouncementBar, MobileNav and ValueProps;
+              Storybook output ignored by ESLint
+            </td>
+          </tr>
+          <tr>
+            <td class="num"><a href="https://github.com/MMDev-1/THLB/pull/6">#6</a></td>
+            <td class="mono">fix/husky-pre-commit</td>
+            <td>Pre-commit hook added; lint errors now block commits</td>
+          </tr>
+          <tr>
+            <td class="num"><a href="https://github.com/MMDev-1/THLB/pull/7">#7</a></td>
+            <td class="mono">fix/validate-data-script</td>
+            <td>
+              <code>npm run validate:data</code> added; its first run caught a navigation schema
+              still describing the old mega-menu shape, now fixed — all 6 data files pass
+            </td>
+          </tr>
+          <tr>
+            <td class="num"><a href="https://github.com/MMDev-1/THLB/pull/8">#8</a></td>
+            <td class="mono">fix/remove-unused-eslint-plugin-import</td>
+            <td>Unused direct dependency removed; lint unchanged at 0 errors</td>
+          </tr>
+          <tr>
+            <td class="num"><a href="https://github.com/MMDev-1/THLB/pull/9">#9</a></td>
+            <td class="mono">docs/readme-fixes</td>
+            <td>
+              Real clone URL — cloning creates <code>THLB/</code>, so the old
+              <code>cd thehoodielb</code> failed — and the missing folders in the tree
+            </td>
+          </tr>
+          <tr>
+            <td class="num"><a href="https://github.com/MMDev-1/THLB/pull/10">#10</a></td>
+            <td class="mono">fix/format-all-files</td>
+            <td>
+              Prettier across the 46 unformatted files, plus <code>* text=auto eol=lf</code> — a
+              fresh Windows clone went from most files in CRLF to 0, and
+              <code>format:check</code> passes
+            </td>
+          </tr>
+          <tr>
+            <td class="num"><a href="https://github.com/MMDev-1/THLB/pull/11">#11</a></td>
+            <td class="mono">ci/github-actions</td>
+            <td>
+              GitHub Actions checks every PR: lint, format, data validation, site and Storybook
+              builds
+            </td>
+          </tr>
+          <tr>
+            <td class="num"><a href="https://github.com/MMDev-1/THLB/pull/12">#12</a></td>
+            <td class="mono">fix/schema-type-sync</td>
+            <td>
+              The build fails if a Zod schema and its TypeScript type drift apart (14 pairs checked)
+            </td>
+          </tr>
+          <tr>
+            <td class="num"><a href="https://github.com/MMDev-1/THLB/pull/13">#13</a></td>
+            <td class="mono">fix/validate-data-on-commit</td>
+            <td>Commits that change <code>data/</code> run data validation first</td>
+          </tr>
+          <tr>
+            <td class="num"><a href="https://github.com/MMDev-1/THLB/pull/14">#14</a></td>
+            <td class="mono">fix/hide-dev-tokens-in-production</td>
+            <td>
+              <code>/dev/tokens</code> returns a 404 on the live site and still works in development
+            </td>
+          </tr>
+          <tr>
+            <td class="num"><a href="https://github.com/MMDev-1/THLB/pull/15">#15</a></td>
+            <td class="mono">docs/update-project-guide</td>
+            <td>
+              Project guide’s branch table corrected; its workflow now merges through PRs on GitHub
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="todo">
+    <div class="section-head">
+      <h2 id="todo">Still to do</h2>
+      <p>Nothing is left in the code. One follow-up waits on the owner's changes.</p>
+    </div>
+    <div class="followup">
+      <div class="body">
+        <span class="title">Confirm the README's branching section</span>
+        <span class="what"
+          >Once Vercel is connected and <code>main</code> is protected, check that "main is
+          protected" and "Vercel deploys a preview URL on every PR" match the real settings.</span
+        >
+        <span class="dep">waits on the two owner actions above</span>
+      </div>
+      <span class="chip neutral">Waiting</span>
+    </div>
+  </section>
+
+  <section aria-labelledby="findings">
+    <div class="section-head">
+      <h2 id="findings">Other findings</h2>
+    </div>
+    <div class="findings">
+      <div class="finding">
+        <h3>Run npm install after pulling package changes</h3>
+        <p>
+          PR #7 added <code>tsx</code>. A working copy last installed before it has no
+          <code>tsx</code>, so <code>npm run validate:data</code> fails until
+          <code>npm install</code> runs. The same applies to any PR that changes
+          <code>package.json</code>.
+        </p>
+      </div>
+      <div class="finding">
+        <h3>Hamburger fix from Cowork holds</h3>
+        <p>
+          The <code>display: none !important</code> rule in <code>globals.css</code> works: the menu
+          button is hidden at 1280 px and shown at 1000 px and 375 px, with the desktop nav doing
+          the opposite.
+        </p>
+      </div>
+      <div class="finding">
+        <h3>Automatic checks are live</h3>
+        <p>
+          GitHub Actions ran on PRs #11–#15 and passed every time, on Linux. Four runs on
+          <code>main</code> show as cancelled because the merges landed seconds apart and each newer
+          run replaces the older one; the final run on <code>main</code> passed.
+        </p>
+      </div>
+      <div class="finding">
+        <h3>Two branches look unmerged, but aren't missing anything</h3>
+        <p>
+          <code>T2-S4/mobile-nav-drawer</code> reached <code>main</code> through other commits.
+          <code>T1-S4/types-data-api-validation</code> holds older versions of files
+          <code>main</code> has since improved — merging it would undo work.
+        </p>
+      </div>
+      <div class="finding">
+        <h3>Stray AGENTS.md and CLAUDE.md</h3>
+        <p>
+          <code>next dev</code> writes these only when it detects an AI coding tool. They appeared
+          in the audit clone, never in the working repo. Nothing to do.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Sources: git history and branches · fresh clones of main at add0ebe and of fix/format-all-files
+    at 8496ca7 (merged as #10) · checks on main at 98ea500 · GitHub Actions runs for PRs #11–#15 ·
+    GitHub REST API (branch, PR statuses, deployments, repo owner) · browser checks at 375, 1000 and
+    1280 px against localhost:3000.
+  </footer>
+</main>

@@ -1,0 +1,1891 @@
+<title>Learn to Build The Hoodie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"
+/>
+<style id="app-style">
+  /* Palette from The Hoodie LB's own "Warm & Cozy" tokens (app/globals.css) */
+  :root {
+    color-scheme: light;
+    --ground: #faf7f2;
+    --surface: #ffffff;
+    --sunken: #f4ede2;
+    --line: #ece0cf;
+    --line-strong: #dfcdb3;
+    --ink: #1a1a1a;
+    --ink-2: #4f4f4f;
+    --muted: #6d6d6d;
+    --ember: #c75b2a;
+    --ember-ink: #ac3c1e;
+    --ember-wash: #fdf5ef;
+    --ember-edge: #f4ccb1;
+    --sage: #637456;
+    --sage-ink: #4e5d44;
+    --sage-wash: #f4f6f2;
+    --sage-edge: #ccd4c5;
+    --sand-ink: #9b6338;
+    --sand-wash: #fdf8f3;
+    --sand-edge: #f2dcc5;
+    --font-sans: 'Geist', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+      color-scheme: dark;
+      --ground: #1b1815;
+      --surface: #24201c;
+      --sunken: #2c2722;
+      --line: #3a332c;
+      --line-strong: #4a4138;
+      --ink: #f4ede2;
+      --ink-2: #d2c7b8;
+      --muted: #a69d91;
+      --ember: #e5824d;
+      --ember-ink: #eeab80;
+      --ember-wash: #33201a;
+      --ember-edge: #5a2e20;
+      --sage: #a9b59f;
+      --sage-ink: #a9b59f;
+      --sage-wash: #1f241c;
+      --sage-edge: #3f4a37;
+      --sand-ink: #e8c49e;
+      --sand-wash: #2b2219;
+      --sand-edge: #5a4530;
+    }
+  }
+  :root[data-theme='dark'] {
+    color-scheme: dark;
+    --ground: #1b1815;
+    --surface: #24201c;
+    --sunken: #2c2722;
+    --line: #3a332c;
+    --line-strong: #4a4138;
+    --ink: #f4ede2;
+    --ink-2: #d2c7b8;
+    --muted: #a69d91;
+    --ember: #e5824d;
+    --ember-ink: #eeab80;
+    --ember-wash: #33201a;
+    --ember-edge: #5a2e20;
+    --sage: #a9b59f;
+    --sage-ink: #a9b59f;
+    --sage-wash: #1f241c;
+    --sage-edge: #3f4a37;
+    --sand-ink: #e8c49e;
+    --sand-wash: #2b2219;
+    --sand-edge: #5a4530;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+  [hidden] {
+    display: none !important;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    * {
+      transition: none !important;
+    }
+  }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    text-wrap: balance;
+  }
+  p {
+    margin: 0;
+  }
+  a {
+    color: var(--ember-ink);
+    text-underline-offset: 3px;
+  }
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid var(--ember);
+    outline-offset: 2px;
+  }
+  code,
+  .mono {
+    font-family: var(--font-mono);
+    font-size: 0.86em;
+  }
+  code {
+    background: var(--sunken);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.04em 0.32em;
+    overflow-wrap: anywhere;
+  }
+
+  .page {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 2.75rem 1.5rem 4rem;
+    display: grid;
+    gap: 2.75rem;
+  }
+
+  /* ---------- Header ---------- */
+  .top {
+    display: grid;
+    gap: 1rem;
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .top h1 {
+    font-size: clamp(2rem, 1.4rem + 2.4vw, 2.75rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+  .lede {
+    font-size: 1.15rem;
+    color: var(--ink-2);
+    max-width: 44rem;
+  }
+  .progress {
+    display: grid;
+    gap: 0.5rem;
+    max-width: 36rem;
+  }
+  .progress-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .progress-count {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 0.95rem;
+  }
+  .progress-count b {
+    font-size: 1.35rem;
+    font-weight: 500;
+  }
+  .bar {
+    height: 10px;
+    border-radius: 999px;
+    background: var(--sunken);
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .bar > span {
+    display: block;
+    height: 100%;
+    background: var(--sage);
+    border-radius: 999px;
+    transition: width 300ms ease;
+  }
+  .status {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .status::before {
+    content: '';
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--line-strong);
+  }
+  .status[data-state='saved']::before {
+    background: var(--sage);
+  }
+  .status[data-state='saving']::before {
+    background: var(--ember);
+  }
+  .status[data-state='error']::before {
+    background: var(--ember-ink);
+    border-radius: 1px;
+  }
+
+  /* ---------- Up next ---------- */
+  .next {
+    background: var(--ember-wash);
+    border: 1px solid var(--ember-edge);
+    border-radius: 12px;
+    padding: 1.25rem 1.4rem;
+    display: grid;
+    gap: 0.6rem;
+  }
+  .next h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .next .task {
+    color: var(--ink-2);
+  }
+  .next-actions {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-top: 0.2rem;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 0.45rem 0.9rem;
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  .btn:hover {
+    border-color: var(--ink-2);
+  }
+  .btn.primary {
+    background: var(--ember);
+    border-color: var(--ember);
+    color: #fff;
+  }
+  .btn.primary:hover {
+    filter: brightness(1.06);
+  }
+  .btn.small {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.6rem;
+  }
+  .btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  /* ---------- Sections ---------- */
+  section.block {
+    display: grid;
+    gap: 1rem;
+  }
+  .block-head {
+    display: grid;
+    gap: 0.3rem;
+  }
+  .block-head h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .block-head p {
+    color: var(--muted);
+    max-width: 44rem;
+  }
+
+  /* ---------- Phase navigator ---------- */
+  .phase-nav {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+  }
+  .phase-nav a {
+    flex: 0 0 auto;
+    display: grid;
+    gap: 0.3rem;
+    min-width: 8.5rem;
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 0.6rem 0.75rem;
+  }
+  .phase-nav a:hover {
+    border-color: var(--line-strong);
+  }
+  .phase-nav .n {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+  .phase-nav .t {
+    font-size: 0.85rem;
+    font-weight: 500;
+    line-height: 1.25;
+  }
+  .phase-nav .bar {
+    height: 5px;
+  }
+
+  /* ---------- Phases ---------- */
+  .phase {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 1.5rem;
+    display: grid;
+    gap: 1.1rem;
+    scroll-margin-top: 1rem;
+  }
+  .phase-head {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 0.25rem 1rem;
+    align-items: baseline;
+  }
+  .phase-num {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .phase-head h3 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+  .phase-meta {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .phase-goal {
+    color: var(--ink-2);
+    max-width: 46rem;
+  }
+  .phase.complete {
+    border-color: var(--sage-edge);
+  }
+  .phase.complete .phase-meta {
+    color: var(--sage-ink);
+  }
+
+  .lessons {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    border-top: 1px solid var(--line);
+  }
+  .lesson {
+    display: grid;
+    grid-template-columns: 1.6rem minmax(0, 1fr) auto;
+    gap: 0.2rem 0.75rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+  .lesson input {
+    width: 1.15rem;
+    height: 1.15rem;
+    margin: 0.2rem 0 0;
+    accent-color: var(--sage);
+    cursor: pointer;
+  }
+  .lesson label {
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .lesson .why {
+    color: var(--ink-2);
+    font-size: 0.93rem;
+  }
+  .lesson .do {
+    font-size: 0.9rem;
+    color: var(--ink-2);
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+  }
+  .lesson .do b {
+    flex: 0 0 auto;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--sand-ink);
+    background: var(--sand-wash);
+    border: 1px solid var(--sand-edge);
+    border-radius: 999px;
+    padding: 0.05rem 0.45rem;
+  }
+  .lesson .body {
+    display: grid;
+    gap: 0.3rem;
+  }
+  .lesson.done label {
+    color: var(--muted);
+    text-decoration: line-through;
+    text-decoration-color: var(--line-strong);
+  }
+  .lesson .explain {
+    align-self: center;
+  }
+
+  .phase-foot {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1rem 1.5rem;
+  }
+  .mini-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.35rem;
+  }
+  .resources {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.3rem;
+    font-size: 0.92rem;
+  }
+  .checkpoint {
+    background: var(--sage-wash);
+    border: 1px solid var(--sage-edge);
+    border-radius: 10px;
+    padding: 0.8rem 0.95rem;
+    font-size: 0.93rem;
+  }
+  .checkpoint .mini-label {
+    color: var(--sage-ink);
+  }
+  .notes {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .notes textarea {
+    width: 100%;
+    min-height: 5.5rem;
+    resize: vertical;
+    font: inherit;
+    font-size: 0.93rem;
+    line-height: 1.5;
+    color: var(--ink);
+    background: var(--ground);
+    border: 1px solid var(--line-strong);
+    border-radius: 8px;
+    padding: 0.6rem 0.7rem;
+  }
+  .notes-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .notes-row .hint {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* ---------- Tutor ---------- */
+  .tutor {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 1.4rem;
+    display: grid;
+    gap: 0.9rem;
+  }
+  .tutor-controls {
+    display: grid;
+    gap: 0.6rem;
+  }
+  .tutor select,
+  .tutor textarea {
+    font: inherit;
+    font-size: 0.93rem;
+    color: var(--ink);
+    background: var(--ground);
+    border: 1px solid var(--line-strong);
+    border-radius: 8px;
+    padding: 0.5rem 0.65rem;
+    width: 100%;
+  }
+  .tutor textarea {
+    min-height: 4.5rem;
+    resize: vertical;
+  }
+  .tutor-actions {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .tutor-actions .hint {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .answer {
+    border-top: 1px solid var(--line);
+    padding-top: 0.9rem;
+    display: grid;
+    gap: 0.7rem;
+    font-size: 0.97rem;
+    max-width: 46rem;
+  }
+  .answer pre {
+    margin: 0;
+    background: var(--sunken);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 0.75rem 0.9rem;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  .answer pre code {
+    background: none;
+    border: 0;
+    padding: 0;
+  }
+  .answer .thinking {
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ---------- Tips & glossary ---------- */
+  .tips {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .tip {
+    padding: 0.9rem 1rem 0.9rem 0;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    gap: 0.25rem;
+  }
+  .tip h3 {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .tip p {
+    color: var(--ink-2);
+    font-size: 0.93rem;
+  }
+  .glossary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 0.8rem 1.5rem;
+    margin: 0;
+  }
+  .glossary div {
+    display: grid;
+    gap: 0.15rem;
+  }
+  .glossary dt {
+    font-weight: 600;
+  }
+  .glossary dd {
+    margin: 0;
+    color: var(--ink-2);
+    font-size: 0.92rem;
+  }
+
+  footer {
+    font-size: 0.8rem;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+    padding-top: 1.1rem;
+  }
+
+  @media (max-width: 40rem) {
+    .page {
+      padding: 2rem 1rem 3rem;
+      gap: 2.25rem;
+    }
+    .phase {
+      padding: 1.1rem;
+    }
+    .phase-head {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .lesson {
+      grid-template-columns: 1.6rem minmax(0, 1fr);
+    }
+    .lesson .explain {
+      grid-column: 2;
+      justify-self: start;
+    }
+  }
+</style>
+
+<main id="app" class="page">
+  <header class="top">
+    <div class="eyebrow">Your web development course · built around The Hoodie LB</div>
+    <h1>Learn to Build The Hoodie</h1>
+    <p class="lede">
+      From zero to shipping features in your own Next.js store. Loading your progress…
+    </p>
+  </header>
+</main>
+
+<script type="application/json" id="learn-state">
+  { "done": {}, "notes": {}, "updated": null }
+</script>
+<script id="app-script">
+  /* ------------------------------------------------------------------
+   Course content. Backticks inside strings render as inline code.
+   ------------------------------------------------------------------ */
+  const PHASES = [
+    {
+      id: 'p1',
+      title: 'How the web works + your tools',
+      weeks: '1 week',
+      goal: 'Understand what happens when you open localhost:3000, and get comfortable with the terminal, VS Code and browser DevTools.',
+      lessons: [
+        {
+          id: 'p1-1',
+          title: 'Browsers, servers and URLs',
+          why: 'Every page you see is a request from the browser and a response from a server.',
+          do: 'Run `npm run dev`, open http://localhost:3000, open DevTools → Network and reload. Find the request for the page.',
+        },
+        {
+          id: 'p1-2',
+          title: 'The terminal: folders and commands',
+          why: 'Developers run most tools by typing commands.',
+          do: '`cd` into thehoodielb, then run `npm run lint` and read what it prints.',
+        },
+        {
+          id: 'p1-3',
+          title: 'VS Code basics: open a folder, search, jump to a file',
+          why: 'Finding code fast matters more than typing fast.',
+          do: 'Open thehoodielb in VS Code, press Ctrl+P and open `AnnouncementBar.tsx`.',
+        },
+        {
+          id: 'p1-4',
+          title: 'DevTools: Elements and Console',
+          why: 'DevTools lets you see and change a live page without touching the code.',
+          do: 'Right-click the announcement bar → Inspect, then change its text in the Elements panel.',
+        },
+      ],
+      resources: [
+        {
+          label: 'MDN: Learn web development',
+          url: 'https://developer.mozilla.org/en-US/docs/Learn_web_development',
+        },
+        { label: 'Chrome DevTools docs', url: 'https://developer.chrome.com/docs/devtools' },
+        { label: 'VS Code docs', url: 'https://code.visualstudio.com/docs' },
+      ],
+      checkpoint:
+        'You can start the site, open any file by name, and inspect any element on the page.',
+    },
+    {
+      id: 'p2',
+      title: 'HTML: the structure of a page',
+      weeks: '1–2 weeks',
+      goal: 'Write the skeleton of a page with the right tags, so it works for people, search engines and screen readers.',
+      lessons: [
+        {
+          id: 'p2-1',
+          title: 'Elements, tags and attributes',
+          why: 'HTML is a tree of elements. Everything else builds on it.',
+          do: 'In DevTools, find the `<header>` and `<nav>` of your homepage.',
+        },
+        {
+          id: 'p2-2',
+          title: 'Semantic tags: header, nav, main, section, footer',
+          why: 'The right tag tells the browser what each part of the page is for.',
+          do: 'Open `components/layout/Footer.tsx` and list the semantic tags it uses.',
+        },
+        {
+          id: 'p2-3',
+          title: 'Links, images and lists',
+          why: 'Most of a store page is links, pictures and lists of things.',
+          do: 'Find how the logo link is built in `components/layout/Header.tsx`.',
+        },
+        {
+          id: 'p2-4',
+          title: 'Forms: input, label, button',
+          why: 'Search, sign-up and checkout are all forms.',
+          do: 'In a practice `.html` file, build a newsletter form with a labelled email field.',
+        },
+        {
+          id: 'p2-5',
+          title: 'Accessibility basics: alt text, labels, aria-label',
+          why: 'Some visitors hear your page instead of seeing it.',
+          do: 'Find every `aria-label` in `MobileNav.tsx` and say what each one announces.',
+        },
+      ],
+      resources: [
+        { label: 'web.dev: Learn HTML', url: 'https://web.dev/learn/html' },
+        { label: 'MDN: HTML reference', url: 'https://developer.mozilla.org/en-US/docs/Web/HTML' },
+        { label: 'freeCodeCamp curriculum', url: 'https://www.freecodecamp.org/learn' },
+      ],
+      checkpoint:
+        'You can write a plain HTML product page for the Classic Hoodie: heading, image, price, sizes and an Add to cart button.',
+    },
+    {
+      id: 'p3',
+      title: 'CSS: style and layout',
+      weeks: '3 weeks',
+      goal: "Make pages look right on phones and desktops, and understand why a style does or doesn't apply.",
+      lessons: [
+        {
+          id: 'p3-1',
+          title: 'Selectors, the cascade and specificity',
+          why: 'When two rules disagree, the cascade decides who wins.',
+          do: 'Read the `.header__hamburger` rules in `app/globals.css` and explain why the Cowork fix needed `!important`.',
+        },
+        {
+          id: 'p3-2',
+          title: 'The box model: margin, border, padding',
+          why: 'Every element is a box. Spacing bugs are box-model bugs.',
+          do: "In DevTools → Computed, inspect one category tile's box.",
+        },
+        {
+          id: 'p3-3',
+          title: 'Flexbox',
+          why: 'Flexbox lines things up in a row or a column.',
+          do: 'Play Flexbox Froggy, then find `display: flex` in the header styles.',
+        },
+        {
+          id: 'p3-4',
+          title: 'CSS Grid',
+          why: 'Grid places things in rows and columns at the same time.',
+          do: 'Play Grid Garden, then see how the category tiles go from 2×2 on phones to 4 in a row.',
+        },
+        {
+          id: 'p3-5',
+          title: 'Responsive design and media queries',
+          why: 'The same page has to work at 375px and at 1440px.',
+          do: 'Resize the site across 1024px and watch the header switch between hamburger and full menu.',
+        },
+        {
+          id: 'p3-6',
+          title: 'CSS variables and design tokens',
+          why: 'Tokens keep one brand color in one place.',
+          do: 'Read `:root` in `app/globals.css`, temporarily change `--color-ember-500`, and watch the buttons change.',
+        },
+      ],
+      resources: [
+        { label: 'web.dev: Learn CSS', url: 'https://web.dev/learn/css' },
+        { label: 'Flexbox Froggy (game)', url: 'https://flexboxfroggy.com' },
+        { label: 'Grid Garden (game)', url: 'https://cssgridgarden.com' },
+      ],
+      checkpoint:
+        'Your HTML product page is one column on phones and two columns on desktop, using your brand colors as CSS variables.',
+    },
+    {
+      id: 'p4',
+      title: 'JavaScript: make pages react',
+      weeks: '5–6 weeks',
+      goal: 'Work with data, functions and events. This is the biggest phase, so take your time.',
+      lessons: [
+        {
+          id: 'p4-1',
+          title: 'Values, variables (let, const) and types',
+          why: 'Programs are values moving through names.',
+          do: "In the browser Console, store a hoodie's name and price in variables and print them.",
+        },
+        {
+          id: 'p4-2',
+          title: 'Functions and arrow functions',
+          why: 'Functions turn steps into something reusable.',
+          do: 'Read `lib/api/delay.ts`, one line long, and explain it in your notes.',
+        },
+        {
+          id: 'p4-3',
+          title: 'Arrays and objects: map, filter, find',
+          why: 'A store is lists of objects: products, variants, reviews.',
+          do: 'Open `data/products.json` and describe the shape of one product: which fields are lists?',
+        },
+        {
+          id: 'p4-4',
+          title: 'Conditions and loops',
+          why: 'Code makes decisions and repeats work.',
+          do: 'Write a loop in the Console that prints the sizes S to XXL.',
+        },
+        {
+          id: 'p4-5',
+          title: 'The DOM and events',
+          why: 'Events are how a page responds to clicks and typing.',
+          do: 'Add a button to your practice page that shows and hides a menu.',
+        },
+        {
+          id: 'p4-6',
+          title: 'Async code: promises, async/await, fetch',
+          why: "Loading data takes time, and the page shouldn't freeze while it waits.",
+          do: 'Read `lib/api/products.ts`: why are the functions `async`, and what does `await delay()` do?',
+        },
+        {
+          id: 'p4-7',
+          title: 'Modules: import and export',
+          why: 'Big apps are split into files that import each other.',
+          do: 'Follow how `components/ui/index.ts` re-exports every UI component.',
+        },
+      ],
+      resources: [
+        { label: 'javascript.info (free book)', url: 'https://javascript.info' },
+        {
+          label: 'MDN: JavaScript guide',
+          url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide',
+        },
+        { label: 'The Odin Project', url: 'https://www.theodinproject.com' },
+      ],
+      checkpoint:
+        'Without help, you can show a list of 5 hoodie objects on a page with a search box that filters them as you type.',
+    },
+    {
+      id: 'p5',
+      title: 'Git & GitHub: work safely with others',
+      weeks: "1 week (you've started!)",
+      goal: 'Save work in small steps and get it into main through pull requests, like you did with PRs #1–#10.',
+      lessons: [
+        {
+          id: 'p5-1',
+          title: 'Commits and good commit messages',
+          why: 'A commit is a save point with a reason attached.',
+          do: 'Run `git log --oneline -10` and read the last ten commits.',
+        },
+        {
+          id: 'p5-2',
+          title: 'Branches',
+          why: 'Branches let you try things without touching main.',
+          do: 'Create a practice branch in GitHub Desktop, commit one change, then switch back to main.',
+        },
+        {
+          id: 'p5-3',
+          title: 'Pull requests, reviews and merging',
+          why: 'A PR is where a change gets checked before it joins main.',
+          do: 'Open PR #5 on GitHub and read its Files changed tab line by line.',
+        },
+        {
+          id: 'p5-4',
+          title: 'Pulling, conflicts and `npm install` after a pull',
+          why: "Other people's changes arrive when you pull.",
+          do: 'After your next pull, check whether `package.json` changed. If it did, run `npm install`.',
+        },
+        {
+          id: 'p5-5',
+          title: 'Hooks and CI: automatic checks',
+          why: "Machines check the boring things so people don't have to.",
+          do: 'Read `.husky/pre-commit` and `.github/workflows/ci.yml`.',
+        },
+      ],
+      resources: [
+        { label: 'Learn Git Branching (interactive)', url: 'https://learngitbranching.js.org' },
+        { label: 'GitHub Skills courses', url: 'https://skills.github.com' },
+        { label: 'GitHub Desktop docs', url: 'https://docs.github.com/en/desktop' },
+      ],
+      checkpoint:
+        'You can branch, commit, push, open a PR and merge it without looking at instructions.',
+    },
+    {
+      id: 'p6',
+      title: 'TypeScript: describe your data',
+      weeks: '2 weeks',
+      goal: 'Describe the shape of your data, so mistakes show up in your editor before the code ever runs.',
+      lessons: [
+        {
+          id: 'p6-1',
+          title: 'Basic types and annotations',
+          why: 'Types are labels that say what a value is allowed to be.',
+          do: 'Read `types/review.ts`: what type is `rating`, and what would stop a rating of 7?',
+        },
+        {
+          id: 'p6-2',
+          title: 'Interfaces and optional fields',
+          why: 'Interfaces describe objects, and `?` marks a field that may be missing.',
+          do: 'In `types/product.ts`, explain why `compareAtPrice` is `number | null`.',
+        },
+        {
+          id: 'p6-3',
+          title: 'Union and literal types',
+          why: 'Some values can only be one of a few options.',
+          do: 'Find `OrderStatus` in `types/order.ts` and list the allowed values.',
+        },
+        {
+          id: 'p6-4',
+          title: 'Typing React props',
+          why: "Props are a component's inputs, and types document them.",
+          do: 'Read `interface MobileNavProps` in `MobileNav.tsx`.',
+        },
+        {
+          id: 'p6-5',
+          title: 'Generics, lightly: Array<T>, Promise<T>',
+          why: "Generics say 'a list of what' or 'a promise of what'.",
+          do: 'Find `Promise<Navigation>` in `lib/api/navigation.ts`.',
+        },
+        {
+          id: 'p6-6',
+          title: 'Checking real data with Zod',
+          why: 'Types only check your code. Zod checks the data itself when it runs.',
+          do: 'Compare `lib/schemas/product.ts` with `types/product.ts`, then run `npm run validate:data`.',
+        },
+      ],
+      resources: [
+        {
+          label: 'TypeScript in 5 minutes',
+          url: 'https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html',
+        },
+        {
+          label: 'TypeScript Handbook',
+          url: 'https://www.typescriptlang.org/docs/handbook/intro.html',
+        },
+        { label: 'Zod docs', url: 'https://zod.dev' },
+      ],
+      checkpoint:
+        "You can add an optional field to a type and its schema, and watch the schema check pass, then fail when they don't match.",
+    },
+    {
+      id: 'p7',
+      title: 'React: build with components',
+      weeks: '4 weeks',
+      goal: 'Build interfaces from small components that take props and hold state.',
+      lessons: [
+        {
+          id: 'p7-1',
+          title: 'Components and JSX',
+          why: 'A component is a function that returns a piece of UI.',
+          do: 'Read `components/ui/Badge.tsx`, one of the smallest components you have.',
+        },
+        {
+          id: 'p7-2',
+          title: 'Props',
+          why: 'Props make one component reusable in many ways.',
+          do: 'Run `npm run storybook` and try every Button variant with the controls.',
+        },
+        {
+          id: 'p7-3',
+          title: 'State with useState',
+          why: 'State is what a component remembers between renders.',
+          do: 'Find `activeIndex` and `isPaused` in `AnnouncementBar.tsx` and trace what changes them.',
+        },
+        {
+          id: 'p7-4',
+          title: 'Events and controlled inputs',
+          why: 'Clicks and typing update state, and state updates the screen.',
+          do: 'Read `components/ui/QuantityStepper.tsx`.',
+        },
+        {
+          id: 'p7-5',
+          title: 'Lists and keys',
+          why: '`.map()` renders lists, and `key` helps React track each row.',
+          do: 'Find the `.map()` and `key` in `components/sections/CategoryTiles.tsx`.',
+        },
+        {
+          id: 'p7-6',
+          title: "Effects, and when you don't need one",
+          why: "Effects sync with the outside world. Many bugs come from effects that aren't needed.",
+          do: 'Read how PR #5 closes the mobile menu on page change without an effect.',
+        },
+        {
+          id: 'p7-7',
+          title: 'Composition: small parts, bigger UI',
+          why: 'Good UIs are built by combining simple pieces.',
+          do: 'See how `components/ui/Drawer.tsx` builds on Radix Dialog.',
+        },
+      ],
+      resources: [
+        { label: 'react.dev: Learn React', url: 'https://react.dev/learn' },
+        {
+          label: 'You Might Not Need an Effect',
+          url: 'https://react.dev/learn/you-might-not-need-an-effect',
+        },
+        { label: 'Storybook docs', url: 'https://storybook.js.org/docs' },
+      ],
+      checkpoint:
+        'You can build a SizePicker component (S–XXL, one selected at a time) with a Storybook story.',
+    },
+    {
+      id: 'p8',
+      title: 'Next.js: from components to a real site',
+      weeks: '3 weeks',
+      goal: 'Use pages, layouts, routing and data loading, the way your store is built.',
+      lessons: [
+        {
+          id: 'p8-1',
+          title: 'App Router: folders are routes',
+          why: 'In Next.js, the folder structure is the URL structure.',
+          do: 'Read `app/layout.tsx`: which parts appear on every page?',
+        },
+        {
+          id: 'p8-2',
+          title: 'Server and client components',
+          why: 'Some code runs on the server, and some must run in the browser.',
+          do: "Find which files in `components/layout` start with `'use client'`, and work out why.",
+        },
+        {
+          id: 'p8-3',
+          title: 'Loading data on the server',
+          why: "Pages ask for their data before they're sent to the browser.",
+          do: 'Trace how `app/page.tsx` gets its data through `lib/api`.',
+        },
+        {
+          id: 'p8-4',
+          title: 'Dynamic routes: [handle]',
+          why: 'One file can render every product page.',
+          do: 'Plan `app/products/[handle]/page.tsx` in your notes: which data does it need?',
+        },
+        {
+          id: 'p8-5',
+          title: 'next/link, next/image and metadata',
+          why: 'Fast navigation, optimized images and good titles for search engines.',
+          do: 'Read the `metadata` in `app/dev/tokens/page.tsx`.',
+        },
+        {
+          id: 'p8-6',
+          title: 'Builds and deployment',
+          why: '`npm run build` is what the live site runs.',
+          do: 'Run `npm run build` and read the list of routes it prints.',
+        },
+      ],
+      resources: [
+        { label: 'Next.js Learn course', url: 'https://nextjs.org/learn' },
+        { label: 'Next.js docs', url: 'https://nextjs.org/docs' },
+      ],
+      checkpoint: 'A new `/collections` page lists every collection from `data/collections.json`.',
+    },
+    {
+      id: 'p9',
+      title: 'Tailwind CSS & your design system',
+      weeks: '1 week',
+      goal: 'Style quickly with utility classes that use your brand tokens.',
+      lessons: [
+        {
+          id: 'p9-1',
+          title: 'Utility classes: spacing, color, type',
+          why: "Tailwind styles an element right where it's written.",
+          do: 'Read the class lists in `components/ui/Button.tsx`.',
+        },
+        {
+          id: 'p9-2',
+          title: 'Responsive and state variants',
+          why: '`md:`, `hover:` and `focus-visible:` apply styles only in certain conditions.',
+          do: 'Find a `focus-visible:` class and tab to that element with your keyboard.',
+        },
+        {
+          id: 'p9-3',
+          title: 'Brand tokens with @theme',
+          why: 'Your tokens become classes like `bg-primary`.',
+          do: 'Read the `@theme inline` block in `app/globals.css`.',
+        },
+        {
+          id: 'p9-4',
+          title: 'Variants with cva and cn()',
+          why: 'One component, many looks, with no messy string joining.',
+          do: 'Read `lib/utils.ts` and `buttonVariants` in `Button.tsx`.',
+        },
+      ],
+      resources: [
+        { label: 'Tailwind CSS docs', url: 'https://tailwindcss.com/docs' },
+        { label: 'cva docs', url: 'https://cva.style' },
+      ],
+      checkpoint: 'Your SizePicker is styled with Tailwind, using only brand tokens.',
+    },
+    {
+      id: 'p10',
+      title: 'Work like a professional: your first real feature',
+      weeks: 'ongoing',
+      goal: 'Ship a real feature the way teams do: branch, checks, PR, merge.',
+      lessons: [
+        {
+          id: 'p10-1',
+          title: 'npm and package.json',
+          why: "Dependencies are other people's code, and scripts are your shortcuts.",
+          do: "Read `package.json`: what's the difference between dependencies and devDependencies?",
+        },
+        {
+          id: 'p10-2',
+          title: 'Lint and format: ESLint and Prettier',
+          why: 'Consistent code is easier to read and review.',
+          do: 'Mix up an import order on purpose, then run `npm run lint:fix`.',
+        },
+        {
+          id: 'p10-3',
+          title: 'Reading error messages calmly',
+          why: 'Errors tell you the file, the line and what went wrong.',
+          do: 'The next time the pre-commit hook blocks you, copy the file, line and rule into your notes.',
+        },
+        {
+          id: 'p10-4',
+          title: 'Capstone: the product page',
+          why: "Your menu links to product pages that don't exist yet.",
+          do: 'Build `app/products/[handle]/page.tsx` from `data/products.json` on its own branch, then open a PR.',
+        },
+        {
+          id: 'p10-5',
+          title: 'Capstone: the collection page',
+          why: '33 links on your site still lead to a 404 page.',
+          do: 'Build `app/collections/[handle]/page.tsx` and fix the next batch of dead links.',
+        },
+      ],
+      resources: [
+        { label: 'web.dev: Learn accessibility', url: 'https://web.dev/learn/accessibility' },
+        { label: 'Next.js docs', url: 'https://nextjs.org/docs' },
+      ],
+      checkpoint: 'One feature PR on its own branch with green checks, merged into main.',
+    },
+  ];
+
+  const TIPS = [
+    {
+      t: 'Little and often',
+      d: 'One focused hour every day beats seven hours on a Sunday. Your brain keeps learning between sessions.',
+    },
+    {
+      t: 'Build more than you watch',
+      d: 'For every 20 minutes of video or reading, spend 40 minutes typing code yourself.',
+    },
+    {
+      t: 'Read the error out loud',
+      d: "Which file? Which line? What did it expect? Most errors tell you exactly what's wrong.",
+    },
+    {
+      t: 'Break it on purpose',
+      d: 'Change one thing, guess what will happen, then check. Surprises are where you learn.',
+    },
+    {
+      t: "Look, don't guess",
+      d: 'Use DevTools and `console.log` to see what your code is actually doing.',
+    },
+    {
+      t: 'Use AI as a tutor, not a ghostwriter',
+      d: 'Ask why, then type the code yourself. Copy-paste teaches your clipboard, not you.',
+    },
+    {
+      t: 'Explain it back',
+      d: 'After each lesson, write two or three sentences in the notes box in your own words.',
+    },
+    {
+      t: 'The 30-minute rule',
+      d: 'Stuck for 30 minutes? Take a break, then ask a precise question: what you tried, what you expected, what happened.',
+    },
+    {
+      t: 'Ignore the hype',
+      d: 'Next.js, TypeScript and Tailwind are enough for years. Go deep before you go wide.',
+    },
+  ];
+
+  const GLOSSARY = [
+    {
+      t: 'Repository (repo)',
+      d: 'The project folder plus its full Git history. Yours is MMDev-1/THLB.',
+    },
+    { t: 'Commit', d: 'A saved snapshot of changes, with a message that says why.' },
+    { t: 'Branch', d: 'A separate line of work, like `fix/lint-errors`, kept apart from main.' },
+    {
+      t: 'Pull request (PR)',
+      d: 'A request to merge a branch into main, where it gets reviewed and checked first.',
+    },
+    { t: 'Merge', d: "Bringing a branch's commits into another branch." },
+    { t: 'Lint / ESLint', d: 'A tool that finds likely bugs and style problems in code.' },
+    { t: 'Prettier', d: 'A tool that formats code the same way every time.' },
+    {
+      t: 'Pre-commit hook',
+      d: 'A script that runs before each commit. Yours runs lint and Prettier.',
+    },
+    { t: 'CI', d: 'Continuous Integration: checks that run on GitHub for every PR.' },
+    {
+      t: 'Dependency / package',
+      d: 'Code from npm that your project uses, listed in package.json.',
+    },
+    { t: 'Component', d: 'A reusable piece of UI, like `Button` or `Header`.' },
+    { t: 'Props', d: 'The inputs a component receives, like `variant="primary"`.' },
+    {
+      t: 'State',
+      d: 'Data a component remembers and can change, like which announcement is showing.',
+    },
+    {
+      t: 'Schema (Zod)',
+      d: 'A description of what valid data looks like, checked when the code runs.',
+    },
+    { t: 'Build', d: 'Turning your source code into the optimized files the live site serves.' },
+    {
+      t: 'localhost and ports',
+      d: 'Your own computer acting as a server. 3000 is the site, 6006 is Storybook.',
+    },
+  ];
+  /* ------------------------------------------------------------------
+   Page logic
+   ------------------------------------------------------------------ */
+  const SELF_SRC = document.currentScript ? document.currentScript.textContent : '';
+  const STYLE_SRC = document.getElementById('app-style').textContent;
+  const FONTS =
+    '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">';
+  const ALL = PHASES.flatMap((p, i) => p.lessons.map((l) => ({ ...l, phase: p, phaseNo: i + 1 })));
+  const TOTAL = ALL.length;
+  const PENDING_KEY = 'learn-hoodie-pending',
+    SCROLL_KEY = 'learn-hoodie-scroll',
+    LOCAL_KEY = 'learn-hoodie-local';
+
+  const ss = (fn) => {
+    try {
+      return fn(sessionStorage);
+    } catch {
+      return null;
+    }
+  };
+  const ls = (fn) => {
+    try {
+      return fn(localStorage);
+    } catch {
+      return null;
+    }
+  };
+  const esc = (s) =>
+    String(s).replace(
+      /[&<>"']/g,
+      (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c],
+    );
+  const fmt = (s) => esc(s).replace(/`([^`]+)`/g, '<code>$1</code>');
+  const byId = (id) => ALL.find((l) => l.id === id);
+
+  function normalize(s) {
+    return {
+      done: s && s.done && typeof s.done === 'object' ? s.done : {},
+      notes: s && s.notes && typeof s.notes === 'object' ? s.notes : {},
+      updated: (s && s.updated) || null,
+    };
+  }
+  const sameContent = (a, b) =>
+    JSON.stringify([a.done, a.notes]) === JSON.stringify([b.done, b.notes]);
+
+  let embedded;
+  try {
+    embedded = normalize(JSON.parse(document.getElementById('learn-state').textContent));
+  } catch {
+    embedded = normalize(null);
+  }
+  let state = normalize(JSON.parse(JSON.stringify(embedded)));
+
+  /* Changes from a save that didn't land before the page reloaded */
+  let resumeAttempts = 0,
+    dirty = false;
+  const pendingRaw = ss((s) => s.getItem(PENDING_KEY));
+  if (pendingRaw) {
+    try {
+      const p = JSON.parse(pendingRaw);
+      const ps = normalize(p.state);
+      if (!sameContent(ps, embedded) && (p.attempts || 0) < 2) {
+        state = ps;
+        resumeAttempts = p.attempts || 0;
+        dirty = true;
+      } else ss((s) => s.removeItem(PENDING_KEY));
+    } catch {
+      ss((s) => s.removeItem(PENDING_KEY));
+    }
+  }
+
+  let mode = 'pending'; /* pending | artifact | local | readonly */
+  let artifactApi = null,
+    sampleApi = null,
+    saveTimer = null,
+    publishing = false,
+    retried = false;
+
+  /* ---------------- Rendering ---------------- */
+  const doneCount = () => ALL.filter((l) => state.done[l.id]).length;
+  const phaseDone = (p) => p.lessons.filter((l) => state.done[l.id]).length;
+  const nextLesson = () => ALL.find((l) => !state.done[l.id]) || null;
+
+  function lessonOptions() {
+    return PHASES.map(
+      (p, i) =>
+        '<optgroup label="Phase ' +
+        (i + 1) +
+        ': ' +
+        esc(p.title) +
+        '">' +
+        p.lessons
+          .map((l) => '<option value="' + l.id + '">' + esc(l.title) + '</option>')
+          .join('') +
+        '</optgroup>',
+    ).join('');
+  }
+
+  function render() {
+    const app = document.getElementById('app');
+    app.innerHTML =
+      '<header class="top">' +
+      '<div class="eyebrow">Your web development course · built around The Hoodie LB</div>' +
+      '<h1>Learn to Build The Hoodie</h1>' +
+      '<p class="lede">From zero to shipping features in your own Next.js store. Ten phases, about five to six months at an hour a day. Every lesson ends with a small task in your real project.</p>' +
+      '<div class="progress">' +
+      '<div class="progress-row"><span class="progress-count"><b id="done-n">0</b> / ' +
+      TOTAL +
+      ' lessons · <span id="done-pct">0</span>%</span><span class="status" id="status" data-state="idle" role="status">Connecting…</span></div>' +
+      '<div class="bar" aria-hidden="true"><span id="done-bar" style="width:0%"></span></div>' +
+      '</div>' +
+      '</header>' +
+      '<section class="next" id="next" aria-live="polite"></section>' +
+      '<section class="tutor" id="tutor" hidden aria-labelledby="tutor-h">' +
+      '<div class="block-head"><h2 id="tutor-h">Ask your tutor</h2><p>Stuck on a lesson? Ask in your own words. The tutor knows your project and answers for a beginner.</p></div>' +
+      '<div class="tutor-controls">' +
+      '<label class="mini-label" for="tutor-lesson">Lesson</label><select id="tutor-lesson">' +
+      lessonOptions() +
+      '</select>' +
+      '<label class="mini-label" for="tutor-q">Your question</label><textarea id="tutor-q" placeholder="e.g. Why does AnnouncementBar need useState? What does &quot;async&quot; actually mean?"></textarea>' +
+      '<div class="tutor-actions"><button class="btn" type="button" id="tutor-explain">Explain this lesson</button><button class="btn primary" type="button" id="tutor-ask">Ask</button><button class="btn" type="button" id="tutor-stop" hidden>Stop</button><span class="hint">Uses your Claude account. The first question asks for permission.</span></div>' +
+      '</div>' +
+      '<div class="answer" id="tutor-out" hidden></div>' +
+      '</section>' +
+      '<section class="block" aria-labelledby="path-h"><div class="block-head"><h2 id="path-h">The path</h2><p>Work through the phases in order. Each one builds on the last. Tick a lesson when you can do its task without help.</p></div>' +
+      '<nav class="phase-nav" aria-label="Phases">' +
+      PHASES.map(
+        (p, i) =>
+          '<a href="#phase-' +
+          p.id +
+          '"><span class="n">Phase ' +
+          (i + 1) +
+          ' · <span data-nav-count="' +
+          p.id +
+          '">0/' +
+          p.lessons.length +
+          '</span></span><span class="t">' +
+          esc(p.title) +
+          '</span><span class="bar"><span data-nav-bar="' +
+          p.id +
+          '" style="width:0%"></span></span></a>',
+      ).join('') +
+      '</nav>' +
+      '</section>' +
+      PHASES.map(
+        (p, i) =>
+          '<section class="phase" id="phase-' +
+          p.id +
+          '" aria-labelledby="h-' +
+          p.id +
+          '">' +
+          '<div class="phase-head"><span class="phase-num">Phase ' +
+          (i + 1) +
+          '</span><h3 id="h-' +
+          p.id +
+          '">' +
+          esc(p.title) +
+          '</h3><span class="phase-meta"><span data-phase-count="' +
+          p.id +
+          '">0/' +
+          p.lessons.length +
+          '</span> · ' +
+          esc(p.weeks) +
+          '</span></div>' +
+          '<p class="phase-goal">' +
+          fmt(p.goal) +
+          '</p>' +
+          '<ul class="lessons">' +
+          p.lessons
+            .map(
+              (l) =>
+                '<li class="lesson" data-row="' +
+                l.id +
+                '">' +
+                '<input type="checkbox" id="cb-' +
+                l.id +
+                '" data-lesson="' +
+                l.id +
+                '">' +
+                '<div class="body"><label for="cb-' +
+                l.id +
+                '">' +
+                fmt(l.title) +
+                '</label><p class="why">' +
+                fmt(l.why) +
+                '</p><p class="do"><b>Your project</b><span>' +
+                fmt(l.do) +
+                '</span></p></div>' +
+                '<button class="btn small explain tutor-only" type="button" data-explain="' +
+                l.id +
+                '" hidden aria-label="Ask the tutor to explain: ' +
+                esc(l.title) +
+                '">Explain</button>' +
+                '</li>',
+            )
+            .join('') +
+          '</ul>' +
+          '<div class="phase-foot">' +
+          '<div><div class="mini-label">Free resources</div><ul class="resources">' +
+          p.resources
+            .map(
+              (r) =>
+                '<li><a href="' +
+                esc(r.url) +
+                '" target="_blank" rel="noopener">' +
+                esc(r.label) +
+                '</a></li>',
+            )
+            .join('') +
+          '</ul></div>' +
+          '<div class="checkpoint"><div class="mini-label">Checkpoint: you’re ready to move on when…</div>' +
+          fmt(p.checkpoint) +
+          '</div>' +
+          '<div class="notes"><label class="mini-label" for="notes-' +
+          p.id +
+          '">My notes: explain it in your own words</label><textarea id="notes-' +
+          p.id +
+          '" data-notes="' +
+          p.id +
+          '" placeholder="What I learned, what confused me, questions to ask…"></textarea>' +
+          '<div class="notes-row"><button class="btn small" type="button" data-save-notes="' +
+          p.id +
+          '">Save notes</button><span class="hint" data-notes-hint="' +
+          p.id +
+          '"></span></div></div>' +
+          '</div>' +
+          '</section>',
+      ).join('') +
+      '<section class="block" aria-labelledby="tips-h"><div class="block-head"><h2 id="tips-h">How to learn this well</h2><p>Advice from your teacher. Come back to it when motivation dips.</p></div>' +
+      '<div class="tips">' +
+      TIPS.map(
+        (t) => '<div class="tip"><h3>' + esc(t.t) + '</h3><p>' + fmt(t.d) + '</p></div>',
+      ).join('') +
+      '</div></section>' +
+      '<section class="block" aria-labelledby="gloss-h"><div class="block-head"><h2 id="gloss-h">Words you’ve already met</h2><p>Terms from setting up your repo, in plain English.</p></div>' +
+      '<dl class="glossary">' +
+      GLOSSARY.map((g) => '<div><dt>' + esc(g.t) + '</dt><dd>' + fmt(g.d) + '</dd></div>').join(
+        '',
+      ) +
+      '</dl></section>' +
+      '<footer>Your ticks and notes are saved into this page, so they follow you to any device where you open it. All resources listed are free.</footer>';
+
+    for (const p of PHASES) {
+      const ta = document.getElementById('notes-' + p.id);
+      if (ta) ta.value = state.notes[p.id] || '';
+    }
+    const nl = nextLesson();
+    if (nl) document.getElementById('tutor-lesson').value = nl.id;
+    refresh();
+  }
+
+  function refresh() {
+    const n = doneCount(),
+      pct = Math.round((n / TOTAL) * 100);
+    document.getElementById('done-n').textContent = n;
+    document.getElementById('done-pct').textContent = pct;
+    document.getElementById('done-bar').style.width = pct + '%';
+    for (const p of PHASES) {
+      const d = phaseDone(p),
+        w = Math.round((d / p.lessons.length) * 100) + '%';
+      document.querySelector('[data-phase-count="' + p.id + '"]').textContent =
+        d + '/' + p.lessons.length;
+      document.querySelector('[data-nav-count="' + p.id + '"]').textContent =
+        d + '/' + p.lessons.length;
+      document.querySelector('[data-nav-bar="' + p.id + '"]').style.width = w;
+      document.getElementById('phase-' + p.id).classList.toggle('complete', d === p.lessons.length);
+    }
+    for (const l of ALL) {
+      const cb = document.getElementById('cb-' + l.id);
+      cb.checked = !!state.done[l.id];
+      cb.disabled = mode === 'readonly';
+      document
+        .querySelector('[data-row="' + l.id + '"]')
+        .classList.toggle('done', !!state.done[l.id]);
+    }
+    document.querySelectorAll('[data-notes]').forEach((t) => {
+      t.readOnly = mode === 'readonly';
+    });
+    document.querySelectorAll('[data-save-notes]').forEach((b) => {
+      b.hidden = mode === 'readonly';
+    });
+    const nl = nextLesson(),
+      next = document.getElementById('next');
+    next.innerHTML = nl
+      ? '<div class="eyebrow">Up next · Phase ' +
+        nl.phaseNo +
+        ' of ' +
+        PHASES.length +
+        ': ' +
+        esc(nl.phase.title) +
+        '</div><h2>' +
+        fmt(nl.title) +
+        '</h2><p class="task"><b>Your task:</b> ' +
+        fmt(nl.do) +
+        '</p>' +
+        '<div class="next-actions"><a class="btn primary" href="#phase-' +
+        nl.phase.id +
+        '">Go to lesson</a><button class="btn tutor-only" type="button" data-explain="' +
+        nl.id +
+        '" hidden>Explain it to me</button></div>'
+      : '<div class="eyebrow">Course complete</div><h2>You finished every lesson.</h2><p class="task">Keep building The Hoodie: pick the next dead link on the site and turn it into a real page.</p>';
+    document.querySelectorAll('.tutor-only').forEach((b) => {
+      b.hidden = !sampleApi;
+    });
+    setStatus();
+  }
+
+  function setStatus(kind, text) {
+    const el = document.getElementById('status');
+    if (!el) return;
+    const when = state.updated
+      ? new Date(state.updated).toLocaleDateString(undefined, { day: 'numeric', month: 'short' })
+      : '';
+    const map = {
+      pending: ['idle', 'Connecting…'],
+      artifact: ['saved', state.updated ? 'Saved · ' + when : 'Progress saves to this page'],
+      local: ['saved', 'Saved in this browser only'],
+      readonly: ['idle', 'Read-only view'],
+    };
+    const [s, t] = kind ? [kind, text] : map[mode];
+    el.dataset.state = s;
+    el.textContent = t;
+  }
+
+  /* ---------------- Saving ---------------- */
+  function buildDocument(s) {
+    const json = JSON.stringify(s).replace(/</g, '\\u003c');
+    const S = 'script';
+    return (
+      '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Learn to Build The Hoodie</title>' +
+      FONTS +
+      '<style id="app-style">' +
+      STYLE_SRC +
+      '</style></head><body><main id="app" class="page"></main>' +
+      '<' +
+      S +
+      ' type="application/json" id="learn-state">' +
+      json +
+      '</' +
+      S +
+      '>' +
+      '<' +
+      S +
+      ' id="app-script">' +
+      SELF_SRC +
+      '</' +
+      S +
+      '></body></html>'
+    );
+  }
+
+  const stash = (attempts) =>
+    ss((s) => s.setItem(PENDING_KEY, JSON.stringify({ state, attempts })));
+
+  function scheduleSave(delay) {
+    if (mode === 'readonly') return;
+    state.updated = new Date().toISOString();
+    dirty = true;
+    stash(resumeAttempts);
+    if (mode === 'local') {
+      ls((s) => s.setItem(LOCAL_KEY, JSON.stringify(state)));
+      ss((s) => s.removeItem(PENDING_KEY));
+      dirty = false;
+      setStatus();
+      return;
+    }
+    if (mode !== 'artifact') {
+      setStatus('saving', 'Will save in a moment…');
+      return;
+    }
+    clearTimeout(saveTimer);
+    setStatus('saving', 'Saving…');
+    saveTimer = setTimeout(publishNow, delay);
+  }
+
+  async function publishNow() {
+    if (publishing) {
+      saveTimer = setTimeout(publishNow, 1500);
+      return;
+    }
+    if (!SELF_SRC || SELF_SRC.length < 2000) {
+      goLocal();
+      return;
+    }
+    publishing = true;
+    ss((s) => s.setItem(SCROLL_KEY, String(window.scrollY)));
+    stash(resumeAttempts + 1);
+    try {
+      await artifactApi.publish(buildDocument(state)); /* the view reloads to the new version */
+    } catch (e) {
+      publishing = false;
+      const code = e && e.code;
+      if (code === 'conflict') {
+        setStatus('saving', 'Loading the latest version…');
+        return;
+      }
+      if (code === 'not_writer' || code === 'not_granted' || code === 'consent_required') {
+        goReadonly();
+        return;
+      }
+      if (
+        code === 'capability_disabled' ||
+        code === 'capability_removed' ||
+        code === 'not_declared'
+      ) {
+        goLocal();
+        return;
+      }
+      if (code === 'rate_limited') {
+        setStatus('saving', 'Saving soon…');
+        saveTimer = setTimeout(publishNow, 10000);
+        return;
+      }
+      if (code === 'upstream_error' && !retried) {
+        retried = true;
+        saveTimer = setTimeout(publishNow, 1200 + Math.random() * 1500);
+        return;
+      }
+      setStatus('error', 'Couldn’t save. Your changes are kept on this device.');
+    }
+  }
+
+  function goLocal() {
+    mode = 'local';
+    const saved = ls((s) => s.getItem(LOCAL_KEY));
+    if (saved && !dirty) {
+      try {
+        const l = normalize(JSON.parse(saved));
+        if (!state.updated || (l.updated && l.updated > state.updated)) state = l;
+      } catch {}
+    }
+    if (dirty) {
+      ls((s) => s.setItem(LOCAL_KEY, JSON.stringify(state)));
+      ss((s) => s.removeItem(PENDING_KEY));
+      dirty = false;
+    }
+    render();
+  }
+
+  function goReadonly() {
+    mode = 'readonly';
+    state = normalize(JSON.parse(JSON.stringify(embedded)));
+    ss((s) => s.removeItem(PENDING_KEY));
+    dirty = false;
+    render();
+  }
+
+  /* ---------------- Tutor ---------------- */
+  let tutorCtl = null,
+    tutorBusy = false;
+
+  function md(text) {
+    const parts = String(text).split(/```[a-zA-Z]*\n?/);
+    return parts
+      .map((chunk, i) => {
+        if (i % 2 === 1) return '<pre><code>' + esc(chunk.replace(/\n$/, '')) + '</code></pre>';
+        return chunk
+          .split(/\n{2,}/)
+          .filter((para) => para.trim())
+          .map(
+            (para) =>
+              '<p>' +
+              esc(para.trim())
+                .replace(/`([^`]+)`/g, '<code>$1</code>')
+                .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+                .replace(/\n/g, '<br>') +
+              '</p>',
+          )
+          .join('');
+      })
+      .join('');
+  }
+
+  function tutorPrompt(lesson, question) {
+    const notes = (state.notes[lesson.phase.id] || '').slice(0, 800);
+    return (
+      'You are a patient, professional web development teacher. Your student is a complete beginner who learns by working on their own project, "The Hoodie LB": an e-commerce storefront built with Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, Zod, ESLint, Prettier, Husky and Storybook. ' +
+      'Real files in it include app/layout.tsx, app/page.tsx, app/globals.css (design tokens), components/layout/Header.tsx, AnnouncementBar.tsx, MobileNav.tsx, components/ui/Button.tsx, types/product.ts, lib/api/products.ts, lib/schemas/product.ts and data/products.json.\n\n' +
+      'Course phase ' +
+      lesson.phaseNo +
+      ' of 10: ' +
+      lesson.phase.title +
+      '.\nLesson: ' +
+      lesson.title +
+      '. Why it matters: ' +
+      lesson.why +
+      '\nThe lesson task in their project: ' +
+      lesson.do +
+      '\n' +
+      (notes ? "Student's own notes for this phase: " + notes + '\n' : '') +
+      '\nStudent asks: ' +
+      question +
+      '\n\n' +
+      'Answer in plain, friendly English for someone who has never coded. Use a short everyday analogy if it helps, at most one small code example (under 15 lines, in a fenced code block), and connect it to their project files when relevant. ' +
+      'End with one tiny exercise they can do in about 10 minutes. Keep it under 250 words, and use no headings.'
+    );
+  }
+
+  function tutorCopy(code) {
+    return (
+      {
+        rate_limited: 'You’ve asked a lot in a short time. Wait a minute, then ask again.',
+        session_expired: 'Sign in to Claude again, then ask.',
+        refused: 'The tutor can’t answer that one. Try asking it a different way.',
+        empty_completion: 'No answer came back. Try a shorter question.',
+        prompt_too_large: 'That question is too long. Shorten it and try again.',
+      }[code] || 'The tutor couldn’t answer just now. Try again in a moment.'
+    );
+  }
+
+  async function ask(kind) {
+    if (!sampleApi || tutorBusy) return;
+    const lesson = byId(document.getElementById('tutor-lesson').value) || nextLesson() || ALL[0];
+    const qBox = document.getElementById('tutor-q');
+    const question =
+      kind === 'explain'
+        ? 'Explain this lesson simply, as if I have never written code before.'
+        : qBox.value.trim();
+    if (!question) {
+      qBox.focus();
+      return;
+    }
+    const out = document.getElementById('tutor-out');
+    const askBtn = document.getElementById('tutor-ask'),
+      explainBtn = document.getElementById('tutor-explain'),
+      stopBtn = document.getElementById('tutor-stop');
+    tutorBusy = true;
+    askBtn.disabled = true;
+    explainBtn.disabled = true;
+    stopBtn.hidden = false;
+    out.hidden = false;
+    out.innerHTML = '<p class="thinking">Thinking…</p>';
+    tutorCtl = new AbortController();
+    const opts = {
+      signal: tutorCtl.signal,
+      onText: ({ text }) => {
+        out.innerHTML = md(text);
+      },
+    };
+    if (kind !== 'explain') opts.cache = false;
+    try {
+      const { text, truncated } = await sampleApi(tutorPrompt(lesson, question), opts);
+      out.innerHTML =
+        md(text) +
+        (truncated
+          ? '<p class="thinking">The answer was cut short. Try a narrower question.</p>'
+          : '');
+    } catch (e) {
+      const code = e && e.code;
+      out.innerHTML = e && e.text ? md(e.text) : '';
+      if (
+        [
+          'not_granted',
+          'sampling_disabled',
+          'not_declared',
+          'capability_disabled',
+          'capability_removed',
+        ].includes(code)
+      ) {
+        sampleApi = null;
+        document.getElementById('tutor').hidden = true;
+        refresh();
+      } else if (code !== 'cancelled') {
+        out.insertAdjacentHTML('beforeend', '<p class="thinking">' + esc(tutorCopy(code)) + '</p>');
+      }
+      if (!out.innerHTML) out.hidden = true;
+    } finally {
+      tutorBusy = false;
+      askBtn.disabled = false;
+      explainBtn.disabled = false;
+      stopBtn.hidden = true;
+    }
+  }
+
+  /* ---------------- Events ---------------- */
+  document.addEventListener('change', (e) => {
+    const cb = e.target.closest && e.target.closest('input[data-lesson]');
+    if (!cb) return;
+    if (mode === 'readonly') {
+      cb.checked = !!state.done[cb.dataset.lesson];
+      return;
+    }
+    if (cb.checked) state.done[cb.dataset.lesson] = true;
+    else delete state.done[cb.dataset.lesson];
+    refresh();
+    scheduleSave(1800);
+  });
+
+  document.addEventListener('input', (e) => {
+    const ta = e.target.closest && e.target.closest('textarea[data-notes]');
+    if (!ta || mode === 'readonly') return;
+    state.notes[ta.dataset.notes] = ta.value;
+    stash(resumeAttempts);
+    const hint = document.querySelector('[data-notes-hint="' + ta.dataset.notes + '"]');
+    if (hint) hint.textContent = 'Not saved yet';
+  });
+
+  document.addEventListener('click', (e) => {
+    const t = e.target.closest ? e.target : null;
+    if (!t) return;
+    const saveBtn = t.closest('[data-save-notes]');
+    if (saveBtn) {
+      const id = saveBtn.dataset.saveNotes;
+      state.notes[id] = document.getElementById('notes-' + id).value.trim();
+      const hint = document.querySelector('[data-notes-hint="' + id + '"]');
+      if (hint) hint.textContent = mode === 'local' ? 'Saved' : 'Saving…';
+      scheduleSave(300);
+      return;
+    }
+    const ex = t.closest('[data-explain]');
+    if (ex) {
+      document.getElementById('tutor-lesson').value = ex.dataset.explain;
+      document.getElementById('tutor').scrollIntoView({ block: 'start' });
+      ask('explain');
+      return;
+    }
+    if (t.closest('#tutor-ask')) ask('ask');
+    else if (t.closest('#tutor-explain')) ask('explain');
+    else if (t.closest('#tutor-stop') && tutorCtl) tutorCtl.abort();
+  });
+
+  /* ---------------- Start ---------------- */
+  render();
+  const savedScroll = ss((s) => s.getItem(SCROLL_KEY));
+  if (savedScroll) {
+    ss((s) => s.removeItem(SCROLL_KEY));
+    requestAnimationFrame(() => window.scrollTo(0, Number(savedScroll) || 0));
+  }
+
+  (async () => {
+    let api = null;
+    try {
+      api = window.claude && window.claude.use ? await window.claude.use('artifact') : null;
+    } catch {
+      api = null;
+    }
+    if (api) {
+      artifactApi = api;
+      mode = 'artifact';
+      refresh();
+      if (dirty) scheduleSave(600);
+    } else {
+      goLocal();
+    }
+  })();
+
+  (async () => {
+    let s = null;
+    try {
+      s = window.claude && window.claude.use ? await window.claude.use('sample') : null;
+    } catch {
+      s = null;
+    }
+    if (!s) return;
+    sampleApi = s;
+    document.getElementById('tutor').hidden = false;
+    refresh();
+  })();
+</script>

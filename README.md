@@ -13,18 +13,19 @@ npm run dev        # → http://localhost:3000
 
 ## Scripts
 
-| Command                   | Description                                             |
-| ------------------------- | ------------------------------------------------------- |
-| `npm run dev`             | Start development server                                |
-| `npm run build`           | Production build                                        |
-| `npm start`               | Serve production build                                  |
-| `npm run lint`            | Run ESLint                                              |
-| `npm run lint:fix`        | Run ESLint with auto-fix                                |
-| `npm run format`          | Format all files with Prettier                          |
-| `npm run format:check`    | Check formatting without writing                        |
-| `npm run storybook`       | Browse UI components at http://localhost:6006           |
-| `npm run build-storybook` | Build a static Storybook into `storybook-static/`       |
-| `npm run validate:data`   | Check every JSON file in `data/` against its Zod schema |
+| Command                   | Description                                                                                                                     |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run dev`             | Start development server                                                                                                        |
+| `npm run build`           | Production build                                                                                                                |
+| `npm start`               | Serve production build                                                                                                          |
+| `npm run lint`            | Run ESLint                                                                                                                      |
+| `npm run lint:fix`        | Run ESLint with auto-fix                                                                                                        |
+| `npm run format`          | Format all files with Prettier                                                                                                  |
+| `npm run format:check`    | Check formatting without writing                                                                                                |
+| `npm run storybook`       | Browse UI components at http://localhost:6006                                                                                   |
+| `npm run build-storybook` | Build a static Storybook into `storybook-static/`                                                                               |
+| `npm run validate:data`   | Check every JSON file in `data/` against its Zod schema                                                                         |
+| `npm run check:routes`    | Start the built site and check key pages return the right status (run `npm run build` first; add `-- --dev` for the dev server) |
 
 ## Folder Structure
 
@@ -32,6 +33,7 @@ npm run dev        # → http://localhost:3000
 thehoodielb/
 ├── .storybook/        # Storybook config (npm run storybook)
 ├── app/               # Next.js App Router (pages, layouts, routes)
+├── docs/              # Guides, the course, reports and PR write-ups (see docs/README.md)
 ├── components/
 │   ├── ui/            # Reusable UI primitives (buttons, inputs, modals)
 │   ├── layout/        # Layout components (header, footer, nav)
@@ -44,7 +46,7 @@ thehoodielb/
 ├── types/             # TypeScript type definitions
 ├── hooks/             # Custom React hooks
 ├── store/             # State management
-├── scripts/           # Dev scripts (data validation)
+├── scripts/           # Dev scripts (data validation, route checks)
 └── public/            # Static assets (images, fonts, icons)
 ```
 
