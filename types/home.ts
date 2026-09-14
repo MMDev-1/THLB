@@ -89,12 +89,25 @@ export interface SplitBannerSection {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Product Carousel                                                   */
+/* ------------------------------------------------------------------ */
+
+export interface ProductCarouselSection {
+  heading: string;
+  /** Optional link to the full list, e.g. a collection page */
+  viewAll?: { label: string; href: string };
+  /** Products to show, in order, by handle — resolved through getProducts() */
+  productHandles: string[];
+}
+
+/* ------------------------------------------------------------------ */
 /*  Home page data (grows as we add sections)                          */
 /* ------------------------------------------------------------------ */
 
 export interface HomePageData {
   hero: HeroSection;
   categoryTiles: CategoryTilesSection;
+  productCarousel: ProductCarouselSection;
   valueProps: ValuePropsSection;
   splitBanner: SplitBannerSection;
 }

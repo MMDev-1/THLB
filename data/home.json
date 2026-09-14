@@ -4,7 +4,6 @@
       "type": "image",
       "src": "/images/hero/hero-desktop.jpg",
       "mobileSrc": "/images/hero/hero-mobile.jpg",
-      "poster": "",
       "alt": "The Hoodie LB — Wearable blankets for ultimate comfort"
     },
     "eyebrow": "Now in Lebanon",
@@ -53,6 +52,21 @@
         "label": "Accessories",
         "href": "/collections/accessories"
       }
+    ]
+  },
+
+  "productCarousel": {
+    "heading": "Best Sellers",
+    "viewAll": { "label": "View all", "href": "/collections/adult-hoodies" },
+    "productHandles": [
+      "classic-hoodie",
+      "oversized-hoodie",
+      "zip-up-hoodie",
+      "fleece-lined-hoodie",
+      "hooded-poncho",
+      "couples-hoodie",
+      "hoodie-slipper-bundle",
+      "sherpa-blanket"
     ]
   },
 

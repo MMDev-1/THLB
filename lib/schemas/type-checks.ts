@@ -12,7 +12,13 @@ import type { z } from 'zod';
 import type {
   Announcement,
   BlogPost,
+  CategoryTile,
+  CategoryTilesSection,
   Collection,
+  CTA,
+  HeroMedia,
+  HeroSection,
+  HomePageData,
   MegaMenuColumn,
   MegaMenuData,
   MegaMenuPromo,
@@ -21,12 +27,28 @@ import type {
   NavLink,
   Page,
   Product,
+  ProductCarouselSection,
   ProductImage,
   Review,
+  SplitBannerSection,
+  ValuePropItem,
+  ValuePropsSection,
   Variant,
 } from '@/types';
 
 import type { CollectionSchema } from './collection';
+import type {
+  CategoryTileSchema,
+  CategoryTilesSectionSchema,
+  CTASchema,
+  HeroMediaSchema,
+  HeroSectionSchema,
+  HomePageDataSchema,
+  ProductCarouselSectionSchema,
+  SplitBannerSectionSchema,
+  ValuePropItemSchema,
+  ValuePropsSectionSchema,
+} from './home';
 import type {
   AnnouncementSchema,
   MegaMenuColumnSchema,
@@ -70,4 +92,14 @@ export type SchemaMatchesType = [
   Expect<Same<Parsed<typeof MegaMenuDataSchema>, MegaMenuData>>,
   Expect<Same<Parsed<typeof NavItemSchema>, NavItem>>,
   Expect<Same<Parsed<typeof NavigationDataSchema>, Navigation>>,
+  Expect<Same<Parsed<typeof CTASchema>, CTA>>,
+  Expect<Same<Parsed<typeof HeroMediaSchema>, HeroMedia>>,
+  Expect<Same<Parsed<typeof HeroSectionSchema>, HeroSection>>,
+  Expect<Same<Parsed<typeof CategoryTileSchema>, CategoryTile>>,
+  Expect<Same<Parsed<typeof CategoryTilesSectionSchema>, CategoryTilesSection>>,
+  Expect<Same<Parsed<typeof ProductCarouselSectionSchema>, ProductCarouselSection>>,
+  Expect<Same<Parsed<typeof ValuePropItemSchema>, ValuePropItem>>,
+  Expect<Same<Parsed<typeof ValuePropsSectionSchema>, ValuePropsSection>>,
+  Expect<Same<Parsed<typeof SplitBannerSectionSchema>, SplitBannerSection>>,
+  Expect<Same<Parsed<typeof HomePageDataSchema>, HomePageData>>,
 ];

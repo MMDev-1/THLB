@@ -58,3 +58,37 @@ export async function getReviews(
     averageRating,
   };
 }
+
+export interface RatingSummary {
+  /** Average rating, rounded to one decimal */
+  average: number;
+  count: number;
+}
+
+/**
+ * Average rating and review count per product, keyed by product id.
+ * Products without reviews are left out.
+ */
+export async function getRatingSummaries(
+  productIds: string[],
+): Promise<Record<string, RatingSummary>> {
+  await delay();
+
+  const wanted = new Set(productIds);
+  const totals = new Map<string, { sum: number; count: number }>();
+
+  for (const review of reviews) {
+    if (!wanted.has(review.productId)) continue;
+    const total = totals.get(review.productId) ?? { sum: 0, count: 0 };
+    total.sum += review.rating;
+    total.count += 1;
+    totals.set(review.productId, total);
+  }
+
+  return Object.fromEntries(
+    [...totals].map(([id, { sum, count }]) => [
+      id,
+      { average: Math.round((sum / count) * 10) / 10, count },
+    ]),
+  );
+}
