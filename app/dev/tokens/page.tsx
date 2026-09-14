@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 export const metadata: Metadata = {
   title: 'Design Tokens',
@@ -120,6 +121,9 @@ const RADII = [
 /* ------------------------------------------------------------------ */
 
 export default function TokensPage() {
+  /* Developer reference only: the live site returns a 404 here */
+  if (process.env.NODE_ENV === 'production') notFound();
+
   return (
     <div className="min-h-screen bg-background p-8 font-sans">
       <header className="mb-12 max-w-5xl mx-auto">
