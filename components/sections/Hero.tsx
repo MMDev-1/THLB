@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image, { getImageProps } from 'next/image';
 import Link from 'next/link';
 
 import type { HeroSection } from '@/types';
@@ -70,32 +70,43 @@ export function Hero({ data }: HeroProps) {
 /* ------------------------------------------------------------------ */
 
 function HeroImage({ media }: { media: HeroSection['media'] }) {
-  return (
-    <>
-      {/* Desktop image */}
+  if (!media.mobileSrc) {
+    return (
       <Image
         src={media.src}
         alt={media.alt}
         fill
         sizes="100vw"
         preload
-        className="hero__img hero__img--desktop"
+        className="hero__img"
         style={{ objectFit: 'cover' }}
       />
+    );
+  }
 
-      {/* Mobile image (if separate crop provided) */}
-      {media.mobileSrc && (
-        <Image
-          src={media.mobileSrc}
-          alt={media.alt}
-          fill
-          sizes="100vw"
-          preload
-          className="hero__img hero__img--mobile"
-          style={{ objectFit: 'cover' }}
-        />
-      )}
-    </>
+  /* Art direction with one <picture>: each device downloads only the image
+     it shows (two <Image>s hidden with CSS would download both on phones) */
+  const common = { alt: media.alt, fill: true, sizes: '100vw' } as const;
+  const {
+    props: { srcSet: desktopSrcSet },
+  } = getImageProps({ ...common, src: media.src });
+  const {
+    props: { srcSet: mobileSrcSet, ...imgProps },
+  } = getImageProps({ ...common, src: media.mobileSrc });
+
+  return (
+    <picture>
+      <source media="(min-width: 768px)" srcSet={desktopSrcSet} sizes="100vw" />
+      <source media="(max-width: 767px)" srcSet={mobileSrcSet} sizes="100vw" />
+      <img
+        {...imgProps}
+        alt={media.alt}
+        loading="eager"
+        fetchPriority="high"
+        className="hero__img"
+        style={{ ...imgProps.style, objectFit: 'cover' }}
+      />
+    </picture>
   );
 }
 

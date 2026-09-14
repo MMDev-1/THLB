@@ -20,6 +20,9 @@ const geistMono = localFont({
   src: './fonts/GeistMonoVF.woff2',
   variable: '--font-geist-mono',
   weight: '100 900',
+  /* Not used above the fold: don't preload it on every page, where it would
+     compete with the text that paints first. It still loads where it's used. */
+  preload: false,
 });
 
 export const metadata: Metadata = {

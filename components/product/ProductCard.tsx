@@ -1,6 +1,5 @@
 'use client';
 
-import * as Popover from '@radix-ui/react-popover';
 import { Check, Heart, Plus, Shirt } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -11,7 +10,7 @@ import { Price } from '@/components/ui/Price';
 import { Rating } from '@/components/ui/Rating';
 import { cn } from '@/lib/utils';
 import { addToCart } from '@/store/cart';
-import type { ProductBadge, ProductCardData } from '@/types';
+import type { ProductBadge, ProductCardData, QuickAddOption } from '@/types';
 
 /* ------------------------------------------------------------------ */
 /*  ProductCard                                                        */
@@ -19,6 +18,13 @@ import type { ProductBadge, ProductCardData } from '@/types';
 /*  The title link stretches over the whole card (valid HTML: no       */
 /*  buttons inside a link); wishlist and quick-add sit above it.       */
 /* ------------------------------------------------------------------ */
+
+/* The size picker (Radix Popover) is only needed after a tap, so it lives in
+   its own chunk: loaded on demand and warmed when the button is pointed at */
+const loadSizePicker = () => import('./SizePickerPopover');
+const SizePickerPopover = React.lazy(() =>
+  loadSizePicker().then((mod) => ({ default: mod.SizePickerPopover })),
+);
 
 const BADGES: Record<ProductBadge, { label: string; className: string }> = {
   sale: { label: 'Sale', className: 'bg-destructive text-destructive-foreground' },
@@ -135,7 +141,7 @@ function CardImages({ product, sizes }: { product: ProductCardData; sizes: strin
       {/* Placeholder sits underneath, so a missing photo never shows a broken image */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-muted"
+        className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-charcoal-700"
       >
         <Shirt className="h-10 w-10" strokeWidth={1.25} />
         <span className="text-xs">Photo coming soon</span>
@@ -211,6 +217,7 @@ const QUICK_ADD_CLASSES = cn(
 
 function QuickAdd({ product }: { product: ProductCardData }) {
   const [open, setOpen] = React.useState(false);
+  const [pickerWanted, setPickerWanted] = React.useState(false);
   const [added, setAdded] = React.useState<string | null>(null);
   const timer = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -231,6 +238,11 @@ function QuickAdd({ product }: { product: ProductCardData }) {
     if (timer.current) clearTimeout(timer.current);
     timer.current = setTimeout(() => setAdded(null), 2000);
   };
+
+  const className = cn(
+    QUICK_ADD_CLASSES,
+    added && 'pointer-fine:translate-y-0 pointer-fine:opacity-100',
+  );
 
   const content = (
     <>
@@ -259,10 +271,7 @@ function QuickAdd({ product }: { product: ProductCardData }) {
             stop(event);
             add(quickAdd.variantId);
           }}
-          className={cn(
-            QUICK_ADD_CLASSES,
-            added && 'pointer-fine:translate-y-0 pointer-fine:opacity-100',
-          )}
+          className={className}
         >
           {content}
         </button>
@@ -271,54 +280,58 @@ function QuickAdd({ product }: { product: ProductCardData }) {
     );
   }
 
+  const label = `Quick add ${product.title}: choose a size`;
+
+  /* Until the first tap: a plain button that also warms the picker's chunk */
+  const plainButton = (
+    <button
+      type="button"
+      aria-label={label}
+      aria-haspopup="dialog"
+      aria-expanded={false}
+      onPointerEnter={() => {
+        void loadSizePicker();
+      }}
+      onFocus={() => {
+        void loadSizePicker();
+      }}
+      onClick={(event) => {
+        event.stopPropagation();
+        setPickerWanted(true);
+        setOpen(true);
+      }}
+      className={className}
+    >
+      {content}
+    </button>
+  );
+
   return (
     <>
-      <Popover.Root open={open} onOpenChange={setOpen}>
-        <Popover.Trigger asChild>
-          <button
-            type="button"
-            aria-label={`Quick add ${product.title}: choose a size`}
-            onClick={(event) => event.stopPropagation()}
-            className={cn(
-              QUICK_ADD_CLASSES,
-              added && 'pointer-fine:translate-y-0 pointer-fine:opacity-100',
-            )}
-          >
-            {content}
-          </button>
-        </Popover.Trigger>
-        <Popover.Portal>
-          <Popover.Content
-            side="top"
-            align="end"
-            sideOffset={8}
-            collisionPadding={12}
-            className="z-50 w-60 rounded-lg border border-border bg-surface-raised p-3 shadow-lg"
-          >
-            <p className="mb-2 text-sm font-semibold text-foreground">
-              Choose a size <span className="font-normal text-muted">· {product.colour}</span>
-            </p>
-            <div
-              role="group"
-              aria-label={`Sizes for ${product.title}`}
-              className="grid grid-cols-3 gap-2"
-            >
-              {quickAdd.options.map((option) => (
-                <button
-                  key={option.variantId}
-                  type="button"
-                  disabled={!option.available}
-                  onClick={() => add(option.variantId, option.label)}
-                  className="h-9 rounded-md border border-border text-sm font-medium text-foreground transition-colors hover:border-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:cursor-not-allowed disabled:text-muted disabled:line-through"
-                >
-                  {option.label}
-                  {!option.available && <span className="sr-only"> (sold out)</span>}
-                </button>
-              ))}
-            </div>
-          </Popover.Content>
-        </Popover.Portal>
-      </Popover.Root>
+      {pickerWanted ? (
+        <React.Suspense fallback={plainButton}>
+          <SizePickerPopover
+            open={open}
+            onOpenChange={setOpen}
+            trigger={
+              <button
+                type="button"
+                aria-label={label}
+                onClick={(event) => event.stopPropagation()}
+                className={className}
+              >
+                {content}
+              </button>
+            }
+            productTitle={product.title}
+            colour={product.colour}
+            options={quickAdd.options}
+            onPick={(option: QuickAddOption) => add(option.variantId, option.label)}
+          />
+        </React.Suspense>
+      ) : (
+        plainButton
+      )}
       {announcement}
     </>
   );
