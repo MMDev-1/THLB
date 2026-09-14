@@ -6,10 +6,17 @@ export type {
   HeroMedia,
   HeroSection,
   HomePageData,
+  HomeSection,
+  HomeSectionType,
+  NewsletterSection,
   ProductCarouselSection,
+  ReviewsHighlightSection,
   SplitBannerSection,
+  UGCGridSection,
+  UGCTile,
   ValuePropItem,
   ValuePropsSection,
+  ViewAllLink,
 } from './home';
 export type {
   Announcement,

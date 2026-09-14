@@ -1,6 +1,7 @@
 /**
  * Homepage section types.
- * Each section maps to a top-level key in /data/home.json.
+ * home.json is an ordered list of sections; each section's `type` picks the
+ * component that renders it (components/sections/SectionRenderer.tsx).
  */
 
 /* ------------------------------------------------------------------ */
@@ -12,6 +13,11 @@ export interface CTA {
   href: string;
   /** "primary" = filled, "secondary" = outlined / ghost */
   variant: 'primary' | 'secondary';
+}
+
+export interface ViewAllLink {
+  label: string;
+  href: string;
 }
 
 /* ------------------------------------------------------------------ */
@@ -31,6 +37,7 @@ export interface HeroMedia {
 }
 
 export interface HeroSection {
+  type: 'hero';
   media: HeroMedia;
   eyebrow?: string;
   headline: string;
@@ -55,8 +62,22 @@ export interface CategoryTile {
 }
 
 export interface CategoryTilesSection {
+  type: 'categoryTiles';
   heading: string;
   tiles: CategoryTile[];
+}
+
+/* ------------------------------------------------------------------ */
+/*  Product Carousel                                                   */
+/* ------------------------------------------------------------------ */
+
+export interface ProductCarouselSection {
+  type: 'productCarousel';
+  heading: string;
+  /** Optional link to the full list, e.g. a collection page */
+  viewAll?: ViewAllLink;
+  /** Products to show, in order, by handle — resolved through getProducts() */
+  productHandles: string[];
 }
 
 /* ------------------------------------------------------------------ */
@@ -71,7 +92,21 @@ export interface ValuePropItem {
 }
 
 export interface ValuePropsSection {
+  type: 'valueProps';
   items: ValuePropItem[];
+}
+
+/* ------------------------------------------------------------------ */
+/*  Reviews Highlight                                                  */
+/* ------------------------------------------------------------------ */
+
+export interface ReviewsHighlightSection {
+  type: 'reviewsHighlight';
+  heading: string;
+  /** How many review cards to show (6–8) */
+  maxReviews: number;
+  /** Only reviews with at least this many stars are featured */
+  minRating: number;
 }
 
 /* ------------------------------------------------------------------ */
@@ -79,6 +114,7 @@ export interface ValuePropsSection {
 /* ------------------------------------------------------------------ */
 
 export interface SplitBannerSection {
+  type: 'splitBanner';
   image: string;
   alt: string;
   imageSide: 'left' | 'right';
@@ -89,25 +125,56 @@ export interface SplitBannerSection {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Product Carousel                                                   */
+/*  UGC Grid                                                           */
 /* ------------------------------------------------------------------ */
 
-export interface ProductCarouselSection {
+export interface UGCTile {
+  /** Customer photo — placeholder images until real UGC arrives */
+  image: string;
+  alt: string;
+  /** Product the look links to (its PDP) */
+  productHandle: string;
+}
+
+export interface UGCGridSection {
+  type: 'ugcGrid';
   heading: string;
-  /** Optional link to the full list, e.g. a collection page */
-  viewAll?: { label: string; href: string };
-  /** Products to show, in order, by handle — resolved through getProducts() */
-  productHandles: string[];
+  /** Shown above the grid, e.g. "@thehoodielb" — placeholder until confirmed */
+  instagramHandle: string;
+  instagramUrl: string;
+  tiles: UGCTile[];
 }
 
 /* ------------------------------------------------------------------ */
-/*  Home page data (grows as we add sections)                          */
+/*  Newsletter                                                         */
 /* ------------------------------------------------------------------ */
 
+export interface NewsletterSection {
+  type: 'newsletter';
+  heading: string;
+  subcopy: string;
+  buttonLabel: string;
+  successHeading: string;
+  successMessage: string;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Home page data                                                     */
+/* ------------------------------------------------------------------ */
+
+export type HomeSection =
+  | HeroSection
+  | CategoryTilesSection
+  | ProductCarouselSection
+  | ValuePropsSection
+  | ReviewsHighlightSection
+  | SplitBannerSection
+  | UGCGridSection
+  | NewsletterSection;
+
+export type HomeSectionType = HomeSection['type'];
+
 export interface HomePageData {
-  hero: HeroSection;
-  categoryTiles: CategoryTilesSection;
-  productCarousel: ProductCarouselSection;
-  valueProps: ValuePropsSection;
-  splitBanner: SplitBannerSection;
+  /** Rendered top to bottom in this order */
+  sections: HomeSection[];
 }

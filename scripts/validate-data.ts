@@ -9,6 +9,8 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
+import { ZodError } from 'zod';
+
 import { CollectionsDataSchema } from '../lib/schemas/collection';
 import { HomePageDataSchema } from '../lib/schemas/home';
 import { NavigationDataSchema } from '../lib/schemas/navigation';
@@ -19,6 +21,7 @@ import { ReviewsDataSchema } from '../lib/schemas/review';
 /* ------------------------------------------------------------------ */
 
 const DATA_DIR = resolve(__dirname, '..', 'data');
+const MAX_ISSUES_SHOWN = 10;
 
 interface ValidationTarget {
   file: string;
@@ -37,6 +40,20 @@ const targets: ValidationTarget[] = [
 
 const read = (file: string): unknown => JSON.parse(readFileSync(resolve(DATA_DIR, file), 'utf-8'));
 
+/** Print where each problem is, e.g. "at sections.0.media.poster: Too small: …" */
+function reportError(err: unknown) {
+  if (err instanceof ZodError) {
+    for (const issue of err.issues.slice(0, MAX_ISSUES_SHOWN)) {
+      console.error(`     at ${issue.path.join('.') || '(top level)'}: ${issue.message}`);
+    }
+    if (err.issues.length > MAX_ISSUES_SHOWN) {
+      console.error(`     …and ${err.issues.length - MAX_ISSUES_SHOWN} more`);
+    }
+  } else if (err instanceof Error) {
+    console.error(`     ${err.message}`);
+  }
+}
+
 /* ------------------------------------------------------------------ */
 
 let failed = false;
@@ -50,9 +67,7 @@ for (const { file, schema } of targets) {
   } catch (err) {
     failed = true;
     console.error(`  ✗  ${file}`);
-    if (err instanceof Error) {
-      console.error(`     ${err.message.split('\n').slice(0, 5).join('\n     ')}`);
-    }
+    reportError(err);
   }
 }
 
@@ -60,14 +75,19 @@ for (const { file, schema } of targets) {
 
 if (!failed) {
   const handles = new Set(ProductsDataSchema.parse(read('products.json')).map((p) => p.handle));
-  const listed = HomePageDataSchema.parse(read('home.json')).productCarousel.productHandles;
-  const unknown = listed.filter((handle) => !handles.has(handle));
+  const { sections } = HomePageDataSchema.parse(read('home.json'));
+  const referenced = sections.flatMap((section) => {
+    if (section.type === 'productCarousel') return section.productHandles;
+    if (section.type === 'ugcGrid') return section.tiles.map((tile) => tile.productHandle);
+    return [];
+  });
+  const unknown = [...new Set(referenced.filter((handle) => !handles.has(handle)))];
 
   if (unknown.length > 0) {
     failed = true;
-    console.error(`  ✗  home.json — productCarousel lists unknown products: ${unknown.join(', ')}`);
+    console.error(`  ✗  home.json — links to products that don't exist: ${unknown.join(', ')}`);
   } else {
-    console.log(`  ✓  home.json — all ${listed.length} carousel products exist`);
+    console.log(`  ✓  home.json — all ${referenced.length} product links point to real products`);
   }
 }
 

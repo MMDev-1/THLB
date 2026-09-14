@@ -1,111 +1,169 @@
 {
-  "hero": {
-    "media": {
-      "type": "image",
-      "src": "/images/hero/hero-desktop.jpg",
-      "mobileSrc": "/images/hero/hero-mobile.jpg",
-      "alt": "The Hoodie LB — Wearable blankets for ultimate comfort"
+  "sections": [
+    {
+      "type": "hero",
+      "media": {
+        "type": "image",
+        "src": "/images/hero/hero-desktop.jpg",
+        "mobileSrc": "/images/hero/hero-mobile.jpg",
+        "alt": "The Hoodie LB — Wearable blankets for ultimate comfort"
+      },
+      "eyebrow": "Now in Lebanon",
+      "headline": "Comfort You Can Wear",
+      "subcopy": "Wrap yourself in the softest wearable blankets — designed for lounging, bingeing, and everything in between.",
+      "ctas": [
+        {
+          "label": "Shop Now",
+          "href": "/collections/all",
+          "variant": "primary"
+        },
+        {
+          "label": "Our Story",
+          "href": "/pages/about",
+          "variant": "secondary"
+        }
+      ],
+      "align": "left",
+      "overlayOpacity": 0.45
     },
-    "eyebrow": "Now in Lebanon",
-    "headline": "Comfort You Can Wear",
-    "subcopy": "Wrap yourself in the softest wearable blankets — designed for lounging, bingeing, and everything in between.",
-    "ctas": [
-      {
-        "label": "Shop Now",
-        "href": "/collections/all",
-        "variant": "primary"
+    {
+      "type": "categoryTiles",
+      "heading": "Shop by Category",
+      "tiles": [
+        {
+          "image": "/images/categories/category-1.jpg",
+          "alt": "Hoodies collection",
+          "label": "Hoodies",
+          "href": "/collections/hoodies"
+        },
+        {
+          "image": "/images/categories/category-2.jpg",
+          "alt": "Blankets collection",
+          "label": "Blankets",
+          "href": "/collections/blankets"
+        },
+        {
+          "image": "/images/categories/category-3.jpg",
+          "alt": "Kids collection",
+          "label": "Kids",
+          "href": "/collections/kids"
+        },
+        {
+          "image": "/images/categories/category-4.jpg",
+          "alt": "Accessories collection",
+          "label": "Accessories",
+          "href": "/collections/accessories"
+        }
+      ]
+    },
+    {
+      "type": "productCarousel",
+      "heading": "Best Sellers",
+      "viewAll": {
+        "label": "View all",
+        "href": "/collections/adult-hoodies"
       },
-      {
-        "label": "Our Story",
+      "productHandles": [
+        "classic-hoodie",
+        "oversized-hoodie",
+        "zip-up-hoodie",
+        "fleece-lined-hoodie",
+        "hooded-poncho",
+        "couples-hoodie",
+        "hoodie-slipper-bundle",
+        "sherpa-blanket"
+      ]
+    },
+    {
+      "type": "valueProps",
+      "items": [
+        {
+          "icon": "Truck",
+          "title": "Free Delivery",
+          "copy": "On all orders across Lebanon"
+        },
+        {
+          "icon": "ShieldCheck",
+          "title": "Quality Guarantee",
+          "copy": "Premium fabrics built to last"
+        },
+        {
+          "icon": "RefreshCcw",
+          "title": "Easy Returns",
+          "copy": "30-day hassle-free returns"
+        },
+        {
+          "icon": "Headphones",
+          "title": "24/7 Support",
+          "copy": "We're here whenever you need us"
+        }
+      ]
+    },
+    {
+      "type": "reviewsHighlight",
+      "heading": "Loved by our customers",
+      "maxReviews": 8,
+      "minRating": 4
+    },
+    {
+      "type": "splitBanner",
+      "image": "/images/banners/split-banner.jpg",
+      "alt": "Person lounging in a hoodie blanket",
+      "imageSide": "left",
+      "eyebrow": "Our Promise",
+      "heading": "Made for Comfort",
+      "body": "Every piece is crafted from ultra-soft sherpa fleece, designed to keep you warm without the bulk. Whether you're working from home or winding down, The Hoodie LB has you covered — literally.",
+      "cta": {
+        "label": "Learn More",
         "href": "/pages/about",
-        "variant": "secondary"
+        "variant": "primary"
       }
-    ],
-    "align": "left",
-    "overlayOpacity": 0.45
-  },
-
-  "categoryTiles": {
-    "heading": "Shop by Category",
-    "tiles": [
-      {
-        "image": "/images/categories/category-1.jpg",
-        "alt": "Hoodies collection",
-        "label": "Hoodies",
-        "href": "/collections/hoodies"
-      },
-      {
-        "image": "/images/categories/category-2.jpg",
-        "alt": "Blankets collection",
-        "label": "Blankets",
-        "href": "/collections/blankets"
-      },
-      {
-        "image": "/images/categories/category-3.jpg",
-        "alt": "Kids collection",
-        "label": "Kids",
-        "href": "/collections/kids"
-      },
-      {
-        "image": "/images/categories/category-4.jpg",
-        "alt": "Accessories collection",
-        "label": "Accessories",
-        "href": "/collections/accessories"
-      }
-    ]
-  },
-
-  "productCarousel": {
-    "heading": "Best Sellers",
-    "viewAll": { "label": "View all", "href": "/collections/adult-hoodies" },
-    "productHandles": [
-      "classic-hoodie",
-      "oversized-hoodie",
-      "zip-up-hoodie",
-      "fleece-lined-hoodie",
-      "hooded-poncho",
-      "couples-hoodie",
-      "hoodie-slipper-bundle",
-      "sherpa-blanket"
-    ]
-  },
-
-  "valueProps": {
-    "items": [
-      {
-        "icon": "Truck",
-        "title": "Free Delivery",
-        "copy": "On all orders across Lebanon"
-      },
-      {
-        "icon": "ShieldCheck",
-        "title": "Quality Guarantee",
-        "copy": "Premium fabrics built to last"
-      },
-      {
-        "icon": "RefreshCcw",
-        "title": "Easy Returns",
-        "copy": "30-day hassle-free returns"
-      },
-      {
-        "icon": "Headphones",
-        "title": "24/7 Support",
-        "copy": "We're here whenever you need us"
-      }
-    ]
-  },
-
-  "splitBanner": {
-    "image": "/images/banners/split-banner.jpg",
-    "alt": "Person lounging in a hoodie blanket",
-    "imageSide": "left",
-    "eyebrow": "Our Promise",
-    "heading": "Made for Comfort",
-    "body": "Every piece is crafted from ultra-soft sherpa fleece, designed to keep you warm without the bulk. Whether you're working from home or winding down, The Hoodie LB has you covered — literally.",
-    "cta": {
-      "label": "Learn More",
-      "href": "/pages/about",
-      "variant": "primary"
+    },
+    {
+      "type": "ugcGrid",
+      "heading": "Styled by you",
+      "instagramHandle": "@thehoodielb",
+      "instagramUrl": "https://www.instagram.com/thehoodielb",
+      "tiles": [
+        {
+          "image": "/images/categories/category-1.jpg",
+          "alt": "Customer relaxing in The Classic Hoodie (placeholder photo)",
+          "productHandle": "classic-hoodie"
+        },
+        {
+          "image": "/images/banners/split-banner.jpg",
+          "alt": "Customer lounging in a hoodie blanket (placeholder photo)",
+          "productHandle": "oversized-hoodie"
+        },
+        {
+          "image": "/images/categories/category-2.jpg",
+          "alt": "Customer wrapped in the Sherpa Blanket (placeholder photo)",
+          "productHandle": "sherpa-blanket"
+        },
+        {
+          "image": "/images/categories/category-3.jpg",
+          "alt": "Kids wearing The Kids Classic Hoodie (placeholder photo)",
+          "productHandle": "kids-classic-hoodie"
+        },
+        {
+          "image": "/images/categories/category-4.jpg",
+          "alt": "Cozy accessories styled at home (placeholder photo)",
+          "productHandle": "classic-slippers"
+        },
+        {
+          "image": "/images/hero/hero-mobile.jpg",
+          "alt": "Customer in a hoodie and slippers set (placeholder photo)",
+          "productHandle": "hoodie-slipper-bundle"
+        }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "heading": "Join the cozy club",
+      "subcopy": "New drops, restocks and members-only offers, straight to your inbox. No spam; unsubscribe anytime.",
+      "buttonLabel": "Subscribe",
+      "successHeading": "You’re on the list!",
+      "successMessage": "Check your inbox for a welcome email."
     }
-  }
+  ]
 }
