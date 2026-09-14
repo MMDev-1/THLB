@@ -18,4 +18,9 @@ export { getHomePage } from './home';
 export { getAnnouncements, getNavigation } from './navigation';
 export { getBlogPost, getBlogPosts, getPage, getPages } from './pages';
 export { getProduct, getProducts, searchProducts } from './products';
-export { getReviews, type PaginatedReviews } from './reviews';
+export {
+  getRatingSummaries,
+  getReviews,
+  type PaginatedReviews,
+  type RatingSummary,
+} from './reviews';

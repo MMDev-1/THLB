@@ -6,6 +6,7 @@ export type {
   HeroMedia,
   HeroSection,
   HomePageData,
+  ProductCarouselSection,
   SplitBannerSection,
   ValuePropItem,
   ValuePropsSection,
@@ -22,5 +23,12 @@ export type {
 export type { Address, Order, OrderLineItem, OrderStatus } from './order';
 export type { BlogPost, Page } from './page';
 export type { Product, ProductImage, Variant } from './product';
+export type {
+  ProductBadge,
+  ProductCardData,
+  ProductSwatch,
+  QuickAdd,
+  QuickAddOption,
+} from './product-card';
 export type { Review } from './review';
 export type { BrandPalette, ColourScale, FontSize, Radius, SemanticColour, Shadow } from './tokens';

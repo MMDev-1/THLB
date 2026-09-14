@@ -6,6 +6,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { IconMenu, IconSearch, IconShoppingBag, IconUser } from '@/components/icons';
 import { Logo } from '@/components/icons/Logo';
 import { MegaMenu } from '@/components/layout/MegaMenu';
+import { useCartCount } from '@/store/cart';
 import type { NavItem } from '@/types';
 
 /* ------------------------------------------------------------------ */
@@ -34,7 +35,7 @@ const HOVER_CLOSE_MS = 150;
 
 export function Header({ navItems, variant = 'solid' }: HeaderProps) {
   const [isCompact, setIsCompact] = useState(false);
-  const [cartCount] = useState(0);
+  const cartCount = useCartCount();
   const [badgeBump, setBadgeBump] = useState(false);
   const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
   const [keyboardActivated, setKeyboardActivated] = useState(false);
