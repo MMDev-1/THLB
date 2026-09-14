@@ -1943,18 +1943,33 @@ export function IconSearch(props: React.SVGProps&lt;SVGSVGElement&gt;) {
         </tr>
         <tr>
           <td><code>T1-S3/ui-component-library</code></td>
-          <td>17 UI components</td>
+          <td>18 UI components + Storybook stories</td>
+          <td>Merged (PR #3, 14 Sep)</td>
+        </tr>
+        <tr>
+          <td><code>T1-S4/types-data-api-validation</code></td>
+          <td>TypeScript types, mock data, API layer, Zod schemas</td>
+          <td>In main via later commits &mdash; don't merge (older versions)</td>
+        </tr>
+        <tr>
+          <td><code>T2-S1/announcement-bar</code></td>
+          <td>Announcement bar</td>
           <td>Merged</td>
         </tr>
         <tr>
-          <td><code>T2-S1/announcement-sticky-header</code></td>
-          <td>Announcement bar + sticky header</td>
+          <td><code>T2-S2/sticky-header</code></td>
+          <td>Sticky header</td>
           <td>Merged</td>
         </tr>
         <tr>
-          <td><code>T2-S2/mega-menu-mobile-nav</code></td>
-          <td>Mega menu + mobile drawer</td>
+          <td><code>T2-S3/desktop-mega-menu</code></td>
+          <td>Desktop mega menu</td>
           <td>Merged</td>
+        </tr>
+        <tr>
+          <td><code>T2-S4/mobile-nav-drawer</code></td>
+          <td>Mobile navigation drawer</td>
+          <td>In main via later commits</td>
         </tr>
         <tr>
           <td><code>T3-S1/hero-section</code></td>
@@ -1964,13 +1979,88 @@ export function IconSearch(props: React.SVGProps&lt;SVGSVGElement&gt;) {
         <tr>
           <td><code>T3-S2/category-valueprops-splitbanner</code></td>
           <td>CategoryTiles + ValueProps + SplitBanner</td>
-          <td>Current</td>
+          <td>Merged</td>
+        </tr>
+        <tr>
+          <td><code>fix/fixes-and-cleanup</code></td>
+          <td>Fixes and cleanup after T3</td>
+          <td>Merged</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <h3>The workflow (using GitHub Desktop)</h3>
+  <h3>Cleanup pull requests (14 September)</h3>
+  <p>
+    A review of the repo against the T1-S1 task found gaps. Each fix got its own branch and pull
+    request.
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>PR</th>
+          <th>Branch</th>
+          <th>What It Changed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>#1</td>
+          <td><code>fix/readme-format-check</code></td>
+          <td>README scripts table formatted for Prettier</td>
+        </tr>
+        <tr>
+          <td>#2</td>
+          <td><code>fix/add-zod-dependency</code></td>
+          <td>Zod declared as a dependency</td>
+        </tr>
+        <tr>
+          <td>#3</td>
+          <td><code>T1-S3/merge-ui-library</code></td>
+          <td>UI component library merged into main</td>
+        </tr>
+        <tr>
+          <td>#4</td>
+          <td><code>T1-S3/storybook-setup</code></td>
+          <td>Storybook config &mdash; <code>npm run storybook</code></td>
+        </tr>
+        <tr>
+          <td>#5</td>
+          <td><code>fix/lint-errors</code></td>
+          <td>Lint errors fixed in AnnouncementBar, MobileNav, ValueProps</td>
+        </tr>
+        <tr>
+          <td>#6</td>
+          <td><code>fix/husky-pre-commit</code></td>
+          <td>Pre-commit hook added &mdash; lint errors block commits</td>
+        </tr>
+        <tr>
+          <td>#7</td>
+          <td><code>fix/validate-data-script</code></td>
+          <td><code>npm run validate:data</code> + navigation schema fix</td>
+        </tr>
+        <tr>
+          <td>#8</td>
+          <td><code>fix/remove-unused-eslint-plugin-import</code></td>
+          <td>Unused dependency removed</td>
+        </tr>
+        <tr>
+          <td>#9</td>
+          <td><code>docs/readme-fixes</code></td>
+          <td>README clone URL and folder tree</td>
+        </tr>
+        <tr>
+          <td>#10</td>
+          <td><code>fix/format-all-files</code></td>
+          <td>Prettier on every file + LF line endings</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>The workflow (pull requests)</h3>
   <div class="diagram">
     <div class="flow-row">
       <div class="flow-box">1. Create branch</div>
@@ -1979,13 +2069,16 @@ export function IconSearch(props: React.SVGProps&lt;SVGSVGElement&gt;) {
       <span class="flow-arrow">&rarr;</span>
       <div class="flow-box ember">3. Push to GitHub</div>
       <span class="flow-arrow">&rarr;</span>
-      <div class="flow-box sand">4. Merge to main</div>
+      <div class="flow-box sand">4. Open a pull request</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box">5. Merge on GitHub</div>
     </div>
   </div>
 
   <p>
     <strong>Important order:</strong> Always create the branch FIRST, then commit, then push. Never
-    commit directly to <code>main</code>.
+    commit directly to <code>main</code>. The pre-commit hook runs ESLint and Prettier on the files
+    you commit; if it blocks a commit, fix what it reports and commit again.
   </p>
 
   <h3>Commit message examples</h3>
@@ -1995,12 +2088,17 @@ export function IconSearch(props: React.SVGProps&lt;SVGSVGElement&gt;) {
 [T2-S2] Add MegaMenu with keyboard focus management
 [T2-S2] Add MobileNav drawer with focus trap
 [T3-S1] Add Hero section with image/video support
-[T3-S2] Add CategoryTiles, ValueProps, SplitBanner sections</pre>
+[T3-S2] Add CategoryTiles, ValueProps, SplitBanner sections
+[Fix] Add missing Husky pre-commit hook for lint-staged
+[Docs] Fix README setup steps and folder structure</pre>
 
   <div class="callout callout-sand">
-    <strong>Merge direction:</strong> Always switch to <code>main</code> first, then merge the
-    feature branch INTO main. Not the other way around. In GitHub Desktop: switch to main &rarr;
-    Branch &rarr; Merge into current branch &rarr; select the feature branch.
+    <strong>Merging:</strong> Merge on GitHub, not locally &mdash; merging into <code>main</code> in
+    GitHub Desktop pushes straight to <code>main</code>. Open a pull request from your branch into
+    <code>main</code>, click <strong>Merge pull request</strong>, then bring the result down in
+    GitHub Desktop (switch to <code>main</code> &rarr; Fetch origin &rarr; Pull). Keep the branch
+    afterwards; branches are the project's record of each task. If a pull request adds packages, run
+    <code>npm install</code> after pulling.
   </div>
 </div>
 
