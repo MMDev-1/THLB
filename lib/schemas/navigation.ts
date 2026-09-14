@@ -16,10 +16,22 @@ export const MegaMenuColumnSchema = z.object({
   links: z.array(NavLinkSchema),
 });
 
+export const MegaMenuPromoSchema = z.object({
+  image: z.string().min(1),
+  title: z.string().min(1),
+  href: z.string().min(1),
+  badge: z.string().min(1).optional(),
+});
+
+export const MegaMenuDataSchema = z.object({
+  columns: z.array(MegaMenuColumnSchema),
+  promos: z.array(MegaMenuPromoSchema).optional(),
+});
+
 export const NavItemSchema = z.object({
   label: z.string().min(1),
   href: z.string().min(1),
-  megaMenu: z.array(MegaMenuColumnSchema).optional(),
+  megaMenu: MegaMenuDataSchema.optional(),
   children: z.array(NavLinkSchema).optional(),
 });
 
