@@ -1,11 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
-import {
-  Headphones,
-  HelpCircle,
-  RefreshCcw,
-  ShieldCheck,
-  Truck,
-} from 'lucide-react';
+import { Headphones, HelpCircle, RefreshCcw, ShieldCheck, Truck } from 'lucide-react';
 
 import type { ValuePropsSection } from '@/types/home';
 

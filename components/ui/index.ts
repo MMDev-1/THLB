@@ -1,5 +1,5 @@
 export { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './Accordion';
-export { Badge, type BadgeProps,badgeVariants } from './Badge';
+export { Badge, type BadgeProps, badgeVariants } from './Badge';
 export {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,7 +8,7 @@ export {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from './Breadcrumb';
-export { Button, type ButtonProps,buttonVariants } from './Button';
+export { Button, type ButtonProps, buttonVariants } from './Button';
 export { Checkbox } from './Checkbox';
 export {
   Drawer,

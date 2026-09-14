@@ -20,30 +20,18 @@ function BreadcrumbList({ className, ...props }: React.ComponentProps<'ol'>) {
 }
 
 function BreadcrumbItem({ className, ...props }: React.ComponentProps<'li'>) {
-  return (
-    <li
-      className={cn('inline-flex items-center gap-1.5', className)}
-      {...props}
-    />
-  );
+  return <li className={cn('inline-flex items-center gap-1.5', className)} {...props} />;
 }
 
 type BreadcrumbLinkProps = React.ComponentProps<'a'> & {
   asChild?: boolean;
 };
 
-function BreadcrumbLink({
-  asChild,
-  className,
-  ...props
-}: BreadcrumbLinkProps) {
+function BreadcrumbLink({ asChild, className, ...props }: BreadcrumbLinkProps) {
   const Comp = asChild ? Slot : 'a';
   return (
     <Comp
-      className={cn(
-        'text-muted transition-colors hover:text-foreground',
-        className,
-      )}
+      className={cn('text-muted transition-colors hover:text-foreground', className)}
       {...props}
     />
   );
@@ -61,11 +49,7 @@ function BreadcrumbPage({ className, ...props }: React.ComponentProps<'span'>) {
   );
 }
 
-function BreadcrumbSeparator({
-  children,
-  className,
-  ...props
-}: React.ComponentProps<'li'>) {
+function BreadcrumbSeparator({ children, className, ...props }: React.ComponentProps<'li'>) {
   return (
     <li
       role="presentation"

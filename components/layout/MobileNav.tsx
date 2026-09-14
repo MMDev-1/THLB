@@ -143,9 +143,7 @@ export function MobileNav({ navItems }: MobileNavProps) {
   }, []);
 
   /* ---- Collect all promo tiles from mega menus ---- */
-  const allPromos = navItems.flatMap(
-    (item) => item.megaMenu?.promos ?? [],
-  );
+  const allPromos = navItems.flatMap((item) => item.megaMenu?.promos ?? []);
 
   return (
     <>
@@ -176,11 +174,7 @@ export function MobileNav({ navItems }: MobileNavProps) {
             <IconX width={22} height={22} />
           </button>
 
-          <Link
-            href="/search"
-            className="mobile-nav__search"
-            onClick={close}
-          >
+          <Link href="/search" className="mobile-nav__search" onClick={close}>
             <IconSearch width={18} height={18} />
             <span>Search</span>
           </Link>
@@ -190,8 +184,7 @@ export function MobileNav({ navItems }: MobileNavProps) {
         <nav className="mobile-nav__menu" aria-label="Mobile menu">
           <ul className="mobile-nav__list">
             {navItems.map((item, index) => {
-              const hasChildren =
-                item.megaMenu && item.megaMenu.columns.length > 0;
+              const hasChildren = item.megaMenu && item.megaMenu.columns.length > 0;
               const isExpanded = expandedIndex === index;
 
               return (
@@ -233,16 +226,11 @@ export function MobileNav({ navItems }: MobileNavProps) {
                           </li>
                           {item.megaMenu!.columns.map((column) => (
                             <li key={column.title}>
-                              <span className="mobile-nav__sub-heading">
-                                {column.title}
-                              </span>
+                              <span className="mobile-nav__sub-heading">{column.title}</span>
                               <ul className="mobile-nav__sub-sub-list">
                                 {column.links.map((link) => (
                                   <li key={link.href}>
-                                    <Link
-                                      href={link.href}
-                                      className="mobile-nav__sub-link"
-                                    >
+                                    <Link href={link.href} className="mobile-nav__sub-link">
                                       {link.label}
                                     </Link>
                                   </li>
@@ -269,21 +257,11 @@ export function MobileNav({ navItems }: MobileNavProps) {
           <div className="mobile-nav__promos">
             <div className="mobile-nav__promos-scroll">
               {allPromos.map((promo) => (
-                <Link
-                  key={promo.href}
-                  href={promo.href}
-                  className="mobile-nav__promo"
-                >
+                <Link key={promo.href} href={promo.href} className="mobile-nav__promo">
                   <div className="mobile-nav__promo-image">
-                    {promo.badge && (
-                      <span className="mobile-nav__promo-badge">
-                        {promo.badge}
-                      </span>
-                    )}
+                    {promo.badge && <span className="mobile-nav__promo-badge">{promo.badge}</span>}
                   </div>
-                  <span className="mobile-nav__promo-title">
-                    {promo.title}
-                  </span>
+                  <span className="mobile-nav__promo-title">{promo.title}</span>
                 </Link>
               ))}
             </div>

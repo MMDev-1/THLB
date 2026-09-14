@@ -128,8 +128,8 @@ export default function TokensPage() {
         </p>
         <h1 className="text-2xl font-bold text-foreground">The Hoodie LB — Token Reference</h1>
         <p className="text-base text-muted mt-2">
-          All CSS custom properties and Tailwind utilities generated from the Warm&nbsp;&amp;&nbsp;Cozy
-          palette.
+          All CSS custom properties and Tailwind utilities generated from the
+          Warm&nbsp;&amp;&nbsp;Cozy palette.
         </p>
       </header>
 
@@ -211,10 +211,7 @@ export default function TokensPage() {
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-6">
             {RADII.map(({ token, css }) => (
               <div key={token} className="flex flex-col items-center gap-2">
-                <div
-                  className="h-16 w-16 bg-accent"
-                  style={{ borderRadius: css }}
-                />
+                <div className="h-16 w-16 bg-accent" style={{ borderRadius: css }} />
                 <span className="text-xs text-muted font-mono">radius-{token}</span>
               </div>
             ))}

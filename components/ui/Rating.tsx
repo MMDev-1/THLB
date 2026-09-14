@@ -51,9 +51,7 @@ function Rating({
             disabled={readOnly}
             className={cn(
               'transition-colors',
-              readOnly
-                ? 'cursor-default'
-                : 'cursor-pointer hover:scale-110',
+              readOnly ? 'cursor-default' : 'cursor-pointer hover:scale-110',
               filled ? 'text-sand-400' : 'text-charcoal-200',
             )}
             onClick={() => onChange?.(starValue)}

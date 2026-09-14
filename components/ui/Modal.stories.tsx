@@ -28,9 +28,7 @@ export const Default: Story = {
       <ModalContent>
         <ModalHeader>
           <ModalTitle>Size Guide</ModalTitle>
-          <ModalDescription>
-            Find the perfect fit for your new hoodie.
-          </ModalDescription>
+          <ModalDescription>Find the perfect fit for your new hoodie.</ModalDescription>
         </ModalHeader>
         <div className="py-4 text-sm text-muted">
           Size chart placeholder — real content will go here.

@@ -38,10 +38,7 @@ export async function getReviews(
 
   const all = reviews
     .filter((r) => r.productId === productId)
-    .sort(
-      (a, b) =>
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-    );
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 
   const total = all.length;
   const totalPages = Math.ceil(total / pageSize);
@@ -50,9 +47,7 @@ export async function getReviews(
   const paginated = all.slice(start, start + pageSize);
 
   const averageRating =
-    total > 0
-      ? Math.round((all.reduce((s, r) => s + r.rating, 0) / total) * 10) / 10
-      : 0;
+    total > 0 ? Math.round((all.reduce((s, r) => s + r.rating, 0) / total) * 10) / 10 : 0;
 
   return {
     reviews: paginated,

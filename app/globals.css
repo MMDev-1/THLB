@@ -654,7 +654,8 @@ body:has(#main-content > .hero) .header:not(.header--compact) .header__logo {
   cursor: pointer;
   border-radius: var(--radius-full);
   position: relative;
-  transition: color var(--duration-fast) var(--ease-default),
+  transition:
+    color var(--duration-fast) var(--ease-default),
     background-color var(--duration-fast) var(--ease-default);
   text-decoration: none;
 }
@@ -703,9 +704,15 @@ body:has(#main-content > .hero) .header:not(.header--compact) .header__nav-link:
 }
 
 @keyframes badge-bump {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.3); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Header spacer — reserves space below the sticky header */
@@ -1888,7 +1895,6 @@ body:has(#main-content > .hero) .header:not(.header--compact) .header__nav-link:
     border-radius: var(--radius-lg) 0 0 var(--radius-lg);
   }
 }
-
 
 /* ============================================================
    SITE FOOTER

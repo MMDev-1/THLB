@@ -130,10 +130,7 @@ function SelectItem({
 /* ------------------------------------------------------------------ */
 /*  Label                                                              */
 /* ------------------------------------------------------------------ */
-function SelectLabel({
-  className,
-  ...props
-}: React.ComponentProps<typeof SelectPrimitive.Label>) {
+function SelectLabel({ className, ...props }: React.ComponentProps<typeof SelectPrimitive.Label>) {
   return (
     <SelectPrimitive.Label
       className={cn('py-1.5 pl-8 pr-2 text-xs font-semibold text-muted', className)}
@@ -150,10 +147,7 @@ function SelectSeparator({
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Separator>) {
   return (
-    <SelectPrimitive.Separator
-      className={cn('-mx-1 my-1 h-px bg-border', className)}
-      {...props}
-    />
+    <SelectPrimitive.Separator className={cn('-mx-1 my-1 h-px bg-border', className)} {...props} />
   );
 }
 

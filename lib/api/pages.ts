@@ -36,7 +36,6 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
 export async function getBlogPosts(): Promise<BlogPost[]> {
   await delay();
   return [...blogPosts].sort(
-    (a, b) =>
-      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
   );
 }

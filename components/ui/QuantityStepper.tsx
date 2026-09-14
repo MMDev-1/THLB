@@ -46,11 +46,7 @@ function QuantityStepper({
   );
 
   return (
-    <div
-      className={cn('inline-flex items-center', className)}
-      role="group"
-      aria-label="Quantity"
-    >
+    <div className={cn('inline-flex items-center', className)} role="group" aria-label="Quantity">
       <button
         type="button"
         className={cn(btnClass, 'rounded-l-lg')}

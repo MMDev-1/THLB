@@ -38,13 +38,31 @@ export function Footer({ columns }: FooterProps) {
 
           {/* Social icons */}
           <div className="site-footer__social">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="site-footer__social-link" aria-label="Instagram">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="site-footer__social-link"
+              aria-label="Instagram"
+            >
               <IconInstagram width={20} height={20} strokeWidth={1.5} />
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="site-footer__social-link" aria-label="Facebook">
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="site-footer__social-link"
+              aria-label="Facebook"
+            >
               <IconFacebook width={20} height={20} strokeWidth={1.5} />
             </a>
-            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="site-footer__social-link" aria-label="TikTok">
+            <a
+              href="https://tiktok.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="site-footer__social-link"
+              aria-label="TikTok"
+            >
               <IconTikTok width={20} height={20} strokeWidth={1.5} />
             </a>
           </div>
@@ -76,7 +94,9 @@ export function Footer({ columns }: FooterProps) {
           <Link href="/pages/privacy" className="site-footer__legal-link">
             Privacy Policy
           </Link>
-          <span className="site-footer__legal-separator" aria-hidden="true">·</span>
+          <span className="site-footer__legal-separator" aria-hidden="true">
+            ·
+          </span>
           <Link href="/pages/terms" className="site-footer__legal-link">
             Terms of Service
           </Link>

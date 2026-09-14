@@ -31,12 +31,7 @@ type DrawerContentProps = React.ComponentProps<typeof DialogPrimitive.Content> &
   side?: 'left' | 'right';
 };
 
-function DrawerContent({
-  className,
-  children,
-  side = 'right',
-  ...props
-}: DrawerContentProps) {
+function DrawerContent({ className, children, side = 'right', ...props }: DrawerContentProps) {
   return (
     <DrawerPortal>
       <DrawerOverlay />
@@ -44,8 +39,10 @@ function DrawerContent({
         className={cn(
           'fixed z-50 flex h-full flex-col border-border bg-surface-raised shadow-xl transition-transform duration-300',
           'focus:outline-none',
-          side === 'right' && 'inset-y-0 right-0 w-full max-w-sm border-l data-[state=open]:animate-in data-[state=open]:slide-in-from-right data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right',
-          side === 'left' && 'inset-y-0 left-0 w-full max-w-sm border-r data-[state=open]:animate-in data-[state=open]:slide-in-from-left data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left',
+          side === 'right' &&
+            'inset-y-0 right-0 w-full max-w-sm border-l data-[state=open]:animate-in data-[state=open]:slide-in-from-right data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right',
+          side === 'left' &&
+            'inset-y-0 left-0 w-full max-w-sm border-r data-[state=open]:animate-in data-[state=open]:slide-in-from-left data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left',
           className,
         )}
         {...props}
@@ -74,12 +71,7 @@ function DrawerContent({
 }
 
 function DrawerHeader({ className, ...props }: React.ComponentProps<'div'>) {
-  return (
-    <div
-      className={cn('flex flex-col space-y-2 p-6 pb-0', className)}
-      {...props}
-    />
-  );
+  return <div className={cn('flex flex-col space-y-2 p-6 pb-0', className)} {...props} />;
 }
 
 function DrawerFooter({ className, ...props }: React.ComponentProps<'div'>) {
@@ -91,10 +83,7 @@ function DrawerFooter({ className, ...props }: React.ComponentProps<'div'>) {
   );
 }
 
-function DrawerTitle({
-  className,
-  ...props
-}: React.ComponentProps<typeof DialogPrimitive.Title>) {
+function DrawerTitle({ className, ...props }: React.ComponentProps<typeof DialogPrimitive.Title>) {
   return (
     <DialogPrimitive.Title
       className={cn('text-lg font-semibold text-foreground', className)}
@@ -107,12 +96,7 @@ function DrawerDescription({
   className,
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Description>) {
-  return (
-    <DialogPrimitive.Description
-      className={cn('text-sm text-muted', className)}
-      {...props}
-    />
-  );
+  return <DialogPrimitive.Description className={cn('text-sm text-muted', className)} {...props} />;
 }
 
 export {

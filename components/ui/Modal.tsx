@@ -86,10 +86,7 @@ function ModalFooter({ className, ...props }: React.ComponentProps<'div'>) {
   );
 }
 
-function ModalTitle({
-  className,
-  ...props
-}: React.ComponentProps<typeof DialogPrimitive.Title>) {
+function ModalTitle({ className, ...props }: React.ComponentProps<typeof DialogPrimitive.Title>) {
   return (
     <DialogPrimitive.Title
       className={cn('text-lg font-semibold leading-none tracking-tight text-foreground', className)}
@@ -102,12 +99,7 @@ function ModalDescription({
   className,
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Description>) {
-  return (
-    <DialogPrimitive.Description
-      className={cn('text-sm text-muted', className)}
-      {...props}
-    />
-  );
+  return <DialogPrimitive.Description className={cn('text-sm text-muted', className)} {...props} />;
 }
 
 export {

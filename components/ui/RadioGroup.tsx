@@ -9,12 +9,7 @@ function RadioGroup({
   className,
   ...props
 }: React.ComponentProps<typeof RadioGroupPrimitive.Root>) {
-  return (
-    <RadioGroupPrimitive.Root
-      className={cn('grid gap-2', className)}
-      {...props}
-    />
-  );
+  return <RadioGroupPrimitive.Root className={cn('grid gap-2', className)} {...props} />;
 }
 
 function RadioGroupItem({
@@ -33,11 +28,7 @@ function RadioGroupItem({
       {...props}
     >
       <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
-        <svg
-          className="h-2.5 w-2.5 fill-current"
-          viewBox="0 0 10 10"
-          aria-hidden="true"
-        >
+        <svg className="h-2.5 w-2.5 fill-current" viewBox="0 0 10 10" aria-hidden="true">
           <circle cx="5" cy="5" r="5" />
         </svg>
       </RadioGroupPrimitive.Indicator>

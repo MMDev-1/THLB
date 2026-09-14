@@ -101,17 +101,14 @@ export function AnnouncementBar({ announcements }: AnnouncementBarProps) {
   const count = announcements.length;
 
   /* ---- Fade transition helper ---- */
-  const transitionTo = useCallback(
-    (nextIndex: number) => {
-      setIsFading(true);
-      if (fadeTimerRef.current) clearTimeout(fadeTimerRef.current);
-      fadeTimerRef.current = setTimeout(() => {
-        setActiveIndex(nextIndex);
-        setIsFading(false);
-      }, 300);
-    },
-    [],
-  );
+  const transitionTo = useCallback((nextIndex: number) => {
+    setIsFading(true);
+    if (fadeTimerRef.current) clearTimeout(fadeTimerRef.current);
+    fadeTimerRef.current = setTimeout(() => {
+      setActiveIndex(nextIndex);
+      setIsFading(false);
+    }, 300);
+  }, []);
 
   /* ---- Auto-rotate ---- */
   useEffect(() => {

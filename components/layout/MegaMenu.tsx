@@ -41,8 +41,7 @@ export function MegaMenu({
   useEffect(() => {
     if (isOpen && focusOnOpen && panelRef.current) {
       requestAnimationFrame(() => {
-        const firstLink =
-          panelRef.current?.querySelector<HTMLAnchorElement>('a');
+        const firstLink = panelRef.current?.querySelector<HTMLAnchorElement>('a');
         firstLink?.focus();
       });
     }
@@ -87,17 +86,9 @@ export function MegaMenu({
         {data.promos && data.promos.length > 0 && (
           <div className="mega-menu__promos">
             {data.promos.map((promo) => (
-              <Link
-                key={promo.href}
-                href={promo.href}
-                className="mega-menu__promo"
-              >
+              <Link key={promo.href} href={promo.href} className="mega-menu__promo">
                 <div className="mega-menu__promo-image">
-                  {promo.badge && (
-                    <span className="mega-menu__promo-badge">
-                      {promo.badge}
-                    </span>
-                  )}
+                  {promo.badge && <span className="mega-menu__promo-badge">{promo.badge}</span>}
                 </div>
                 <span className="mega-menu__promo-title">{promo.title}</span>
               </Link>
