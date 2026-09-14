@@ -5,7 +5,7 @@ E-commerce storefront built with **Next.js 16**, **TypeScript**, and **Tailwind 
 ## Setup
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/MMDev-1/THLB.git thehoodielb
 cd thehoodielb
 npm install
 npm run dev        # → http://localhost:3000
@@ -29,18 +29,21 @@ npm run dev        # → http://localhost:3000
 
 ```
 thehoodielb/
+├── .storybook/        # Storybook config (npm run storybook)
 ├── app/               # Next.js App Router (pages, layouts, routes)
 ├── components/
 │   ├── ui/            # Reusable UI primitives (buttons, inputs, modals)
 │   ├── layout/        # Layout components (header, footer, nav)
 │   ├── sections/      # Page sections (hero, features, testimonials)
 │   ├── product/       # Product-related components
-│   └── cart/          # Cart-related components
+│   ├── cart/          # Cart-related components
+│   └── icons/         # SVG icon components (logo, social, UI icons)
 ├── lib/               # Utility functions and shared logic
 ├── data/              # Static data, constants, mock data
 ├── types/             # TypeScript type definitions
 ├── hooks/             # Custom React hooks
 ├── store/             # State management
+├── scripts/           # Dev scripts (data validation)
 └── public/            # Static assets (images, fonts, icons)
 ```
 
