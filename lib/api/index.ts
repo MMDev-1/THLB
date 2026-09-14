@@ -16,11 +16,14 @@ export {
 } from './collections';
 export { getHomePage } from './home';
 export { getAnnouncements, getNavigation } from './navigation';
+export { type NewsletterSignupResult, subscribeToNewsletter } from './newsletter';
 export { getBlogPost, getBlogPosts, getPage, getPages } from './pages';
 export { getProduct, getProducts, searchProducts } from './products';
 export {
   getRatingSummaries,
+  getReviewHighlights,
   getReviews,
   type PaginatedReviews,
   type RatingSummary,
+  type ReviewHighlights,
 } from './reviews';

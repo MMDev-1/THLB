@@ -92,3 +92,30 @@ export async function getRatingSummaries(
     ]),
   );
 }
+
+export interface ReviewHighlights {
+  /** Across every review in the store, rounded to one decimal */
+  averageRating: number;
+  totalReviews: number;
+  /** Top reviews to feature: verified first, then newest */
+  featured: Review[];
+}
+
+/** Store-wide rating plus a handful of top reviews for the homepage. */
+export async function getReviewHighlights(limit: number, minRating = 4): Promise<ReviewHighlights> {
+  await delay();
+
+  const totalReviews = reviews.length;
+  const averageRating =
+    totalReviews > 0
+      ? Math.round((reviews.reduce((sum, r) => sum + r.rating, 0) / totalReviews) * 10) / 10
+      : 0;
+  const featured = reviews
+    .filter((review) => review.rating >= minRating)
+    .sort(
+      (a, b) => Number(b.verified) - Number(a.verified) || b.createdAt.localeCompare(a.createdAt),
+    )
+    .slice(0, limit);
+
+  return { averageRating, totalReviews, featured };
+}

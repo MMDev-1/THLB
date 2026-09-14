@@ -6,10 +6,16 @@ export {
   HeroMediaSchema,
   HeroSectionSchema,
   HomePageDataSchema,
+  HomeSectionSchema,
+  NewsletterSectionSchema,
   ProductCarouselSectionSchema,
+  ReviewsHighlightSectionSchema,
   SplitBannerSectionSchema,
+  UGCGridSectionSchema,
+  UGCTileSchema,
   ValuePropItemSchema,
   ValuePropsSectionSchema,
+  ViewAllLinkSchema,
 } from './home';
 export {
   AnnouncementSchema,

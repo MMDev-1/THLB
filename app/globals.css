@@ -1743,7 +1743,8 @@ body:has(#main-content > .hero) .header:not(.header--compact) .header__nav-link:
 
 .value-props__copy {
   font-size: var(--font-size-xs);
-  color: var(--muted);
+  /* charcoal-700: --muted is 4.44:1 on this sand background, under WCAG AA 4.5:1 */
+  color: var(--color-charcoal-700);
   margin: 0;
   line-height: var(--line-height-normal);
 }
@@ -1816,7 +1817,8 @@ body:has(#main-content > .hero) .header:not(.header--compact) .header__nav-link:
   font-weight: var(--font-weight-semibold);
   letter-spacing: var(--letter-spacing-widest);
   text-transform: uppercase;
-  color: var(--primary);
+  /* --primary on this background is 3.96:1; small text needs 4.5:1 (WCAG AA) */
+  color: var(--color-ember-700);
   margin-bottom: var(--space-3);
 }
 
@@ -1859,15 +1861,17 @@ body:has(#main-content > .hero) .header:not(.header--compact) .header__nav-link:
   transform: scale(0.97);
 }
 
+/* White on --primary is 4.23:1; the darker ember keeps the label AA-readable
+   (same fix as the newsletter button). Revisit --primary with the designs. */
 .split-banner__cta--primary {
-  background: var(--primary);
+  background: var(--color-ember-700);
   color: var(--primary-foreground);
-  border: 2px solid var(--primary);
+  border: 2px solid var(--color-ember-700);
 }
 
 .split-banner__cta--primary:hover {
-  background: var(--primary-hover);
-  border-color: var(--primary-hover);
+  background: var(--color-ember-800);
+  border-color: var(--color-ember-800);
 }
 
 .split-banner__cta--secondary {
@@ -2049,9 +2053,10 @@ body:has(#main-content > .hero) .header:not(.header--compact) .header__nav-link:
   }
 }
 
+/* charcoal-500 on the footer's charcoal-950 is 3.36:1; charcoal-400 is 4.9:1 */
 .site-footer__copyright {
   font-size: var(--font-size-xs);
-  color: var(--color-charcoal-500);
+  color: var(--color-charcoal-400);
   margin: 0;
 }
 
@@ -2063,7 +2068,7 @@ body:has(#main-content > .hero) .header:not(.header--compact) .header__nav-link:
 
 .site-footer__legal-link {
   font-size: var(--font-size-xs);
-  color: var(--color-charcoal-500);
+  color: var(--color-charcoal-400);
   text-decoration: none;
   transition: color var(--duration-fast) var(--ease-default);
 }
