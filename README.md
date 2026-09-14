@@ -58,5 +58,5 @@ thehoodielb/
 
 - **ESLint** with `eslint-config-next` + `simple-import-sort`
 - **Prettier** for consistent formatting
-- **Husky** + **lint-staged** run on every commit (pre-commit hook)
+- **Husky** + **lint-staged** run on every commit (pre-commit hook); commits that touch `data/` also run `npm run validate:data`
 - Lint failures block the commit

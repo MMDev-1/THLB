@@ -1,1 +1,6 @@
 npx lint-staged
+
+# Check data files against their Zod schemas whenever any are staged
+if ! git diff --cached --quiet -- data/; then
+  npm run validate:data
+fi
