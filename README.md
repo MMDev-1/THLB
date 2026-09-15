@@ -26,6 +26,7 @@ npm run dev        # → http://localhost:3000
 | `npm run build-storybook` | Build a static Storybook into `storybook-static/`                                                                               |
 | `npm run validate:data`   | Check every JSON file in `data/` against its Zod schema                                                                         |
 | `npm run check:routes`    | Start the built site and check key pages return the right status (run `npm run build` first; add `-- --dev` for the dev server) |
+| `npm run lighthouse`      | Measure the homepage with Lighthouse (mobile) against a production build (run `npm run build` first)                            |
 
 ## Folder Structure
 
